@@ -3,66 +3,60 @@ local speed = 20
 
 local rx, ry = getResolution()
 
---[[ init ]]--------------------------------------------------------------------
-
-if not init then
-    init = true
+-- Initialize
+if not _init then
 
     function randF (a, b)
         return a + (b - a) * math.random()
     end
-        
+
     function randExp ()
         return -math.log(1.0 - math.random())
     end
 
-    balls = {}
+    -- Create balls
+    _balls = {}
     for i = 1, ballCount do
-        local e = {}
-        e.x = randF(0, rx)
-        e.y = randF(0, ry)
-        e.r = 1 + 1.0 * math.log(1.0 - math.random()) ^ 2.0
-        e.vx = randF(-1, 1) * randExp()
-        e.vy = randF(-1, 1) * randExp()
-        e.cx = 1.0 * math.random()
-        e.cy = 0.1 * math.random()
-        e.cz = 0.4 * math.random()
-        e.ca = math.random()
-        table.insert(balls, e)
+        local b = {
+            x = randF(0, rx),
+            y = randF(0, ry),
+            r = 1 + 1.0 * math.log(1.0 - math.random()) ^ 2.0,
+            vx = randF(-1, 1) * randExp(),
+            vy = randF(-1, 1) * randExp(),
+            cx = 1.0 * math.random(),
+            cy = 0.1 * math.random(),
+            cz = 0.4 * math.random(),
+            ca = math.random()
+        }
+        _balls[#_balls +1] = b
     end
+
+    _init = true
 end
 
---[[ simulation ]]--------------------------------------------------------------
-
+-- Compute balls movements
 local dt = speed * getDeltaTime()
 
-for _, v in ipairs(balls) do
-    v.x = v.x + dt * v.vx
-    v.y = v.y + dt * v.vy
-    if v.x < 0 or v.x > rx then
-        v.x = v.x - dt * v.vx
-        v.vx = -v.vx
+for _, b in ipairs(_balls) do
+    b.x = b.x + dt * b.vx
+    b.y = b.y + dt * b.vy
+    if b.x < 0 or b.x > rx then
+        b.x = b.x - dt * b.vx
+        b.vx = -b.vx
     end
-    if v.y < 0 or v.y > ry then
-        v.y = v.y - dt * v.vy
-        v.vy = -v.vy
+    if b.y < 0 or b.y > ry then
+        b.y = b.y - dt * b.vy
+        b.vy = -b.vy
     end
 end
 
---[[ rendering ]]---------------------------------------------------------------
+-- Render
+local layer = createLayer()
 
-local l = createLayer()
-
--- render balls
-for _, e in ipairs(balls) do
-    setNextFillColor(l, e.cx, e.cy, e.cz, e.ca)
-    addCircle(l, e.x, e.y, e.r)
+-- Render balls
+for _, b in ipairs(_balls) do
+    setNextFillColor(layer, b.cx, b.cy, b.cz, b.ca)
+    addCircle(layer, b.x, b.y, b.r)
 end
-
--- render title
-local font = loadFont('Play-Bold', 64)
-addText(l, font, '{{ E N T R O P Y }}', 32, ry - 32)
 
 requestAnimationFrame(1)
-
---------------------------------------------------------------------------------
