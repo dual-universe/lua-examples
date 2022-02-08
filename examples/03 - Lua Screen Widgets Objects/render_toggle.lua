@@ -45,7 +45,7 @@ if not Toggle then
         function self:draw(layer, font)
             -- Localize object data
             local x, y, w, h = self.x, self.y, self.w, self.h
-            local min, max, ratio = self.min, self.max
+            local min, max = self.min, self.max
 
             -- Get cursor data
             local mx, my = getCursor()
@@ -92,7 +92,6 @@ end
 -- Get screen resolution
 local rx, ry = getResolution()
 local small = loadFont('Play', 16)
-local medium = loadFont('Play', 20)
 
 -- Draw the 3 sliders
 
@@ -113,6 +112,5 @@ local layer = createLayer()
 toggleA:draw( layer, small)
 toggleB:draw( layer, small)
 toggleC:draw( layer, small)
-
 
 requestAnimationFrame(1)

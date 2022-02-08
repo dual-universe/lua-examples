@@ -1,91 +1,104 @@
-font = loadFont('Play-Bold', 32)
-rx, ry = getResolution()
-cx, cy = getCursor()
-layer = createLayer()
-click = getCursorPressed()
-
---------------------------------------------------------------------------------
-
+-- Initialize
 if not Button then
-    local mt = {}
-    mt.__index = mt
-    function Button (text, x, y)
-        return setmetatable({
-            text = text,
-            x = x,
-            y = y,
-        }, mt)
-    end
 
-    function mt:draw ()
-        local sx, sy = self:getSize()
-        local x0 = self.x - sx/2
-        local y0 = self.y - sy/2
-        local x1 = x0 + sx
-        local y1 = y0 + sy
-        
-        local r, g, b = 0.3, 0.7, 1.0
-        if cx >= x0 and cx <= x1 and cy >= y0 and cy <= y1 then
-            r, g, b = 1.0, 0.0, 0.4
-            if click then setOutput(self.text) end
+    function getEllipsis(font, text, maxWidth)
+        local width = getTextBounds(font, '...')
+
+        for i = 1, #text do
+            local line = getTextBounds(font, text:sub(1,i)) + width
+            if line > maxWidth then
+                return text:sub(1,i-1)..'...'
+            end
         end
+        return text
+    end
+
+
+    -- Returns a new slider class
+    Button = {}
+    Button.__index = Button
+    function Button:new(x, y, width, height, caption)
+        self = {
+            x = x or 0,
+            y = y or 0,
+            w = width or 100,
+            h = height or 20,
+            caption = caption or "",
+            onClick = nil
+        }
         
-        setNextShadow(layer, 64, r, g, b, 0.3)
-        setNextFillColor(layer, 0.1, 0.1, 0.1, 1)
-        setNextStrokeColor(layer, r, g, b, 1)
-        setNextStrokeWidth(layer, 2)
-        addBoxRounded(layer, self.x - sx/2, self.y - sy/2, sx, sy, 4)
-        setNextFillColor(layer, 1, 1, 1, 1)
-        setNextTextAlign(layer, AlignH_Center, AlignV_Middle)
-        addText(layer, font, self.text, self.x, self.y)
+
+        -- Draws the slider on the screen using the given layer
+        function self:draw(layer, font)
+            -- Localize object data
+            local x, y, w, h = self.x, self.y, self.w, self.h
+            local min, max = self.min, self.max
+
+            -- Get cursor data
+            local mx, my = getCursor()
+            local pressed = getCursorPressed()
+            local released = getCursorReleased()
+
+            local clicked = false
+            -- Determine if the cursor is on the button and switch the state
+            if (mx >= x and mx <= x+w) and (my >= y and my <= y+h) then
+                if pressed then
+                    clicked = true
+                elseif released then
+
+                    if self.onClick then
+                        self:onClick( mx, my)
+                    end
+                end
+            end
+
+            -- Draw the slider
+            setDefaultStrokeColor(layer, Shape_BoxRounded, 1, 1, 1, 1)
+            setDefaultStrokeWidth(layer, Shape_BoxRounded, 0.1)
+
+            if clicked then
+                setNextFillColor(layer, 0.1, 0.1, 0.1, 1)
+            else
+                setNextFillColor(layer, 0.3, 0.3, 0.3, 1)
+            end
+            addBoxRounded(layer, x, y, w, h, 1)
+
+            -- Draw label and value display          
+            local caption = getEllipsis(font, self.caption, w-12)
+            local font = font or nil
+
+            setNextTextAlign( layer, AlignH_Center, AlignV_Middle)
+            addText( layer, font, caption, x+0.5*w, y+0.5*h)
+        end
+
+
+        return setmetatable(self, Button)
     end
 
-    function mt:getSize ()
-        local sx, sy = getTextBounds(font, self.text)
-        return sx + 32, sy + 16
-    end
-
-    function mt:setPos (x, y)
-        self.x, self.y = x, y
-    end
 end
 
-function drawFree (elems)
-    for i, v in ipairs(elems) do v:draw() end
+
+-- Get screen resolution
+local rx, ry = getResolution()
+local medium = loadFont('Play', 20)
+
+-- Draw the 3 sliders
+
+if not _init then
+    buttonRed = Button:new(0.5*rx - 100, 0.35*ry - 16, 220, 42, "Toggle light Red")
+    buttonGreen = Button:new(0.5*rx - 100, 0.5*ry - 16, 220, 42, "Toggle light Green")
+    buttonBlue = Button:new(0.5*rx - 100, 0.65*ry - 16, 220, 42, "Toggle light Blue")
+    
+    buttonRed.onClick = function(self) setOutput('lightRed') end
+    buttonGreen.onClick = function(self) setOutput('lightGreen') end
+    buttonBlue.onClick = function(self) setOutput('lightBlue') end
+
+    _init = true
 end
 
-function drawListV (elems, x, y)
-    for i, v in ipairs(elems) do
-        local sx, sy = v:getSize()
-        v:setPos(x, y)
-        v:draw()
-        y = y + sy + 4
-    end
-end
+local layer = createLayer()
+buttonRed:draw( layer, medium)
+buttonGreen:draw( layer, medium)
+buttonBlue:draw( layer, medium)
 
-function drawUsage ()
-    local font = loadFont('FiraMono', 16)
-    setNextTextAlign(layer, AlignH_Center, AlignV_Top)
-    addText(layer, font, "Activate board to enable buttons!", rx/2, ry - 32)
-end
-
-function drawCursor ()
-    if cx < 0 then return end
-    addLine(layer, cx - 12, cy - 12, cx + 12, cy + 12)
-    addLine(layer, cx + 12, cy - 12, cx - 12, cy + 12)
-end
-
---------------------------------------------------------------------------------
-
-local buttons = {
-    Button('Light 0', 128, 90),
-    Button('Light 1', 128, 290),
-    Button('Light 2', 128, 490),
-}
-
-drawFree(buttons)
-
-drawUsage()
-drawCursor()
-
-requestAnimationFrame(5)
+requestAnimationFrame(1)
