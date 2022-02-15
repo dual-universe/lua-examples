@@ -1,6 +1,8 @@
--- Initialize
+
+--# Class definition called only at the first frame
 if not Toggle then
 
+    -- Define the ellipsis text break function
     function getEllipsis(font, text, maxWidth)
         local width = getTextBounds(font, '...')
 
@@ -14,9 +16,15 @@ if not Toggle then
     end
 
 
-    -- Returns a new slider class
     Toggle = {}
     Toggle.__index = Toggle
+    -- Toggle object constructor
+    -- .x : X component of the position
+    -- .y : Y component of the position
+    -- .width : Width of the slider
+    -- .height : Height of the slider
+    -- .state : Toggle state
+    -- .label : Associated text label
     function Toggle:new(x, y, width, height, state, label)
         self = {
             x = x or 0,
@@ -41,13 +49,13 @@ if not Toggle then
         end
         
 
-        -- Draws the slider on the screen using the given layer
+        -- Draws the toggle button on the screen using the given layer
         function self:draw(layer, font)
             -- Localize object data
             local x, y, w, h = self.x, self.y, self.w, self.h
             local min, max = self.min, self.max
 
-            -- Get cursor data
+            -- Get cursor data (position and button state)
             local mx, my = getCursor()
             local pressed = getCursorPressed()
             local released = getCursorReleased()
@@ -63,10 +71,12 @@ if not Toggle then
                 end
             end
 
-            -- Draw the slider
+            --# Draw the toggle button
+            -- Define box default strokes style
             setDefaultStrokeColor(layer, Shape_BoxRounded, 1, 1, 1, 1)
             setDefaultStrokeWidth(layer, Shape_BoxRounded, 0.1)
 
+            -- Change the color according to the state
             if state then
                 setNextFillColor(layer, 0.3, 0.3, 0.3, 1)
             else
@@ -93,14 +103,14 @@ end
 local rx, ry = getResolution()
 local small = loadFont('Play', 16)
 
--- Draw the 3 sliders
-
+--# Initialization called only at the first frame
 if not _init then
+    -- Create three toggles
     toggleA = Toggle:new(0.5*rx - 100, 0.4*ry - 16, 200, 32, true, "Toggle A")
     toggleB = Toggle:new(0.5*rx - 100, 0.5*ry - 16, 200, 32, true, "Toggle B")
     toggleC = Toggle:new(0.5*rx - 100, 0.6*ry - 16, 200, 32, true, "Toggle C")
-    
-    
+
+    -- Register an action on each toggle button onToggle event
     toggleA.onToggle = function(self) logMessage('"' .. self.label .. '" state is '..tostring(self.getState())) end
     toggleB.onToggle = function(self) logMessage('"' .. self.label .. '" state is '..tostring(self.getState())) end
     toggleC.onToggle = function(self) logMessage('"' .. self.label .. '" state is '..tostring(self.getState())) end
@@ -108,9 +118,13 @@ if not _init then
     _init = true
 end
 
+--# Rendering
 local layer = createLayer()
+
+-- Draw the toggles
 toggleA:draw( layer, small)
 toggleB:draw( layer, small)
 toggleC:draw( layer, small)
 
+-- Request a run at each frame
 requestAnimationFrame(1)

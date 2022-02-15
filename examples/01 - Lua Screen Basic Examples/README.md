@@ -6,6 +6,7 @@ These examples are simple examples of using Lua screens. They are intended to sh
 ![Simple Text](img/simpleText.jpg)
 ### Description
 - One of the first things you will want to do on a Lua screen is to display text! So here is an example of how to simply display pieces of text on the screen.
+Note that in this example we are writing lines from a hard-coded array of lines, but you have a `getTextWrapped` function in the `rslib` library to split your text according to a width limit.
 ### Requirements
 - A single screen will suffice.
 ### Installation

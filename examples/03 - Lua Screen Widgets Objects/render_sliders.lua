@@ -1,12 +1,21 @@
--- Initialize
+
+
+--# Slider class definition called only at the first frame
 if not Slider then
 
 
-    -- Returns a new slider class
     Slider = {}
     Slider.__index = Slider
+    -- Slider object constructor
+    -- .x : X component of the position
+    -- .y : Y component of the position
+    -- .width : Width of the slider
+    -- .length : Lenght of the slider
+    -- .min : Minimum value
+    -- .max : Maximum value
+    -- .label : Associated text label
     function Slider:new(x, y, width, length, min, max, value, label)
-        self = {
+        local self = {
             x = x or 0,
             y = y or 0,
             l = length or 100,
@@ -40,7 +49,7 @@ if not Slider then
 
             local font = loadFont('Play', 14)
 
-            -- Get cursor data
+            -- Get cursor data (position and button state)
             local mx, my = getCursor()
             local pressed = getCursorPressed()
             local released = getCursorReleased()
@@ -59,20 +68,25 @@ if not Slider then
                 end
             end
 
+            -- Compute the slider ratio
             local ratio = self.ratio
             local h = ratio*(max-min)
             local color = self.color
 
-            -- Draw the slider
+            --# Draw the slider
+            -- Define box default strokes style
             setDefaultStrokeColor(layer, Shape_BoxRounded, 1, 1, 1, 1)
             setDefaultStrokeWidth(layer, Shape_BoxRounded, 0.1)
 
+            -- Draw the back box
             setNextFillColor(layer, 0.1, 0.1, 0.1, 1)
             addBoxRounded(layer, x, y, w, l, 0)
 
+            -- Draw the fill box
             setNextFillColor(layer, color[1], color[2], color[3], 1)
             addBoxRounded(layer, x, y+(1-ratio)*l, w, l*ratio, 0)
 
+            -- Draw the handle
             setNextFillColor(layer, 0.5, 0.5, 0.5, 1)
             addBoxRounded(layer, x-3, y+(1-ratio)*l -3, w+6, 6, 0)
 
@@ -96,29 +110,37 @@ end
 -- Get screen resolution
 local rx, ry = getResolution()
 
--- Draw the 3 sliders
+--# Initialization called only at the first frame
 if not _init then
     local r, g, b = 0.21, 0.32, 0.48
 
+    -- Create three sliders and set their color
     sliderRed = Slider:new(rx*0.8, ry*0.2, 16, ry*0.6, 0, 1, r, "Red")
     sliderRed.color = { 1, 0, 0}
+
     sliderGreen = Slider:new(rx*0.85, ry*0.2, 16, ry*0.6, 0, 1, g, "Green")
     sliderGreen.color = { 0, 1, 0}
+
     sliderBlue = Slider:new(rx*0.9, ry*0.2, 16, ry*0.6, 0, 1, b, "Blue")
     sliderBlue.color = { 0, 0, 1}
 
     _init = true
 end
 
+
+--# Rendering
 -- Set the background color based on sliders value
 setBackgroundColor( sliderRed.ratio, sliderGreen.ratio, sliderBlue.ratio, 1)
 local layer = createLayer()
 
+-- Draw a box behind the sliders
 setNextFillColor( layer, 0.05, 0.05, 0.05, 1)
 addBoxRounded( layer, rx*0.75 +8, ry*0.1, rx*0.2, ry*0.8, 16)
 
+-- Draw sliders
 sliderRed:draw( layer)
 sliderGreen:draw( layer)
 sliderBlue:draw( layer)
 
+-- Request a run at each frame
 requestAnimationFrame(1)

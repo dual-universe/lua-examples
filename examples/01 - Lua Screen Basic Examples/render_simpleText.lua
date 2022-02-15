@@ -1,3 +1,4 @@
+-- List all lines of text
 local lines = {
     "Lua screen units are great!",
     "They can render lots of contents...",
@@ -7,12 +8,14 @@ local lines = {
     "...but once you get the hang of them...",
     "you'll be unstoppable.",
 }
-local fontSize = 32
-local font = loadFont('Play', fontSize)
+
+-- Load the font with its name and its size
+local font = loadFont('Play', 32)
 
 local layer = createLayer()
-local y = fontSize + 16
 
+-- For each line draw the text
+local y = fontSize + 16
 for i, line in ipairs(lines) do
     addText(layer, font, line, 16, y)
     y = y + fontSize + 2
