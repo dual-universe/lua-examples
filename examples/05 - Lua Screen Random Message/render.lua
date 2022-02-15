@@ -1,78 +1,52 @@
-local json = require('dkjson')
-local params = json.decode(getInput()) or {}
+-- Include dkjson library to encode and decode tables as string
+local json = require("dkjson")
 
-message = params.message or '[ no message ]'
-fontSize = params.fontSize or 64
-color = params.color or {r=1.0,g=0,b=0.3}
+-- Get input
+local data = json.decode(getInput()) or {}
 
---------------------------------------------------------------------------------
+--# Rendering
+-- Load fonts
+local infoFont = loadFont('RobotoMono', 12)
+local activeFont = loadFont('RobotoMono', 16)
+local messageFont = loadFont('Play-Bold', 52)
 
-local font = loadFont('Play-Bold', fontSize)
+-- Get screen resolution and create a layer
 local rx, ry = getResolution()
 local layer = createLayer()
-local cx, cy = getCursor()
 
-local sx, sy = getTextBounds(font, message)
-setDefaultStrokeColor(layer, Shape_Line, 1, 1, 1, 0.5)
-setNextShadow(layer, 64, color.r, color.g, color.b, 0.4)
-setNextFillColor(layer, color.r, color.g, color.b, 1.0)
-addBoxRounded(layer, (rx-sx-16)/2, (ry-sy-16)/2, sx+16, sy+16, 8)
-setNextFillColor(layer, 0, 0, 0, 1)
+
+-- Draw data package content
+setNextTextAlign(layer, AlignH_Left, AlignV_Baseline)
+addText(layer, infoFont, "Script Parameters", 8, 16)
+
+local y = 30
+-- For each field of the data package draw
+for k, field in pairs(data) do
+    setNextTextAlign(layer, AlignH_Left, AlignV_Baseline)
+    addText(layer, infoFont, k .. ' = ' .. json.encode(field), 16, y)
+    y = y+14
+end
+
+-- Draw instructions
+setNextTextAlign(layer, AlignH_Center, AlignV_Baseline)
+addText(layer, activeFont, "Click on the screen for an exciting new message!", 0.5*rx, ry-20)
+
+
+-- Get dimensions of the message text
+local width, _ = getTextBounds( messageFont, data.message)
+width = width + 32
+local height = 72
+
+-- Draw the background box of the message text
+setNextStrokeColor( layer, 1, 1, 1, 1)
+setNextStrokeWidth( layer, 1)
+setNextFillColor( layer, 0, 0, 0, 0)
+addBoxRounded( layer, 0.5*(rx-width), 0.5*(ry-height), width, height, 6)
+
+-- Draw the message text
 setNextTextAlign(layer, AlignH_Center, AlignV_Middle)
-addText(layer, font, message, rx/2,ry/2)
+addText(layer, messageFont, data.message, 0.5*rx, 0.5*ry)
 
---------------------------------------------------------------------------------
 
-local fontCache = {}
-function getFont (font, size)
-    local k = font .. '_' .. tostring(size)
-    if not fontCache[k] then fontCache[k] = loadFont(font, size) end
-    return fontCache[k]
-end
-
-function drawUsage ()
-    local font = getFont('FiraMono', 16)
-    setNextTextAlign(layer, AlignH_Center, AlignV_Top)
-    addText(layer, font, "Activate for an exciting new message!", rx/2, ry - 32)
-end
-
-function drawCursor ()
-    if cx < 0 then return end
-    if getCursorDown() then
-        setDefaultShadow(layer, Shape_Line, 32, color.r, color.g, color.b, 0.5)
-    end
-    addLine(layer, cx - 12, cy - 12, cx + 12, cy + 12)
-    addLine(layer, cx + 12, cy - 12, cx - 12, cy + 12)
-end
-
-function prettyStr (x)
-    if type(x) == 'table' then
-        local elems = {}
-        for k, v in pairs(x) do
-            table.insert(elems, string.format('%s = %s', prettyStr(k), prettyStr(v)))
-        end
-        return string.format('{%s}', table.concat(elems, ', '))
-    else
-        return tostring(x)
-    end
-end
-
-function drawParams ()
-    local font = getFont('RobotoMono', 11)
-    setNextTextAlign(layer, AlignH_Left, AlignV_Bottom)
-    addText(layer, font, "Script Parameters", 16, 16)
-    local y = 32
-    for k, v in pairs(params) do
-        setNextTextAlign(layer, AlignH_Left, AlignV_Bottom)
-        addText(layer, font, k .. ' = ' .. prettyStr(v), 24, y)
-        y = y + 12
-    end
-end
-
---------------------------------------------------------------------------------
-
-drawUsage()
-drawCursor()
-drawParams()
-
-requestAnimationFrame(1)
+-- Request a run at each 2 frame
+requestAnimationFrame(2)

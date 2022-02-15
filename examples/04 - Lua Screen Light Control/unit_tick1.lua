@@ -1,16 +1,20 @@
--- Define actions to do
+-- Add to programming board's unit.tick(output) event
+
+-- Define actions to be done when receiving a keyword
 local actions = {
     ['lightRed'] = function() lightRed.toggle() end,
     ['lightGreen'] = function() lightGreen.toggle() end,
     ['lightBlue'] = function() lightBlue.toggle() end
 }
 
--- Get the screen output
+-- Get screen output
 local output = screen.getScriptOutput()
 
--- Execute the action according to the output
+-- Check if an action is defined
 if actions[output] then
+    -- Clear screen output
     screen.clearScriptOutput()
-    
+
+    -- Execute the action
     actions[output]()
 end

@@ -1,8 +1,8 @@
 # Lua Screen Light Control
-## Slider widgets
+## Light Control
 ![lightControl](img/lightControl.jpg)
 ### Description
-- This example shows you a use of an interface widget developed in the previous example in [Lua Screen Widgets Objects](https://github.com/dual-universe/lua-examples/tree/main/examples/03%20-%20Lua%20Screen%20Widgets%20Objects) example. In this case, it will show you one of the many ways to interact with screen elements using toggle buttons.
+- This example shows you a concrete use of an interface widget developed for this example; a button. In this case, it will show you one of the many ways to interact with other elements using a screen unit and a programming board.
 ### Requirements
 - You will need:
   - A programming board
@@ -15,7 +15,7 @@
 - Then, for the programming board
   - Place the programming board.
   - Create a start filter in the unit slot.
-  - Copy the content of [unit_start.lua](unit_start.lua) code.
-  - Create a tick filter in the unit slot. Set the timerId as `output`.
-  - Copy the content of [unit_tick1.lua](unit_tick1.lua) code.
-- Finaly link the three lights to the programming board and name the slots in the Lua editor of the programming board as `lightRed`, `lightGreen` and `lightBlue`.
+  - Paste the content of [unit_start.lua](unit_start.lua) code in.
+  - Create a tick filter in the unit slot. Set the timerId argument as `output`.
+  - Paste the content of [unit_tick1.lua](unit_tick1.lua) code in.
+- Finaly link the three lights and screen to the programming board and name the slots in the Lua editor of the programming board as `lightRed`, `lightGreen`,`lightBlue` and finaly, the screen as `screen`.

@@ -21,8 +21,8 @@ if not Toggle then
     -- Toggle object constructor
     -- .x : X component of the position
     -- .y : Y component of the position
-    -- .width : Width of the slider
-    -- .height : Height of the slider
+    -- .width : Width of the toggle
+    -- .height : Height of the toggle
     -- .state : Toggle state
     -- .label : Associated text label
     function Toggle:new(x, y, width, height, state, label)
