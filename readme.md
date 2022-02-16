@@ -35,7 +35,7 @@ For example:
  - `system_start.lua` : code for the `start` filter of the `system` slot
  - `system_update.lua`: code for the `update` filter in the `system` slot
  - `unit_tick1.lua` : code for the first `tick` filter in the `unit` slot
-...etc
+ - ...etc
 
 
 Then, by following the instructions given, you can install these as required.
