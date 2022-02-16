@@ -31,7 +31,8 @@ In order to ensure the readability of the code, and to cover as many cases as po
 Thus you will find in the examples folder Lua files named according to the convention `<slot>_<filter><index>`. 
 
 For example:
- - `render.lua` : code for the Lua screen
+ - `render.lua` : code for the Lua screen's renderscript.
+ - `controlunit.json` : string for use with control units using the `Paste Lua configuration from clipboard` functionality in game.
  - `system_start.lua` : code for the `start` filter of the `system` slot
  - `system_update.lua`: code for the `update` filter in the `system` slot
  - `unit_tick1.lua` : code for the first `tick` filter in the `unit` slot
