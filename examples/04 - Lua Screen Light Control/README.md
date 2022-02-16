@@ -1,4 +1,6 @@
-# Lua Screen Light Control
+# Lua Screen Interaction
+These examples are intended to show you how to do interactions between screens and other elements.
+
 ## Light Control
 ![lightControl](img/lightControl.jpg)
 ### Description

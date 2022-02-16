@@ -17,7 +17,7 @@ This repository has been created to serve as a sharing and learning platform for
 
 You will find on this repo the examples released by Novaquark during the devblog and thread.
 
-### Reminder: As the Lua feature evolves regularly, it is possible that a script or system may be broken. We will try to update the relevant examples if this is the case, but no guarantee can be given.
+#### Reminder: As the Lua feature evolves regularly, it is possible that a script or system may be broken. We will try to update the relevant examples if this is the case, but no guarantee can be given.
 
 ## How to use it ?
 Each example provided here consists of the following
