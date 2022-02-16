@@ -5,21 +5,24 @@
 -- and the local atlas.lua library.
 -----------------------------------------------------------------------------------
 
----# Local constants class and objects definition
+--# Local constants class and objects definition
 local atlas = require("atlas")
 local json = require("dkjson")
-local rslib = require("rslib")
+local getTextWrapped = require("rslib").getTextWrapped
 local vec3 = require("cpml/vec3")
 
 local system = atlas[0]
-
 local rx,ry = getResolution()
 
+
+--# Local rendering preparation
+-- Create layers
 local rear = createLayer()
 local back = createLayer()
 local front = createLayer()
 local fore = createLayer()
 
+-- Load fonts
 local small = loadFont('Play',10)
 local smallBold = loadFont('Play-Bold',10)
 local normal = loadFont('Play',16)
@@ -57,21 +60,19 @@ local function contains(t, u)
 end
 
 --Used to set the view to a given stellar body id
-local function setView(id)
+local function setView( planets, id)
     local i = 0
     
-    for k,b in pairs(system) do
-        if b.id == id and b.systemId == 0 then
-            i = k
-        else
-            for k,b in pairs(system) do
-                if b.id == b.systemId then
-                    i = k
-                end
+    for k,b in pairs( planets) do
+        if b.systemId == 0 then
+            i = i+1
+            if b.id == id then
+                break
             end
         end
     end
     
+    logMessage(i)
     if _mode == 1 then
         _viewX = 470-(i*350)
     else
@@ -82,7 +83,7 @@ local function setView(id)
 end
 
 
----# Settings
+--# Settings
 -- showCursor : Set at true to display a cursor
 -- _lang : Set here the default language (1: English, 2: French, 3: German)
 -- _mode : Set the view mode (1: system view, 2: local view)
@@ -93,6 +94,8 @@ _lang = _lang or 1
 _mode = _mode or 1
 _select = _select or 1
 
+
+--# Localisation fields for language support
 local loc = {
     description = {"Description", "Description", "Beschreibung"},
     ores = {"Ores", "Minerais", "Erze"},
@@ -108,7 +111,8 @@ local loc = {
 }
 
 
----# Initialization
+--# Initialization
+-- Define default values on globals parameters
 _viewX = _viewX or 220
 _planets = _planets or {}
 _time = _time and _time+getDeltaTime() or 0
@@ -116,16 +120,11 @@ _initShift, _shift = _initShift or 0, _shift or 0
 
 local input, dist = getInput(), 0
 
+-- Called only at the first frame
 if not _init then
     if not system[_select] then
         _select = 1
     end
-
-    setView(_select)
-
-    local data = json.decode(input) or {}
-    if data.pos then dist = vec3(data.pos) - vec3(planet.center) end
-    _init = true
     
     for _,b in pairs(system) do
         if b.systemId == 0 then
@@ -137,12 +136,20 @@ if not _init then
         end
     end
     table.sort (_planets, function (b1, b2) return b1.positionInSystem < b2.positionInSystem end )
+    
+    setView( _planets, _select)
+    _init = true
 end
 
 local planet = system[_select]
 local vignette = loadImages(planet.iconPath)
 
----# Computation
+-- If a position is sent to the screen, compute the distance between this position and the planet center
+local data = json.decode(input) or {}
+if data.pos then dist = vec3(data.pos) - vec3(planet.center) end
+
+
+--# Computation
 local mx, my = getCursor()
 local down, pressed = getCursorDown(), getCursorPressed()
 
@@ -172,7 +179,13 @@ end
 if _mode == 2 then    
     local t = _time/1
     local sqt = t * t;
-    _viewX = t>=1 and _shift or _initShift + (sqt / (2.0 * (sqt - t) + 1.0))*(_shift-_initShift);
+    
+    if t >= 1 then
+        _viewX = _shift
+    else
+        -- Smooth animation equation
+        _viewX = _initShift + (sqt / (2.0 * (sqt - t) + 1.0))*(_shift-_initShift); 
+    end
 end
 
 --Clamp the view shift
@@ -181,7 +194,7 @@ _viewX = _viewX<-3800 and -3800 or _viewX
 
 
 ---# Rendering
---Draw backgrounds and cursor circle
+--Draw backgrounds
 setBackgroundColor(5/255, 6/255, 10/255)
 
 setNextFillColor( front, 15/255, 16/255, 20/255, 1)
@@ -190,6 +203,7 @@ addBox( front, 0, 0, 224, ry)
 setNextFillColor( back, 5/255, 6/255, 10/255, 1)
 addBox( back, 224, ry-60, rx-224, 60)
 
+-- Draw the cursor
 if showCursor then
     setNextStrokeWidth( fore, 0.1)
     setNextStrokeColor( fore, 1, 193/255, 32/255, 1)
@@ -199,40 +213,49 @@ if showCursor then
     addCircle( fore, mx, my, 1)
 end
 
----Main view
---Draw the main view sun glow, only if visible on the view
+
+--- Main view
+-- Draw the main view sun glow, only if visible on the view
 if _viewX > 0 then
     setNextStrokeWidth( rear, 0)
     setNextStrokeColor( rear, 0, 0, 0, 0)
     setNextShadow( rear, 200, 255/255, 120/255, 5/255, 0.85)
     addBox( rear, _viewX-10, 0, 0, ry)
 end
-    
+
 local bx,by = _viewX+300, ry/2
 
---Draw the thumbnail sun glow
+
+-- Draw the thumbnail sun glow
 setNextStrokeWidth( back, 0)
 setNextStrokeColor( back, 0, 0, 0, 0)
 setNextShadow( back, 45, 255/255, 120/255, 5/255, 0.75)
 addBox( back, 200, ry-35, 0, 10)
 
---Draw all planets
+
+--- Draw all planets
 for i,body in pairs(_planets) do
+    -- For each planet load the icon from the atlas data
     local img = loadImages(body.iconPath)
     local hover = false
     local r = body.radius/900
+    
+    -- Compute the thumbnail position
     local mbx = 224+(i*350)/6
 
+    
     if _mode==1 or (_mode == 2 and _select == body.id or (body.satellites and contains(body.satellites, _select))) then
         
         --Check the hover and click events in the rendering (exception made to avoid having to do the same loop in the computation part).
         if (mx-bx)*(mx-bx) + (my-by)*(my-by) < (r+18)^2 then
             hover = true
+            
+            -- If hovering over the planet and clicking, select the planet and define the view
             if pressed then
                 _select = body.id
                 if _mode == 1 then
                     _mode = 2
-                    setView(body.id)
+                    setView( _planets, body.id)
                 end
             end
         end
@@ -273,16 +296,20 @@ for i,body in pairs(_planets) do
             if _mode == 2 then
                 if body.satellites then
                     
-                    
+                    -- Compute satellite position
                     local dsx = 0.5 * (rx-bx+r)/(#body.satellites+1)
                     local sx, sy = bx + r + dsx, by
+                    
+                    -- For each satellite
                     for j,sid in pairs(body.satellites) do                     
                         
+                        -- Get id and load image
                         hover = false
                         local sat = system[sid]
                         local satImg = loadImages(sat.iconPath)
                         sr = sat.radius/1240
                         
+                        -- Check if hovering it
                         if (mx-sx)*(mx-sx) + (my-sy)*(my-sy) < (sr+18)^2 then
                             hover = true
                             if pressed then
@@ -290,6 +317,7 @@ for i,body in pairs(_planets) do
                             end
                         end
 
+                        -- Draw an highlight if hovered
                         if hover then
                             setNextStrokeWidth( rear, 0.1)
                             setNextStrokeColor( rear, 1, 193/255, 32/255, 1)
@@ -297,6 +325,7 @@ for i,body in pairs(_planets) do
                         setNextFillColor( rear, 0, 0, 0, 0)
                         addCircle( rear, sx, sy, sr+18)
 
+                        -- Draw an atmosphere if it has one
                         if sat.hasAtmosphere then
                             atm = sat.atmosphereRadius/1240
 
@@ -306,12 +335,14 @@ for i,body in pairs(_planets) do
                             addCircle( rear, sx, sy, atm)
                         end
                         
+                        -- Draw the satellite image
                         addImage( back, satImg, sx-sr, sy-sr, 2*sr, 2*sr)
 
                         setNextStrokeWidth( rear, 0.1)
                         setNextStrokeColor( rear, 1, 1, 1, 0.25)
                         addLine( rear, sx, sy + (sr+10)*(-1)^j, sx, sy + (sr+38)*(-1)^j)
 
+                        -- Draw its name
                         setNextTextAlign( back, AlignH_Center, AlignV_Middle)
                         addText( back, normal, sat.name[_lang], sx, sy + (sr+48)*(-1)^j)
                         
@@ -367,8 +398,8 @@ for k,l in pairs(langs) do
 end
 
 
----Lateral View
---Draw all informations on the lateral panel
+--# Lateral View
+--Draw top part, name and image
 addText( front, medium, string.upper('| '..planet.name[_lang]), 18, 38)
 
 local y = 50
@@ -379,23 +410,29 @@ addImage( fore, vignette, 112 - 50, y+10, 100, 100)
 y = y + 140
 
 
+--# Draw each information on the stellar body
+--- Description
 addText( front, smallBold, string.upper('| '.. loc.description[_lang]), 18, y)
-local _lines = rslib.getTextWrapped( small, planet.description and planet.description[_lang] or '-', 200)
+-- Use a getTextWrapped function from rslib library to wrap the text
+local _lines = getTextWrapped( small, planet.description and planet.description[_lang] or '-', 200)
 for k,l in pairs(_lines) do
     setNextFillColor( front, 1, 1, 1, 0.75)
     addText( front, small, l, 18, y+2+k*10)
 end
 y = y + #_lines*10 + 16
 
+--- Ores on the planet
 addText( front, smallBold, string.upper('| '.. loc.ores[_lang]), 18, y)
 setNextFillColor( front, 1, 1, 1, 0.75)
-local _lines = rslib.getTextWrapped( small, concatList(planet.ores, _lang), 200)
+-- Use a getTextWrapped function from rslib library to wrap the text
+local _lines = getTextWrapped( small, concatList(planet.ores, _lang), 200)
 for k,l in pairs(_lines) do
     setNextFillColor( front, 1, 1, 1, 0.75)
     addText( front, small, l, 18, y+2+k*10)
 end
 y = y + #_lines*10 + 28
 
+--- Biosphere if it has
 if planet.biosphere then
     addText( front, smallBold, string.upper('| '.. loc.biosphere[_lang]), 18, y)
     setNextFillColor( front, 1, 1, 1, 0.75)
@@ -403,6 +440,7 @@ if planet.biosphere then
     y = y +26
 end
 
+--- Habitability class if it has
 if planet.habitability then
     addText( front, smallBold, string.upper('| '.. loc.habitability[_lang]), 18, y)
     setNextFillColor( front, 1, 1, 1, 0.75)
@@ -410,6 +448,7 @@ if planet.habitability then
     y = y +26
 end
 
+--- Classification class if it has
 if planet.classification then
     addText( front, smallBold, string.upper('| '.. loc.classification[_lang]), 18, y)
     setNextFillColor( front, 1, 1, 1, 0.75)
@@ -417,31 +456,39 @@ if planet.classification then
     y = y +26
 end
 
+--- Satellites count
 addText( front, smallBold, string.upper('| '.. loc.satellites[_lang]), 18, y)
 setNextFillColor( front, 1, 1, 1, 0.75)
 addText( front, small, planet.satellites and #planet.satellites or 0, 18, y+11)
 y = y +38
 
-addText( front, smallBold, string.upper('| '.. loc.distance[_lang]), 18, y)
-setNextFillColor( front, 1, 1, 1, 0.75)
-addText( front, small, string.format('%.2f km', dist/1000), 18, y+11)
-y = y +26
+--- Distance to current location if a position is providen in input
+if dist ~= 0 then
+    addText( front, smallBold, string.upper('| '.. loc.distance[_lang]), 18, y)
+    setNextFillColor( front, 1, 1, 1, 0.75)
+    addText( front, small, string.format('%.2f km', dist/1000), 18, y+11)
+    y = y +26
+end
 
+--- Radius data
 addText( front, smallBold, string.upper('| '.. loc.radius[_lang]), 18, y)
 setNextFillColor( front, 1, 1, 1, 0.75)
 addText( front, small, string.format('%.2f km', planet.radius/1000), 18, y+11)
 y = y +26
 
+-- Gravity data at seat level
 addText( front, smallBold, string.upper('| '.. loc.gravity[_lang]), 18, y)
 setNextFillColor( front, 1, 1, 1, 0.75)
 addText( front, small, string.format('%.2f m/s²', planet.gravity), 18, y+11)
 y = y +26
 
+-- If it has, add the atmospheric thickness data
 if planet.hasAtmosphere then
     addText( front, smallBold, string.upper('| '.. loc.atmoThickness[_lang]), 18, y)
     setNextFillColor( front, 1, 1, 1, 0.75)
     addText( front, small, string.format('%.2f m', planet.atmosphereThickness), 18, y+11)
 end
 
----# Request animation frame
+
+---# Request one run per frame
 requestAnimationFrame(1)
