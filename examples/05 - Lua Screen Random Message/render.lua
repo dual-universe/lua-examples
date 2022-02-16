@@ -33,7 +33,7 @@ addText(layer, activeFont, "Click on the screen for an exciting new message!", 0
 
 
 -- Get dimensions of the message text
-local width, _ = getTextBounds( messageFont, data.message)
+local width, _ = getTextBounds( messageFont, data.message or '')
 width = width + 32
 local height = 72
 
@@ -45,7 +45,7 @@ addBoxRounded( layer, 0.5*(rx-width), 0.5*(ry-height), width, height, 6)
 
 -- Draw the message text
 setNextTextAlign(layer, AlignH_Center, AlignV_Middle)
-addText(layer, messageFont, data.message, 0.5*rx, 0.5*ry)
+addText(layer, messageFont, data.message or '', 0.5*rx, 0.5*ry)
 
 
 -- Request a run at each 2 frame

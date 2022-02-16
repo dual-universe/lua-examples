@@ -14,7 +14,7 @@ These examples are intended to show you how to do interactions between screens a
 - Firstly, for the screen unit part:
   - Place the screen unit.
   - Copy and paste the [render.lua](render.lua) into the screen content in Lua mode.
-- Then, for the programming board
+- Then, paste the [controlunit.json](controlunit.json) file on your programming board with contextual menu, or proceed manualy as below:
   - Place the programming board.
   - Create a start filter in the unit slot.
   - Paste the content of [unit_start.lua](unit_start.lua) code in.
