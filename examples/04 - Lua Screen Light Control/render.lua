@@ -36,7 +36,7 @@ if not Button then
             onClick = nil
         }
 
-        -- Draws the slider on the screen using the given layer
+        -- Draws the button on the screen using the given layer
         function self:draw(layer, font)
             -- Localize object data
             local x, y, w, h = self.x, self.y, self.w, self.h
