@@ -2,7 +2,7 @@
 ## Slider widgets
 ![randomMessage](img/randomMessage.jpg)
 ### Description
-- This example shows you another way of interacting between a screen unit and other elements. But this time we will do the opposite of the previous example [Lua Screen Light Control] (https://github.com/dual-universe/lua-examples/tree/main/examples/04%20-%20Lua%20Screen%20Light%20Control). To be clear, in this case we are going to show you how to interact between the programming board and the screen by sending it a message and the player username.
+- This example shows you another way of interacting between a screen unit and other elements. But this time we will do the opposite of the previous example [Lua Screen Light Control](https://github.com/dual-universe/lua-examples/tree/main/examples/04%20-%20Lua%20Screen%20Light%20Control). To be clear, in this case we are going to show you how to interact between the programming board and the screen by sending it a message and the player username.
 
 ### Requirements
 - You will need:
