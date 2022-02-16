@@ -19,4 +19,3 @@ This library is intended to provide a simple integration of events covering vari
   - Copy and paste the [render.lua](render.lua) into the screen content in Lua mode.
 
 Optionnal: Do not hesitate to check the event library in your game file folder, under `data/lua/utils`.
-
