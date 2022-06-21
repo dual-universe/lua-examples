@@ -320,4 +320,4 @@ function Construct()
 end
 
 --- Global alias available out of the game
-DPConstruct = Construct
+DUConstruct = Construct
