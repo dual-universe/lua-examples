@@ -366,4 +366,4 @@ function System()
 end
 
 --- Global alias available out of the game
-DPSystem = System
+DUSystem = System
