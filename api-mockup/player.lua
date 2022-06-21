@@ -137,4 +137,4 @@ function Player()
 end
 
 --- Global alias available out of the game
-DPPlayer = Player
+DUPlayer = Player
