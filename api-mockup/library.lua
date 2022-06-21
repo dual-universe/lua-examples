@@ -44,4 +44,4 @@ function Library()
 end
 
 --- Global alias available out of the game
-DPLibrary = Library
+DULibrary = Library
