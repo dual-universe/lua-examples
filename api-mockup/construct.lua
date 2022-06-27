@@ -169,8 +169,8 @@ function Construct()
     ---@return table value The up direction vector of the construct, in world coordinates
     function self.getWorldUp() end
 
-    --- Returns the uid of the current active orientation unit (core unit or gyro unit)
-    ---@return integer value Uid of the current active orientation unit (core unit or gyro unit)
+    --- Returns the local id of the current active orientation unit (core unit or gyro unit)
+    ---@return integer value local id of the current active orientation unit (core unit or gyro unit)
     function self.getOrientationUnitId() end
     --- Returns the forward direction vector of the active orientation unit, in construct local coordinates
     ---@return table value Forward direction vector of the active orientation unit, in construct local coordinates
@@ -263,11 +263,11 @@ function Construct()
     function self.getDockedConstructMass(id) end
 
     --- Sets the docking mode
-    ---@param mode integer (0: Manual, 1: Automatic, 2: Semi-automatic)
+    ---@param mode integer The docking mode (Manual = 0, Automatic = 1, Semi-automatic = 2)
     ---@return integer
     function self.setDockingMode(mode) end
     --- Returns the current docking mode
-    ---@return integer mode (0: Manual, 1: Automatic, 2: Semi-automatic)
+    ---@return integer mode The docking mode (Manual = 0, Automatic = 1, Semi-automatic = 2)
     function self.getDockingMode() end
     --- Sends a request to dock to the given construct. Limited to piloting controllers
     ---@param id integer The parent construct id

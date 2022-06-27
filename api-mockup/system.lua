@@ -91,7 +91,7 @@ function System()
     self.inputText:addAction(function(self,text) error("System.inputText(text) event is deprecated, use System.onInputText(text) instead.") end, true, 1)
 
     --- Emitted when the player changes the camera mode.
-    ---@param mode integer The camera mode, represented by an integer (1: First Person View, 2: Look Around Construct View, 3: Follow Construct View)
+    ---@param mode integer The camera mode, represented by an integer (First Person View = 1, Look Around Construct View = 2, Follow Construct View = 3)
     self.onCameraChanged = Event:new()
     self.cameraChanged = Event:new()
     self.cameraChanged:addAction(function(self,mode) error("System.cameraChanged(mode) event is deprecated, use System.onInputText(mode) instead.") end, true, 1)

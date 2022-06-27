@@ -32,16 +32,17 @@ function Light()
     --- Toggle the state of the light
     function self.toggle() end
 
-    --- Set the light color in RGB
-    ---@param r number The red component, between 0.0 and 1.0
-    ---@param g number The green component, between 0.0 and 1.0
-    ---@param b number The blue component, between 0.0 and 1.0
+
+    --- Set the light color in RGB. Lights can use HDR color values above 1.0 to glow.
+    ---@param r number The red component, between 0.0 and 1.0, up to 5.0 for HDR colors.
+    ---@param g number The green component, between 0.0 and 1.0, up to 5.0 for HDR colors.
+    ---@param b number The blue component, between 0.0 and 1.0, up to 5.0 for HDR colors.
     function self.setColor(r,g,b) end
     ---@deprecated Light.setRGBColor(r,g,b) is deprecated, use Light.setColor(r,g,b) instead.
     function self.setRGBColor(r,g,b) error("Light.setRGBColor(r,g,b) is deprecated, use Light.setColor(r,g,b) instead.") end
 
     --- Returns the light color in RGB
-    ---@return table color  A vec3 for the red, blue and green components of the light, with values between 0.0 and 1.0
+    ---@return table color  A vec3 for the red, blue and green components of the light, with values between 0.0 and 1.0, up to 5.0.
     function self.getColor() end
     ---@deprecated Light.getRGBColor() is deprecated, use Light.getColor() instead.
     function self.getRGBColor() error("Light.getRGBColor() is deprecated, use Light.getColor() instead.") end

@@ -29,7 +29,7 @@ function BrakeEngine()
     --- Toggle the state of the brake
     function self.toggle() end
 
-    --- Set the thrust of the brake. Note that brakes can generate a force only in the movement opposited irection
+    --- Set the thrust of the brake. Note that brakes can generate a force only in the movement opposite direction
     ---@param thrust number The brake thrust in newtons (limited by the maximum thrust)
     function self.setThrust(thrust) end
 
@@ -38,7 +38,7 @@ function BrakeEngine()
     function self.getThrust() end
 
     --- Returns the maximal thrust the brake can deliver in principle, under optimal conditions.
-    --- Note that the actual maxThrust will most of the time be less than maxThrustBase
+    --- Note that the actual current min thrust will most of the time be less than max thrust
     ---@return number
     ---@diagnostic disable-next-line
     function self.getMaxThrust() end

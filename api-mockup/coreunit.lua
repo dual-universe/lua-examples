@@ -5,12 +5,12 @@
 -----------------------------------------------------------------------------------
 -- Core Unit
 --
--- This is the heart of your construct. It represents the construct and gives access to all construct-related information.
+-- It is the heart of your construct. It gives access to the elements of the construction and information on the environment.
 -----------------------------------------------------------------------------------
 
 require("element")
 
---- This is the heart of your construct. It represents the construct and gives access to all construct-related information.
+--- It is the heart of your construct. It gives access to the elements of the construction and information on the environment.
 ---@class CoreUnit
 CoreUnit = {}
 CoreUnit.__index = CoreUnit
