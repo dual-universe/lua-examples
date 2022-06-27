@@ -19,8 +19,10 @@ function Radar()
 
 
     --- Returns 1 if the radar is not broken, works in the current environment and is not used by another control unit
-    ---@return integer
-    function self.isOperational() end
+    ---@return integer state 1 if the radar is operational, otherwise: 0 = broken, -1 = bad environment, -2 = obstructed, -3 = already in use
+    function self.getOperationalState() end
+    ---@deprecated Radar.isOperational() is deprecated, use Radar.getOperationalState() instead.
+    function self.isOperational() error("Radar.isOperational() is deprecated, use Radar.getOperationalState() instead.") end
 
     --- Returns the scan range of the radar
     ---@return number value The scan range

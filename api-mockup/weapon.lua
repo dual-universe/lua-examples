@@ -60,9 +60,12 @@ function Weapon()
     ---@return integer
     function self.isOutOfAmmo() end
 
-    --- Checks if the weapon is operational
-    ---@return integer
-    function self.isOperational() end
+    --- Returns 1 if the weapon is not broken and compatible with the construct size
+    ---@return integer state 1 if the weapon is operational, otherwise 0 = broken, -1 = incompatible size
+    function self.getOperationalState() end
+    ---@deprecated Weapon.isOperational() is deprecated, use Weapon.getOperationalState() instead.
+    function self.isOperational() error("Weapon.isOperational() is deprecated, use Weapon.getOperationalState() instead.") end
+
 
     --- Returns the current weapon status
     ---@return integer status The current status of the weapon (Idle = 1, Firing = 2, Reloading = 3, Unloading = 4)
