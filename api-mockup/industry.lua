@@ -45,11 +45,12 @@ function Industry()
 
     --- Get the current running state of the industry
     ---@return integer value (Stopped = 1, Running = 2, Jammed missing ingredient = 3, Jammed output full = 4, Jammed no output container = 5, Pending = 6)
-    function self.getStatus() end
-
-    --- Get the complete state of the industry
-    ---@return integer value The complete state of the industry, a table with fields {[int] state, [bool] stopRequested, [int] schematicId, [int] unitsProduced, [int] remainingTime, [int] batchesRequested, [int] batchesRemaining, [float] maintainProductAmount, [int] currentProductAmount}
     function self.getState() end
+    function self.getStatus() error("Industry.getStatus() is deprecated, use Industry.getState() instead.") end
+
+    --- Returns the complete information of the industry
+    ---@return integer value The complete state of the industry, a table with fields {[int] state, [bool] stopRequested, [int] schematicId, [int] unitsProduced, [int] remainingTime, [int] batchesRequested, [int] batchesRemaining, [float] maintainProductAmount, [int] currentProductAmount}
+    function self.getInfo() end
 
     --- Get the count of completed cycles since the player started the unit
     ---@return integer
