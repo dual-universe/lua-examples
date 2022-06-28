@@ -179,8 +179,8 @@ function CoreUnit()
     ---@param localId integer The local ID of the Element
     ---@return string
     function self.getElementDisplayNameById(localId) end
-    ---@deprecated CoreUnit.getCycleCountSinceStartup(localId) is deprecated, use CoreUnit.getElementDisplayNameById(localId) instead.
-    function self.getElementTypeById(localId) error("CoreUnit.getCycleCountSinceStartup(localId) is deprecated, use CoreUnit.getElementDisplayNameById(localId) instead.") end
+    ---@deprecated CoreUnit.getElementTypeById(localId) is deprecated, use CoreUnit.getElementDisplayNameById(localId) instead.
+    function self.getElementTypeById(localId) error("CoreUnit.getElementTypeById(localId) is deprecated, use CoreUnit.getElementDisplayNameById(localId) instead.") end
 
     --- Returns the item ID of the Element, identified by its local ID
     ---@param localId integer The local ID of the Element
