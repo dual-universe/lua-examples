@@ -33,3 +33,7 @@ The Lua API for industries has been reworked to integrate schematics v2.
    
  * Changed existing core unit Lua API:
    * [table] **core.getElementIndustryInfoById(**[int] **localId)** : Description update (always returns the getInfo from the industry Lua API).
+
+#### Fixes on the API mockup
+ * Added missing system.print() function.
+ * Fixed incorrect documentation type for core.getIndustryInfoById().state, was int instead of string.
