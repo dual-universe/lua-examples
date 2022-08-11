@@ -1,3 +1,4 @@
+![02](https://user-images.githubusercontent.com/98467522/151397975-02664bb7-019e-4942-b555-08e74ece98d9.jpg)
 # Official Dual Universe Lua Repository
 
 ## [](https://github.com/dual-universe/lua-examples#about-dual-universe)What is Dual Universe
