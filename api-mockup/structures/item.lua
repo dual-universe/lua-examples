@@ -1,0 +1,26 @@
+-- ################################################################################
+-- #                  Copyright 2014-2022 Novaquark SAS                           #
+-- ################################################################################
+
+-----------------------------------------------------------------------------------
+-- Item
+--
+-- Item represents an item in the game
+-----------------------------------------------------------------------------------
+---@class Item
+---@field id integer ID of the item.
+---@field name string Internal name of the item
+---@field displayName string Name for display
+---@field locDisplayName string Name for display in the player's language
+---@field displayNameWithSize string Name for display with additional size information
+---@field locDisplayNameWithSize string Name for display with additional size information in the player's language
+---@field description string Description of the item
+---@field locDescription string Description of the item in player's language
+---@field type string Type of item
+---@field unitMass number The mass of the item
+---@field unitVolume number The volue of the item
+---@field tier integer Item's tier
+---@field scale string
+---@field iconPath string Path to the item's icon. It can be display on a screen.
+---@field schematics integer[] List item IDs of schematics producing this item, if the item can be produced into an industry unit.
+---@field products integer[] List product item IDs if the item is a schematic
