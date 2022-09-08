@@ -24,10 +24,10 @@ function Construct()
     ---@return integer
     function self.getId() end
     --- Returns the owner entity
-    ---@return table entity The owner entity table with fields {[int] id, [bool] isOrganization} describing the owner. Use system.getPlayerName(id) and system.getOrganization(id) to retrieve info about it
+    ---@return Entity entity The owner entity table with fields {[int] id, [bool] isOrganization} describing the owner. Use system.getPlayerName(id) and system.getOrganization(id) to retrieve info about it
     function self.getOwner() end
     --- Returns the creator entity
-    ---@return integer entity The owner entity table with fields {[int] id, [bool] isOrganization} describing the owner. Use system.getPlayerName(id) and system.getOrganization(id) to retrieve info about it
+    ---@return Entity entity The owner entity table with fields {[int] id, [bool] isOrganization} describing the owner. Use system.getPlayerName(id) and system.getOrganization(id) to retrieve info about it
     function self.getCreator() end
 
 

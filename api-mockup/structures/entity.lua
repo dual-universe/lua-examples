@@ -1,0 +1,12 @@
+-- ################################################################################
+-- #                  Copyright 2014-2022 Novaquark SAS                           #
+-- ################################################################################
+
+-----------------------------------------------------------------------------------
+-- Entity
+--
+-- Entity represents a player or an organization
+-----------------------------------------------------------------------------------
+---@class Entity
+---@field id integer ID of the entity,  Use system.getPlayerName(id) and system.getOrganization(id) to retrieve info about it
+---@field isOrganization boolean True if the entity is an organization

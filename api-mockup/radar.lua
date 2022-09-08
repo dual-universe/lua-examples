@@ -78,7 +78,7 @@ function Radar()
 
     --- Returns a table with id of the owner entity (player or organization) of the given construct, if in range and if active transponder tags match for owned dynamic constructs.
     ---@param id integer The ID of the construct
-    ---@return table entity A table with fields {[int] id, [bool] isOrganization} describing the owner. Use system.getPlayerName(id) and system.getOrganization(id) to retrieve info about it
+    ---@return Entity entity A table with fields {[int] id, [bool] isOrganization} describing the owner. Use system.getPlayerName(id) and system.getOrganization(id) to retrieve info about it
     function self.getConstructOwnerEntity(id) end
     ---@deprecated Radar.getConstructOwner(id) is deprecated, use Radar.getConstructOwnerEntity(id) instead.
     function self.getConstructOwner() error("Radar.getConstructOwner(id) is deprecated, use Radar.getConstructOwnerEntity(id) instead.") end
