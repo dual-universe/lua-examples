@@ -90,7 +90,7 @@ function Industry()
     function self.updateBank() end
 
     --- Returns a table describing the contents of the schematic bank, as a pair itemId and quantity per slot
-    ---@return table content The content of the schematic bank as a table with fields {[int] id, [float] quantity} per slot
+    ---@return ItemQuantity[] content The content of the schematic bank as a table with fields {[int] id, [float] quantity} per slot
     function self.getBank() end
 
 

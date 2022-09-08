@@ -33,7 +33,7 @@ function Container()
     function self.getMaxVolume() end
 
     --- Returns a table describing the contents of the container, as a pair itemId and quantity per slot.
-    ---@return table content The content of the container as a table with fields {[int] id, [float] quantity} per slot
+    ---@return ItemQuantity[] content The content of the container as a table with fields {[int] id, [float] quantity} per slot
     function self.getContent() end
     ---@deprecated Container.getItemsList() is deprecated, use Container.getContent() instead.
     function self.getItemsList() error("Container.getItemsList() is deprecated, use Container.getContent() instead.")  end
