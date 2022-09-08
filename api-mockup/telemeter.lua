@@ -21,7 +21,7 @@ function Telemeter()
     function self.getDistance() error("Telemeter.getDistance() is deprecated, use Telemeter.raycast().distance instead.") end
 
     --- Emits a raycast from the telemeter, returns a raycastHit object
-    ---@return table hit A table with fields : {[bool] hit, [float] distance, [vec3] point}
+    ---@return Raycast hit A table with fields : {[bool] hit, [float] distance, [vec3] point}
     function self.raycast() end
 
     --- Returns telemeter raycast origin in local construct coordinates
