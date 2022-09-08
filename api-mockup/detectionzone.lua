@@ -22,7 +22,7 @@ function DetectionZone()
     function self.getRadius() end
 
     --- Returns the list of ids of the players in the detection zone
-    ---@return table
+    ---@return integer[]
     function self.getPlayers() end
 
     --- Emitted when a player enters in the detection zone

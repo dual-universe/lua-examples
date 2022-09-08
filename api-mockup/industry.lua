@@ -68,11 +68,11 @@ function Industry()
 
 
     --- Returns the list of items required to run the selected output product.
-    ---@return table outputs Returns the list of products
+    ---@return ItemQuantity[] outputs Returns the list of products
     function self.getInputs() end
 
     --- Returns the list of id of the items currently produced.
-    ---@return table outputs The first entry in the table is always the main product produced
+    ---@return ItemQuantity[] outputs The first entry in the table is always the main product produced
     function self.getOutputs() end
     ---@deprecated Industry.getCurrentSchematic() is deprecated.
     function self.getCurrentSchematic() error("Industry.getCurrentSchematic() is deprecated.") end

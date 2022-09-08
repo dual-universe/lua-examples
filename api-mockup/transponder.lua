@@ -34,12 +34,12 @@ function Transponder()
 
     --- Set the tags list with up to 8 entries. Returns 1 if the application was successful, 0 if the tag
     --- format is invalid.
-    ---@param tags table List of up to 8 transponder tag strings
+    ---@param tags string[] List of up to 8 transponder tag strings
     ---@return integer
     function self.setTags(tags) end
 
     --- Returns the tag list
-    ---@return table tags List of up to 8 transponder tag strings
+    ---@return string[] tags List of up to 8 transponder tag strings
     function self.getTags() end
 
     --- Emitted when the transponder is started or stopped

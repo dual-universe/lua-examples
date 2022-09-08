@@ -29,15 +29,15 @@ function Radar()
     function self.getRange() end
 
     --- Returns ranges to identify a target based on its core size
-    ---@return table ranges The list of float values for ranges in meters as { xsRange, sRange, mRange, lRange }
+    ---@return number[] ranges The list of float values for ranges in meters as { xsRange, sRange, mRange, lRange }
     function self.getIdentifyRanges() end
 
     --- Returns the list of construct IDs in the scan range
-    ---@return table
+    ---@return integer[]
     function self.getConstructIds() end
 
     --- Returns the list of identified construct IDs
-    ---@return table
+    ---@return integer[]
     function self.getIdentifiedConstructIds() end
 
     --- Returns the ID of the target construct
@@ -85,7 +85,7 @@ function Radar()
 
     --- Return the size of the bounding box of the given construct, if in range
     ---@param id integer The ID of the construct
-    ---@return table
+    ---@return vec3
     function self.getConstructSize(id) end
 
     --- Return the kind of the given construct

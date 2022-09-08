@@ -132,7 +132,7 @@ function ControlUnit()
     --- These properties will be used to display the command in UI
     ---@param axis integer Longitudinal = 0, lateral = 1, vertical = 2
     ---@param commandType integer By throttle = 0, by target speed = 1, hidden = 2
-    ---@param targetSpeedRanges table This is to specify the cruise control target speed ranges (for now, only for the longitudinal axis) in m/s
+    ---@param targetSpeedRanges number[] This is to specify the cruise control target speed ranges (for now, only for the longitudinal axis) in m/s
     function self.setupAxisCommandProperties(axis, commandType, targetSpeedRanges) end
 
     --- Returns the current control mode. The mode is set by clicking the UI button or using the associated keybinding
@@ -180,7 +180,7 @@ function ControlUnit()
 
     --- Returns ground engine stabilization altitude capabilities (lower and upper ranges)
     --- This function must be used on a piloting controller
-    ---@return table range Stabilization altitude capabilities for the least powerful engine and the most powerful engine
+    ---@return number[] range Stabilization altitude capabilities for the least powerful engine and the most powerful engine
     function self.computeGroundEngineAltitudeStabilizationCapabilities() end
 
     --- Return the current throttle value

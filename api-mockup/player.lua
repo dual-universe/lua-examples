@@ -38,7 +38,7 @@ function Player()
     function self.getNanopackMaxVolume() end
 
     --- Returns the list of organization IDs of the player
-    ---@return table value The list of organization IDs
+    ---@return integer[] value The list of organization IDs
     function self.getOrgIds() end
     --- Returns the position of the player, in construct local coordinates
     ---@return vec3 value The position in construct local coordinates

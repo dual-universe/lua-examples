@@ -162,7 +162,7 @@ function CoreUnit()
 
 
     --- Returns the list of all the local IDs of the Elements of this construct
-    ---@return table
+    ---@return integer[]
     function self.getElementIdList() end
 
     --- Returns the name of the Element, identified by its local ID
