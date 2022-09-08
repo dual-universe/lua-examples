@@ -1,0 +1,12 @@
+-- ################################################################################
+-- #                  Copyright 2014-2022 Novaquark SAS                           #
+-- ################################################################################
+
+-----------------------------------------------------------------------------------
+-- Organization
+--
+-- Organization represents an organization in game
+-----------------------------------------------------------------------------------
+---@class Organization
+---@field name string Full name of the organization
+---@field tag string Short tag of the organization

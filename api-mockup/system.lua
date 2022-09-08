@@ -332,7 +332,7 @@ function System()
 
     --- Returns the corresping organization to the given organization id, if known, e.g. broadcasted by a transponder
     ---@param id integer The ID of the organization
-    ---@return table value A table containing information about the given organization {[string] name, [string] tag}
+    ---@return Organization value A table containing information about the given organization {[string] name, [string] tag}
     function self.getOrganization(id) end
     ---@deprecated System.getOrganizationName() is deprecated, use System.getOrganization(id).name .
     function self.getOrganizationName() error("System.getOrganizationName() is deprecated, use System.getOrganization(id).name instead.") end
