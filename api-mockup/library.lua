@@ -31,7 +31,7 @@ function Library()
     ---@param c1 vec3 The first column of the matrix M
     ---@param c2 vec3 The second column of the matrix M
     ---@param c0 vec3 The target column vector of the system
-    ---@return table value The vec2 solution of the above system
+    ---@return vec2 value The vec2 solution of the above system
     function self.systemResolution2(c1,c2,c0) end
 
     --- Returns the position of the given point in world coordinates system, on the game screen
