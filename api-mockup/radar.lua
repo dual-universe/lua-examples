@@ -127,7 +127,7 @@ function Radar()
 
     --- Returns a table of working elements on the given construction, if identified for owned dynamic constructs
     ---@param id integer The ID of the construct
-    ---@return table info A table with fields : {[float] weapons, [float] radars, [float] antiGravity, [float] atmoEngines, [float] spaceEngines, [float] rocketEngines} with values between 0.0 and 1.0. Exceptionally antiGravity and rocketEngines are always 1.0 if present, even if broken
+    ---@return RadarConstructInfo info A table with fields : {[float] weapons, [float] radars, [float] antiGravity, [float] atmoEngines, [float] spaceEngines, [float] rocketEngines} with values between 0.0 and 1.0. Exceptionally antiGravity and rocketEngines are always 1.0 if present, even if broken
     function self.getConstructInfos(id) end
 
     --- Returns the speed of the given construct, if identified for owned dynamic constructs
