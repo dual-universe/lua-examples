@@ -32,7 +32,7 @@ function SpaceMiningUnit()
     function self.getActiveOre() end
 
     --- Returns the list of available ore pools
-    ---@return table pool A list of tables composed with {[int] oreId, [float] available, [float] maximum);
+    ---@return OrePool[] pool A list of tables composed with {[int] oreId, [float] available, [float] maximum);
     function self.getOrePools() end
 
     --- Returns the base production rate of the space mining unit.
