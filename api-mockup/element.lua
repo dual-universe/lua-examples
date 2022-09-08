@@ -87,39 +87,39 @@ function Element()
     function self.getMaxRestorations() end
 
     --- Returns the position of the Element in construct local coordinates.
-    ---@return table
+    ---@return vec3
     function self.getPosition() end
 
     --- Returns the bounding box dimensions of the element.
-    ---@return table
+    ---@return vec3
     function self.getBoundingBoxSize() end
 
     --- Returns the position of the center of bounding box of the element in local construct coordinates.
-    ---@return table
+    ---@return vec3
     function self.getBoundingBoxCenter() end
 
     --- Returns the up direction vector of the Element in construct local coordinates
-    ---@return table
+    ---@return vec3
     function self.getUp() end
 
     --- Returns the right direction vector of the Element in construct local coordinates
-    ---@return table
+    ---@return vec3
     function self.getRight() end
 
     --- Returns the forward direction vector of the Element in construct local coordinates
-    ---@return table
+    ---@return vec3
     function self.getForward() end
 
     --- Returns the up direction vector of the Element in world coordinates
-    ---@return table
+    ---@return vec3
     function self.getWorldUp() end
 
     --- Returns the right direction vector of the Element in world coordinates
-    ---@return table
+    ---@return vec3
     function self.getWorldRight() end
 
     --- Returns the forward direction vector of the Element in world coordinates
-    ---@return table
+    ---@return vec3
     function self.getWorldForward() end
 
     --- Set the value of a signal in the specified IN plug of the Element.

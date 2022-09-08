@@ -25,19 +25,19 @@ function Telemeter()
     function self.raycast() end
 
     --- Returns telemeter raycast origin in local construct coordinates
-    ---@return table
+    ---@return vec3
     function self.getRayOrigin() end
 
     --- Returns telemeter raycast origin in world coordinates
-    ---@return table
+    ---@return vec3
     function self.getRayWorldOrigin() end
 
     --- Returns telemeter raycast axis in local construct coordinates
-    ---@return table
+    ---@return vec3
     function self.getRayAxis() end
 
     --- Returns telemeter raycast axis in world coordinates
-    ---@return table
+    ---@return vec3
     function self.getRayWorldAxis() end
 
     --- Returns the max distance from which an obstacle can be detected (default is 100m)

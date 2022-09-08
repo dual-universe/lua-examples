@@ -92,8 +92,8 @@ function ControlUnit()
     --- to approximate it
     --- This function must be used on a piloting controller in onFlush event
     ---@param taglist string Comma (for union) or space (for intersection) separated list of tags. You can set tags directly on the engines in the right-click menu
-    ---@param acceleration table The desired acceleration expressed in world coordinates in m/s2
-    ---@param angularAcceleration table The desired angular acceleration expressed in world coordinates in rad/s2
+    ---@param acceleration vec3 The desired acceleration expressed in world coordinates in m/s2
+    ---@param angularAcceleration vec3 The desired angular acceleration expressed in world coordinates in rad/s2
     ---@param keepForceCollinearity boolean Forces the resulting acceleration vector to be collinear to the acceleration parameter
     ---@param keepTorqueCollinearity boolean Forces the resulting angular acceleration vector to be collinear to the angular acceleration parameter
     ---@param priority1SubTags string Comma (for union) or space (for intersection) separated list of tags of included engines to use as priority 1
@@ -112,7 +112,7 @@ function ControlUnit()
     --- Returns the total thrust values of all engines in the tag list
     --- This function must be used on a piloting controller
     ---@param taglist string Comma separated list of tags. You can set tags directly on the engines in the right-click menu
-    ---@return table The total thrust in newtons
+    ---@return vec3 The total thrust in newtons
     function self.getEngineThrust(taglist) end
 
     --- Set the value of throttle in the cockpit, which will be displayed in the cockpit widget when flying

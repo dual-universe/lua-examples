@@ -42,7 +42,7 @@ function Light()
     function self.setRGBColor(r,g,b) error("Light.setRGBColor(r,g,b) is deprecated, use Light.setColor(r,g,b) instead.") end
 
     --- Returns the light color in RGB
-    ---@return table color  A vec3 for the red, blue and green components of the light, with values between 0.0 and 1.0, up to 5.0.
+    ---@return vec3 color  A vec3 for the red, blue and green components of the light, with values between 0.0 and 1.0, up to 5.0.
     function self.getColor() end
     ---@deprecated Light.getRGBColor() is deprecated, use Light.getColor() instead.
     function self.getRGBColor() error("Light.getRGBColor() is deprecated, use Light.getColor() instead.") end

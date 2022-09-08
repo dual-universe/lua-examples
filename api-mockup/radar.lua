@@ -97,22 +97,22 @@ function Radar()
 
     --- Returns the position of the given construct in construct local coordinates, if active transponder tags match for owned dynamic constructs
     ---@param id integer The ID of the construct
-    ---@return table
+    ---@return vec3
     function self.getConstructPos(id) end
 
     ---  Returns the position of the given construct in world coordinates, if in range and if active transponder tags match for owned dynamic constructs
     ---@param id integer The ID of the construct
-    ---@return table
+    ---@return vec3
     function self.getConstructWorldPos(id) end
 
     --- Returns the velocity vector of the given construct in construct local coordinates, if identified and if active transponder tags match for owned dynamic constructs
     ---@param id integer The ID of the construct
-    ---@return table
+    ---@return vec3
     function self.getConstructVelocity(id) end
 
     --- Returns the velocity vector of the given construct in world coordinates, if identified and if active transponder tags match for owned dynamic constructs
     ---@param id integer The ID of the construct
-    ---@return table
+    ---@return vec3
     function self.getConstructWorldVelocity(id) end
 
     --- Returns the mass of the given construct, if identified for owned dynamic constructs
