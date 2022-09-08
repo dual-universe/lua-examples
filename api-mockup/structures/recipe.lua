@@ -1,0 +1,16 @@
+-- ################################################################################
+-- #                  Copyright 2014-2022 Novaquark SAS                           #
+-- ################################################################################
+
+-----------------------------------------------------------------------------------
+-- Recipe
+--
+-- Recipe represents a recipe used to produce an item
+-----------------------------------------------------------------------------------
+---@class Recipe
+---@field id integer ID of the recipe
+---@field tier integer Which tier is the recipe
+---@field time number Time to craft the item
+---@field nanocraftable boolean True if this item be crafted into the nanopack
+---@field products ItemQuantity[] List of product produced by this recipe. The first product of the list is the main product.
+---@field ingredients ItemQuantity[] List of ingredients needed to craft the product

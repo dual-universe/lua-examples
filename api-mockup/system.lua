@@ -324,7 +324,7 @@ function System()
 
     --- Returns a list of recipes producing the given item from its id.
     ---@param itemId integer The ID of the item
-    ---@return table value A list of recipe table with field: {[int] id, [int] tier,[double] time, [bool] nanocraftable, [table] products:{{[int] id, [double] quantity},...}, [table] ingredients:{{[int] id, [double] quantity},...}}
+    ---@return Recipe[] value A list of recipe table with field: {[int] id, [int] tier,[double] time, [bool] nanocraftable, [table] products:{{[int] id, [double] quantity},...}, [table] ingredients:{{[int] id, [double] quantity},...}}
     function self.getRecipes(itemId) end
     ---@deprecated System.getSchematic(id) is deprecated, use System.getRecipes(itemId).tag.
     function self.getSchematic(id) error("System.getSchematic(id) is deprecated, use System.getRecipes(itemId) instead.") end
