@@ -204,22 +204,22 @@ function CoreUnit()
 
     --- Returns the position of the Element, identified by its local ID, in construct local coordinates.
     ---@param localId integer The local ID of the Element
-    ---@return vec3
+    ---@return Vector3
     function self.getElementPositionById(localId) end
 
     --- Returns the up direction vector of the Element, identified by its local ID, in construct local coordinates
     ---@param localId integer The local ID of the Element
-    ---@return vec3
+    ---@return Vector3
     function self.getElementUpById(localId) end
 
     --- Returns the right direction vector of the Element, identified by its local ID, in construct local coordinates
     ---@param localId integer The local ID of the Element
-    ---@return vec3
+    ---@return Vector3
     function self.getElementRightById(localId) end
 
     --- Returns the forward direction vector of the Element, identified by its local ID, in construct local coordinates
     ---@param localId integer The local ID of the Element
-    ---@return vec3
+    ---@return Vector3
     function self.getElementForwardById(localId) end
 
     --- Returns the status of the Industry Unit Element, identified by its local ID
@@ -246,11 +246,11 @@ function CoreUnit()
     function self.g() error("CoreUnit.g() is deprecated, use CoreUnit.getGravityIntensity() instead.") end
 
     --- Returns the local gravity vector in world coordinates
-    ---@return vec3
+    ---@return Vector3
     function self.getWorldGravity() end
 
     --- Returns the vertical unit vector along gravity, in world coordinates (0 in space)
-    ---@return vec3
+    ---@return Vector3
     function self.getWorldVertical() end
 
     --- Returns the id of the current close stellar body

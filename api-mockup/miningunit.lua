@@ -60,7 +60,7 @@ function MiningUnit()
     function self.getAdjacencyBonus() end
 
     --- Returns the position of the last calibration excavation, in world coordinates.
-    ---@return vec3
+    ---@return Vector3
     function self.getLastExtractionPosition() end
 
     --- Returns the ID of the last player who calibrated the mining unit.

@@ -48,21 +48,21 @@ function Adjustor()
     function self.getMaxThrustBase() error("Adjustor.getMaxThrustBase() is deprecated, use Adjustor.getMaxThrust().") end
 
     --- Returns the adjustor exhaust thrust direction in construct local coordinates
-    ---@return vec3
+    ---@return Vector3
     function self.getThrustAxis() end
 
     --- Returns the adjustor torque axis in construct local coordinates
-    ---@return vec3
+    ---@return Vector3
     function self.getTorqueAxis() end
 
     --- Returns the adjustor exhaust thrust direction in world coordinates
-    ---@return vec3
+    ---@return Vector3
     function self.getWorldThrustAxis() end
     ---@deprecated Adjustor.thrustAxis() is deprecated, use Adjustor.getWorldThrustAxis().
     function self.thrustAxis() error("Adjustor.thrustAxis() is deprecated, use Adjustor.getWorldThrustAxis().") end
 
     --- Returns the adjustor torque axis in world coordinates
-    ---@return vec3
+    ---@return Vector3
     function self.getWorldTorqueAxis() end
     ---@deprecated Adjustor.torqueAxis() is deprecated, use Adjustor.getWorldTorqueAxis().
     function self.torqueAxis() error("Adjustor.torqueAxis() is deprecated, use Adjustor.getWorldTorqueAxis().") end

@@ -220,35 +220,35 @@ function System()
     function self.isFirstPerson() end
 
     --- Returns the position of the camera, in construct local coordinates.
-    ---@return vec3 value Camera position in construct local coordinates.
+    ---@return Vector3 value Camera position in construct local coordinates.
     function self.getCameraPos() end
     
     --- Returns the position of the camera, in world coordinates.
-    ---@return vec3 value Camera position in world coordinates.
+    ---@return Vector3 value Camera position in world coordinates.
     function self.getCameraWorldPos() end
 
     --- Returns the forward direction vector of the active camera, in world coordinates.
-    ---@return vec3 value Camera forward direction vector in world coordinates.
+    ---@return Vector3 value Camera forward direction vector in world coordinates.
     function self.getCameraWorldForward() end
 
     --- Returns the right direction vector of the active camera, in world coordinates.
-    ---@return vec3 value Camera right direction vector in world coordinates.
+    ---@return Vector3 value Camera right direction vector in world coordinates.
     function self.getCameraWorldRight() end
 
     --- Returns the up direction vector of the active camera, in world coordinates.
-    ---@return vec3 value Camera up direction vector in world coordinates.
+    ---@return Vector3 value Camera up direction vector in world coordinates.
     function self.getCameraWorldUp() end
 
     --- Returns the forward direction vector of the active camera, in construct local coordinates.
-    ---@return vec3 value Camera forward direction vector in construct local coordinates.
+    ---@return Vector3 value Camera forward direction vector in construct local coordinates.
     function self.getCameraForward() end
 
     --- Returns the right direction vector of the active camera, in construct local coordinates.
-    ---@return vec3 value Camera right direction vector in construct local coordinates.
+    ---@return Vector3 value Camera right direction vector in construct local coordinates.
     function self.getCameraRight() end
 
     --- Returns the up direction vector of the active camera, in construct local coordinates.
-    ---@return vec3 value Camera up direction vector in construct local coordinates.
+    ---@return Vector3 value Camera up direction vector in construct local coordinates.
     function self.getCameraUp() end
 
     --- Return the current value of the mouse wheel (for the throttle speedUp/speedDown action)
@@ -314,7 +314,7 @@ function System()
 
     --- Return the world position of the given player, if in range of visibility
     ---@param id integer The ID of the player
-    ---@return vec3 value The coordinates of the player in world coordinates
+    ---@return Vector3 value The coordinates of the player in world coordinates
     function self.getPlayerWorldPos(id) end
     
     --- Return the item table corresponding to the given item ID.

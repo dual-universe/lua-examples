@@ -3,11 +3,14 @@
 -- ################################################################################
 
 -----------------------------------------------------------------------------------
--- Raycast
+-- Vector2
 --
--- Raycast represents the restult of a raycast done by a telemeter
+-- Vector2 represents a table with 2 numbers
+-- Function return a table that should be converted into vec2
+--
+--          local vec2 = require("cpml/vec2")
+--          local myVector = vec2(library.systemResolution2(c0,c1,c2))
+--
 -----------------------------------------------------------------------------------
----@class Raycast
----@field hit boolean True if the ray has hit something
----@field distance number Distance to closest object in front
----@field point Vector3 Position of the hit in world coordinates
+---@class Vector2 : number[]
+
