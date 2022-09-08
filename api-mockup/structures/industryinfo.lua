@@ -1,0 +1,21 @@
+-- ################################################################################
+-- #                  Copyright 2014-2022 Novaquark SAS                           #
+-- ################################################################################
+
+-----------------------------------------------------------------------------------
+-- IndustryInfo
+--
+-- IndustryInfo represents all information about an industry unit
+-----------------------------------------------------------------------------------
+---@class IndustryInfo
+---@field state integer ID of the item,  Use system.getItem(id) to retrieve info about it
+---@field stopRequested boolean True if stop a stop has been requested
+---@field schematicId integer ---@deprecated
+---@field schematicsRemaining integer Number of schematic remaining in the industry unit's bank
+---@field unitsProduced integer Number of units produced since the start of the industry unit
+---@field remainingTime integer Time until next unit is completed
+---@field batchesRequested integer Number of batches requested to be produced
+---@field batchesRemaining integer Number of batches remaining to be produced
+---@field maintainProductAmount number Amount of unit to maintain in the output container
+---@field currentProductAmount number Amount of unit existing in the output container
+---@field currentProducts ItemQuantity[] List of items in production

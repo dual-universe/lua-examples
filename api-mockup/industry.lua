@@ -49,7 +49,7 @@ function Industry()
     function self.getStatus() error("Industry.getStatus() is deprecated, use Industry.getState() instead.") end
 
     --- Returns the complete information of the industry
-    ---@return integer value The complete state of the industry, a table with fields {[int] state, [bool] stopRequested, [int] schematicId (deprecated = 0), [int] schematicsRemaining, [int] unitsProduced, [int] remainingTime, [int] batchesRequested, [int] batchesRemaining, [float] maintainProductAmount, [int] currentProductAmount, [table] currentProducts:{{[int] id, [double] quantity},...}}
+    ---@return IndustryInfo value The complete state of the industry, a table with fields {[int] state, [bool] stopRequested, [int] schematicId (deprecated = 0), [int] schematicsRemaining, [int] unitsProduced, [int] remainingTime, [int] batchesRequested, [int] batchesRemaining, [float] maintainProductAmount, [int] currentProductAmount, [table] currentProducts:{{[int] id, [double] quantity},...}}
     function self.getInfo() end
 
     --- Get the count of completed cycles since the player started the unit
