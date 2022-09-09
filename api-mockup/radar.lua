@@ -45,34 +45,41 @@ function Radar()
     function self.getTargetId() end
 
     --- Returns the distance to the given construct
+    ---@param id integer The ID of the construct
     ---@return number
     function self.getConstructDistance(id) end
 
     --- Returns 1 if the given construct is identified
+    ---@param id integer The ID of the construct
     ---@return integer
     function self.isConstructIdentified(id) end
 
     --- Returns 1 if the given construct was abandoned
+    ---@param id integer The ID of the construct
     ---@return integer
     function self.isConstructAbandoned(id) end
 
     --- Returns the core size of the given construct
+    ---@param id integer The ID of the construct
     ---@return string size The core size name; can be 'XS', 'S', 'M', 'L', 'XL'
     function self.getConstructCoreSize(id) end
 
     --- Returns the threat rate your construct is for the given construct
+    ---@param id integer The ID of the construct
     ---@return integer threat The threat rate index (None = 1, Identified = 2, Threatened and identified = 3, Threatened = 4, Attacked = 5), can be -1 if the radar is not operational
     function self.getThreatRateTo(id) end
     ---@deprecated Radar.getThreatTo(id) is deprecated, use Radar.getThreatRateTo(id) instead.
     function self.getThreatTo() error("Radar.getThreatTo(id) is deprecated, use Radar.getThreatRateTo(id) instead.") end
 
     --- Returns the threat rate the given construct is for your construct
+    ---@param id integer The ID of the construct
     ---@return string threat The threat rate index (None = 1, Identified = 2, Threatened and identified = 3, Threatened = 4, Attacked = 5), can be -1 if the radar is not operational
     function self.getThreatRateFrom(id) end
     ---@deprecated Radar.getThreatFrom(id) is deprecated, use Radar.getThreatRateFrom(id) instead.
     function self.getThreatFrom() error("Radar.getThreatFrom(id) is deprecated, use Radar.getThreatRateFrom(id) instead.") end
 
     --- Returns whether the target has an active Transponder with matching tags
+    ---@param id integer The ID of the construct
     ---@return integer
     function self.hasMatchingTransponder(id) end
 
