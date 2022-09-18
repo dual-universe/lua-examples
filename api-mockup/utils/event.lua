@@ -39,13 +39,6 @@ end
 ---@field lastCall number This property helps track the time of when we last called this action.
 local action = {}
 action.__index = action
-
---- Create a new action event
----@param call any
----@param enabled boolean
----@param limit integer
----@param interval number
----@return action
 function action:new(call, enabled, limit, interval)
     local self = {}
 
@@ -78,7 +71,7 @@ end
 ---@field actions table
 local event = {}
 event.__index = event
-function Event:new()
+function event:new()
     local self = {}
     self.actions = {}
 
@@ -184,9 +177,9 @@ function Event:new()
 
     ---Add an action to the event
     ---@param call any
-    ---@param enabled? boolean
-    ---@param limit? integer
-    ---@param interval? number
+    ---@param enabled boolean
+    ---@param limit integer
+    ---@param interval number
     ---@return string actionId
     function self:addAction(call, enabled, limit, interval)
         assert(isCallable(call))
