@@ -13,8 +13,8 @@
 --- Contains a list of useful math and helper methods that would be slow to implement in Lua, and which are
 --- given here as fast C++ implementation.
 ---@class Library
-Library = {}
-Library.__index = Library
+library = {}
+library.__index = library
 function Library()
     local self = {}
 
@@ -40,8 +40,8 @@ function Library()
     function self.getPointOnScreen(worldPos) end
 
 
-    return setmetatable(self, Library)
+    return setmetatable(self, library)
 end
 
 --- Global alias available out of the game
-DULibrary = Library
+DULibrary = Library()
