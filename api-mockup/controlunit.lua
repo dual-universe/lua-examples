@@ -14,8 +14,8 @@
 require("element")
 
 ---@class ControlUnit
-ControlUnit = {}
-ControlUnit.__index = ControlUnit
+controlUnit = {}
+controlUnit.__index = controlUnit
 function ControlUnit()
     local self = Element()
 
@@ -220,5 +220,5 @@ function ControlUnit()
     --- Turn off the construct headlights
     function self.switchOffHeadlights() end
 
-    return setmetatable(self, ControlUnit)
+    return setmetatable(self, controlUnit)
 end
