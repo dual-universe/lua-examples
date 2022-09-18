@@ -11,8 +11,8 @@
 Event = require("utils/event")
 
 ---@class Element
-Element = {}
-Element.__index = Element
+element = {}
+element.__index = element
 function Element()
     local self = {}
 
@@ -149,5 +149,5 @@ function Element()
     ---@return integer value The plug signal state
     function self.getSignalOut(plug) end
 
-    return setmetatable(self, Element)
+    return setmetatable(self, element)
 end
