@@ -31,7 +31,7 @@ end
 
 ---@class action
 ---@field id string This is an ID which we can use later to refer to this action.
----@field call any Triggered when the event is trigger.
+---@field call table|function|thread Triggered when the event is triggered. Talbes must be callable.
 ---@field enabled boolean This boolean indicates whether or not the action is enabled.
 ---@field limit integer This property represents the number of times events can invoke this action.
 ---@field nbCall integer This property keeps track of how many times events have invoked this action.
@@ -39,13 +39,20 @@ end
 ---@field lastCall number This property helps track the time of when we last called this action.
 local action = {}
 action.__index = action
+
+--- Create a new action event
+---@param call table|function|thread Any callable
+---@param enabled boolean
+---@param limit integer
+---@param interval number
+---@return action
 function action:new(call, enabled, limit, interval)
     local self = {}
 
     assert(isCallable(call))
     self.id = tostring(call)
     self.call = call
-    self.enabled = enabled ~= false
+    self.enabled = enabled
     self.limit = limit or -1
     self.nbCall = 0
     self.interval = interval or 0
