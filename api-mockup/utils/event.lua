@@ -31,7 +31,7 @@ end
 
 ---@class action
 ---@field id string This is an ID which we can use later to refer to this action.
----@field call table|function|thread Triggered when the event is triggered. Talbes must be callable.
+---@field call table|function|thread Triggered when the event is triggered. Tables must be callable.
 ---@field enabled boolean This boolean indicates whether or not the action is enabled.
 ---@field limit integer This property represents the number of times events can invoke this action.
 ---@field nbCall integer This property keeps track of how many times events have invoked this action.
