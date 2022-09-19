@@ -52,7 +52,7 @@ function action:new(call, enabled, limit, interval)
     assert(isCallable(call))
     self.id = tostring(call)
     self.call = call
-    self.enabled = enabled
+    self.enabled = enabled ~= false
     self.limit = limit or -1
     self.nbCall = 0
     self.interval = interval or 0
