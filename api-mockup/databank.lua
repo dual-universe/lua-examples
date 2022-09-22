@@ -12,8 +12,8 @@ require("element")
 
 --- Stores key/value pairs in a persistent way.
 ---@class Databank
-Databank = {}
-Databank.__index = Databank
+databank = {}
+databank.__index = databank
 function Databank()
     local self = Element()
 
@@ -71,5 +71,5 @@ function Databank()
     function self.getFloatValue(key) end
 
 
-    return setmetatable(self, Databank)
+    return setmetatable(self, databank)
 end
