@@ -94,7 +94,7 @@ function ShieldGenerator()
 
 
     --- Returns distribution of resistance pool over resistance types
-    ---@return table resistances Resistance to damage type {antimatter, electromagnetic, kinetic, thermic}
+    ---@return number[] resistances Resistance to damage type {antimatter, electromagnetic, kinetic, thermic}
     function self.getResistances() end
 
     --- Distribute the resistance pool according to damage type
@@ -122,11 +122,11 @@ function ShieldGenerator()
     function self.getResistancesRemaining() end
 
     --- Returns ratio per damage type of recent weapon impacts after applying resistance
-    ---@return table stress Stress ratio due to damage type {antimatter, electromagnetic, kinetic, thermic}
+    ---@return number[] stress Stress ratio due to damage type {antimatter, electromagnetic, kinetic, thermic}
     function self.getStressRatio() end
 
     --- Returns ratio per damage type of recent weapon impacts without resistance
-    ---@return table stress Stress ratio due to damage type {antimatter, electromagnetic, kinetic, thermic}
+    ---@return number[] stress Stress ratio due to damage type {antimatter, electromagnetic, kinetic, thermic}
     function self.getStressRatioRaw() end
 
     --- Returns stress, that is the total hit points of recent weapon impacts after applying resistance

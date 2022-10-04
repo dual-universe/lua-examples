@@ -1,0 +1,16 @@
+-- ################################################################################
+-- #                  Copyright 2014-2022 Novaquark SAS                           #
+-- ################################################################################
+
+-----------------------------------------------------------------------------------
+-- RadarConstructInfo
+--
+-- RadarConstructInfo represents information about a construct from a radar
+-----------------------------------------------------------------------------------
+---@class RadarConstructInfo
+---@field weapons number Weapons working elements of the construct, values between 0.0 and 1.0
+---@field radars number Radars working elements of the construct, values between 0.0 and 1.0
+---@field antiGravity number Anti-gravity working element of the construct, always return 1.0 if present even if broken
+---@field atmoEngines number Atmopheric engines working elements of the construct, values between 0.0 and 1.0
+---@field spaceEngines number Space engines working elements of the construct, values between 0.0 and 1.0
+---@field rocketEngines number Rocket engines working elements of the construct, always return 1.0 if present even if broken

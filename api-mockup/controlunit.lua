@@ -92,8 +92,8 @@ function ControlUnit()
     --- to approximate it
     --- This function must be used on a piloting controller in onFlush event
     ---@param taglist string Comma (for union) or space (for intersection) separated list of tags. You can set tags directly on the engines in the right-click menu
-    ---@param acceleration table The desired acceleration expressed in world coordinates in m/s2
-    ---@param angularAcceleration table The desired angular acceleration expressed in world coordinates in rad/s2
+    ---@param acceleration Vector3 The desired acceleration expressed in world coordinates in m/s2
+    ---@param angularAcceleration Vector3 The desired angular acceleration expressed in world coordinates in rad/s2
     ---@param keepForceCollinearity boolean Forces the resulting acceleration vector to be collinear to the acceleration parameter
     ---@param keepTorqueCollinearity boolean Forces the resulting angular acceleration vector to be collinear to the angular acceleration parameter
     ---@param priority1SubTags string Comma (for union) or space (for intersection) separated list of tags of included engines to use as priority 1
@@ -112,7 +112,7 @@ function ControlUnit()
     --- Returns the total thrust values of all engines in the tag list
     --- This function must be used on a piloting controller
     ---@param taglist string Comma separated list of tags. You can set tags directly on the engines in the right-click menu
-    ---@return table The total thrust in newtons
+    ---@return Vector3 The total thrust in newtons
     function self.getEngineThrust(taglist) end
 
     --- Set the value of throttle in the cockpit, which will be displayed in the cockpit widget when flying
@@ -132,7 +132,7 @@ function ControlUnit()
     --- These properties will be used to display the command in UI
     ---@param axis integer Longitudinal = 0, lateral = 1, vertical = 2
     ---@param commandType integer By throttle = 0, by target speed = 1, hidden = 2
-    ---@param targetSpeedRanges table This is to specify the cruise control target speed ranges (for now, only for the longitudinal axis) in m/s
+    ---@param targetSpeedRanges number[] This is to specify the cruise control target speed ranges (for now, only for the longitudinal axis) in m/s
     function self.setupAxisCommandProperties(axis, commandType, targetSpeedRanges) end
 
     --- Returns the current control mode. The mode is set by clicking the UI button or using the associated keybinding
@@ -180,7 +180,7 @@ function ControlUnit()
 
     --- Returns ground engine stabilization altitude capabilities (lower and upper ranges)
     --- This function must be used on a piloting controller
-    ---@return table range Stabilization altitude capabilities for the least powerful engine and the most powerful engine
+    ---@return number[] range Stabilization altitude capabilities for the least powerful engine and the most powerful engine
     function self.computeGroundEngineAltitudeStabilizationCapabilities() end
 
     --- Return the current throttle value

@@ -1,0 +1,13 @@
+-- ################################################################################
+-- #                  Copyright 2014-2022 Novaquark SAS                           #
+-- ################################################################################
+
+-----------------------------------------------------------------------------------
+-- OrePool
+--
+-- OrePool represents a pool of ore available for an extractor.
+-----------------------------------------------------------------------------------
+---@class OrePool
+---@field oreId integer ID of the ore. Use system.getItem(oreId) to retrieve info about it
+---@field available number Quantity available to be extracted
+---@field maximum number Maximum quantity available

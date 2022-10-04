@@ -220,35 +220,35 @@ function System()
     function self.isFirstPerson() end
 
     --- Returns the position of the camera, in construct local coordinates.
-    ---@return table value Camera position in construct local coordinates.
+    ---@return Vector3 value Camera position in construct local coordinates.
     function self.getCameraPos() end
     
     --- Returns the position of the camera, in world coordinates.
-    ---@return table value Camera position in world coordinates.
+    ---@return Vector3 value Camera position in world coordinates.
     function self.getCameraWorldPos() end
 
     --- Returns the forward direction vector of the active camera, in world coordinates.
-    ---@return table value Camera forward direction vector in world coordinates.
+    ---@return Vector3 value Camera forward direction vector in world coordinates.
     function self.getCameraWorldForward() end
 
     --- Returns the right direction vector of the active camera, in world coordinates.
-    ---@return table value Camera right direction vector in world coordinates.
+    ---@return Vector3 value Camera right direction vector in world coordinates.
     function self.getCameraWorldRight() end
 
     --- Returns the up direction vector of the active camera, in world coordinates.
-    ---@return table value Camera up direction vector in world coordinates.
+    ---@return Vector3 value Camera up direction vector in world coordinates.
     function self.getCameraWorldUp() end
 
     --- Returns the forward direction vector of the active camera, in construct local coordinates.
-    ---@return table value Camera forward direction vector in construct local coordinates.
+    ---@return Vector3 value Camera forward direction vector in construct local coordinates.
     function self.getCameraForward() end
 
     --- Returns the right direction vector of the active camera, in construct local coordinates.
-    ---@return table value Camera right direction vector in construct local coordinates.
+    ---@return Vector3 value Camera right direction vector in construct local coordinates.
     function self.getCameraRight() end
 
     --- Returns the up direction vector of the active camera, in construct local coordinates.
-    ---@return table value Camera up direction vector in construct local coordinates.
+    ---@return Vector3 value Camera up direction vector in construct local coordinates.
     function self.getCameraUp() end
 
     --- Return the current value of the mouse wheel (for the throttle speedUp/speedDown action)
@@ -314,17 +314,17 @@ function System()
 
     --- Return the world position of the given player, if in range of visibility
     ---@param id integer The ID of the player
-    ---@return table value The coordinates of the player in world coordinates
+    ---@return Vector3 value The coordinates of the player in world coordinates
     function self.getPlayerWorldPos(id) end
     
     --- Return the item table corresponding to the given item ID.
     ---@param id integer The ID of the item
-    ---@return table value An item table with fields: {[int] id, [string] name, [string] displayName, [string] locDisplayName, [string] displayNameWithSize, [string] locDisplayNameWithSize, [string] description, [string] locDescription, [string] type, [number] unitMass, [number] unitVolume, [integer] tier, [string] scale, [string] iconPath, [table] schematics, [table] products}
+    ---@return Item value An item table with fields: {[int] id, [string] name, [string] displayName, [string] locDisplayName, [string] displayNameWithSize, [string] locDisplayNameWithSize, [string] description, [string] locDescription, [string] type, [number] unitMass, [number] unitVolume, [integer] tier, [string] scale, [string] iconPath, [table] schematics, [table] products}
     function self.getItem(id) end
 
     --- Returns a list of recipes producing the given item from its id.
     ---@param itemId integer The ID of the item
-    ---@return table value A list of recipe table with field: {[int] id, [int] tier,[double] time, [bool] nanocraftable, [table] products:{{[int] id, [double] quantity},...}, [table] ingredients:{{[int] id, [double] quantity},...}}
+    ---@return Recipe[] value A list of recipe table with field: {[int] id, [int] tier,[double] time, [bool] nanocraftable, [table] products:{{[int] id, [double] quantity},...}, [table] ingredients:{{[int] id, [double] quantity},...}}
     function self.getRecipes(itemId) end
     ---@deprecated System.getSchematic(id) is deprecated, use System.getRecipes(itemId).tag.
     function self.getSchematic(id) error("System.getSchematic(id) is deprecated, use System.getRecipes(itemId) instead.") end
@@ -332,7 +332,7 @@ function System()
 
     --- Returns the corresping organization to the given organization id, if known, e.g. broadcasted by a transponder
     ---@param id integer The ID of the organization
-    ---@return table value A table containing information about the given organization {[string] name, [string] tag}
+    ---@return Organization value A table containing information about the given organization {[string] name, [string] tag}
     function self.getOrganization(id) end
     ---@deprecated System.getOrganizationName() is deprecated, use System.getOrganization(id).name .
     function self.getOrganizationName() error("System.getOrganizationName() is deprecated, use System.getOrganization(id).name instead.") end

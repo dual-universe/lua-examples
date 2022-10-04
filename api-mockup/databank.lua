@@ -25,7 +25,7 @@ function Databank()
     function self.getNbKeys() end
 
     --- Returns all the keys in the Databank
-    ---@return table value The key list, as a list of string
+    ---@return string[] value The key list, as a list of string
     function self.getKeyList() end
     ---@deprecated Databank.getKeys() is deprecated, use Databank.getKeyList().
     function self.getKeys() error("Databank.getKeys() is deprecated, use Databank.getKeyList().") end

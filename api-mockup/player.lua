@@ -38,48 +38,48 @@ function Player()
     function self.getNanopackMaxVolume() end
 
     --- Returns the list of organization IDs of the player
-    ---@return table value The list of organization IDs
+    ---@return integer[] value The list of organization IDs
     function self.getOrgIds() end
     --- Returns the position of the player, in construct local coordinates
-    ---@return table value The position in construct local coordinates
+    ---@return Vector3 value The position in construct local coordinates
     function self.getPosition() end
     --- Returns the position of the player, in world coordinates
-    ---@return table value The position in world coordinates
+    ---@return Vector3 value The position in world coordinates
     function self.getWorldPosition() end
     --- Returns the position of the head of the player's character, in construct local coordinates
-    ---@return table value The position of the head in construct local coordinates
+    ---@return Vector3 value The position of the head in construct local coordinates
     function self.getHeadPosition() end
     --- Returns the position of the head of the player's character, in world coordinates
-    ---@return table value The position of the head in world coordinates
+    ---@return Vector3 value The position of the head in world coordinates
     function self.getWorldHeadPosition() end
 
     --- Returns the velocity vector of the player, in construct local coordinates
-    ---@return table value The velocity vector in construct local coordinates
+    ---@return Vector3 value The velocity vector in construct local coordinates
     function self.getVelocity() end
     --- Returns the velocity vector of the player, in world coordinates
-    ---@return table value The velocity vector in world coordinates
+    ---@return Vector3 value The velocity vector in world coordinates
     function self.getWorldVelocity() end
     --- Returns the absolute velocity vector of the player, in world coordinates
-    ---@return table value The velocity absolute vector in world coordinates
+    ---@return Vector3 value The velocity absolute vector in world coordinates
     function self.getAbsoluteVelocity() end
 
     --- Returns the forward direction vector of the player, in construct local coordinates
-    ---@return table value The forward direction vector in construct local coordinates
+    ---@return Vector3 value The forward direction vector in construct local coordinates
     function self.getForward() end
     --- Returns the right direction vector of the player, in construct local coordinates
-    ---@return table value The right direction vector in construct local coordinates
+    ---@return Vector3 value The right direction vector in construct local coordinates
     function self.getRight() end
     --- Returns the up direction vector of the player, in construct local coordinates
-    ---@return table value The up direction vector in construct local coordinates
+    ---@return Vector3 value The up direction vector in construct local coordinates
     function self.getUp() end
     --- Returns the forward direction vector of the player, in world coordinates
-    ---@return table value The forward direction vector in world coordinates
+    ---@return Vector3 value The forward direction vector in world coordinates
     function self.getWorldForward() end
     --- Returns the right direction vector of the player, in world coordinates
-    ---@return table value The right direction vector in world coordinates
+    ---@return Vector3 value The right direction vector in world coordinates
     function self.getWorldRight() end
     --- Returns the up direction vector of the player, in world coordinates
-    ---@return table value The up direction vector in world coordinates
+    ---@return Vector3 value The up direction vector in world coordinates
     function self.getWorldUp() end
 
     --- Returns the id of the planet the player is located on

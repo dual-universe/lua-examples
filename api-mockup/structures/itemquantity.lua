@@ -1,0 +1,12 @@
+-- ################################################################################
+-- #                  Copyright 2014-2022 Novaquark SAS                           #
+-- ################################################################################
+
+-----------------------------------------------------------------------------------
+-- ItemQuantity
+--
+-- ItemQuantity represents an item and its quantity
+-----------------------------------------------------------------------------------
+---@class ItemQuantity
+---@field id integer ID of the item,  Use system.getItem(id) to retrieve info about it
+---@field quantity number The quantity of this item

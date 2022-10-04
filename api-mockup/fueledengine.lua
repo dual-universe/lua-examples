@@ -77,21 +77,21 @@ function FueledEngine()
 
 
     --- Returns the engine thrust direction in construct local coordinates
-    ---@return table
+    ---@return Vector3
     function self.getThrustAxis() end
 
     --- Returns the engine torque axis in construct local coordinates
-    ---@return table
+    ---@return Vector3
     function self.getTorqueAxis() end
 
     --- Returns the engine exhaust thrust direction in world coordinates
-    ---@return table
+    ---@return Vector3
     function self.getWorldThrustAxis() end
     ---@deprecated FueledEngine.thrustAxis() is deprecated, use FueledEngine.getWorldThrustAxis().
     function self.thrustAxis() error("FueledEngine.thrustAxis() is deprecated, use FueledEngine.getWorldThrustAxis().") end
 
     --- Returns the engine torque axis in world coordinates
-    ---@return table
+    ---@return Vector3
     function self.getWorldTorqueAxis() end
     ---@deprecated FueledEngine.torqueAxis() is deprecated, use FueledEngine.getWorldTorqueAxis().
     function self.torqueAxis() error("FueledEngine.torqueAxis() is deprecated, use FueledEngine.getWorldTorqueAxis().") end

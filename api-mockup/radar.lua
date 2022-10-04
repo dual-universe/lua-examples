@@ -29,15 +29,15 @@ function Radar()
     function self.getRange() end
 
     --- Returns ranges to identify a target based on its core size
-    ---@return table ranges The list of float values for ranges in meters as { xsRange, sRange, mRange, lRange }
+    ---@return number[] ranges The list of float values for ranges in meters as { xsRange, sRange, mRange, lRange }
     function self.getIdentifyRanges() end
 
     --- Returns the list of construct IDs in the scan range
-    ---@return table
+    ---@return integer[]
     function self.getConstructIds() end
 
     --- Returns the list of identified construct IDs
-    ---@return table
+    ---@return integer[]
     function self.getIdentifiedConstructIds() end
 
     --- Returns the ID of the target construct
@@ -85,14 +85,14 @@ function Radar()
 
     --- Returns a table with id of the owner entity (player or organization) of the given construct, if in range and if active transponder tags match for owned dynamic constructs.
     ---@param id integer The ID of the construct
-    ---@return table entity A table with fields {[int] id, [bool] isOrganization} describing the owner. Use system.getPlayerName(id) and system.getOrganization(id) to retrieve info about it
+    ---@return Entity entity A table with fields {[int] id, [bool] isOrganization} describing the owner. Use system.getPlayerName(id) and system.getOrganization(id) to retrieve info about it
     function self.getConstructOwnerEntity(id) end
     ---@deprecated Radar.getConstructOwner(id) is deprecated, use Radar.getConstructOwnerEntity(id) instead.
     function self.getConstructOwner() error("Radar.getConstructOwner(id) is deprecated, use Radar.getConstructOwnerEntity(id) instead.") end
 
     --- Return the size of the bounding box of the given construct, if in range
     ---@param id integer The ID of the construct
-    ---@return table
+    ---@return Vector3
     function self.getConstructSize(id) end
 
     --- Return the kind of the given construct
@@ -104,22 +104,22 @@ function Radar()
 
     --- Returns the position of the given construct in construct local coordinates, if active transponder tags match for owned dynamic constructs
     ---@param id integer The ID of the construct
-    ---@return table
+    ---@return Vector3
     function self.getConstructPos(id) end
 
     ---  Returns the position of the given construct in world coordinates, if in range and if active transponder tags match for owned dynamic constructs
     ---@param id integer The ID of the construct
-    ---@return table
+    ---@return Vector3
     function self.getConstructWorldPos(id) end
 
     --- Returns the velocity vector of the given construct in construct local coordinates, if identified and if active transponder tags match for owned dynamic constructs
     ---@param id integer The ID of the construct
-    ---@return table
+    ---@return Vector3
     function self.getConstructVelocity(id) end
 
     --- Returns the velocity vector of the given construct in world coordinates, if identified and if active transponder tags match for owned dynamic constructs
     ---@param id integer The ID of the construct
-    ---@return table
+    ---@return Vector3
     function self.getConstructWorldVelocity(id) end
 
     --- Returns the mass of the given construct, if identified for owned dynamic constructs
@@ -134,7 +134,7 @@ function Radar()
 
     --- Returns a table of working elements on the given construction, if identified for owned dynamic constructs
     ---@param id integer The ID of the construct
-    ---@return table info A table with fields : {[float] weapons, [float] radars, [float] antiGravity, [float] atmoEngines, [float] spaceEngines, [float] rocketEngines} with values between 0.0 and 1.0. Exceptionally antiGravity and rocketEngines are always 1.0 if present, even if broken
+    ---@return RadarConstructInfo info A table with fields : {[float] weapons, [float] radars, [float] antiGravity, [float] atmoEngines, [float] spaceEngines, [float] rocketEngines} with values between 0.0 and 1.0. Exceptionally antiGravity and rocketEngines are always 1.0 if present, even if broken
     function self.getConstructInfos(id) end
 
     --- Returns the speed of the given construct, if identified for owned dynamic constructs

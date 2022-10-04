@@ -62,21 +62,21 @@ function Airfoil()
     function self.getMaxThrustEfficiency() error("Airfoil.getMaxThrustEfficiency() is deprecated, use Airfoil.getMaxLiftEfficiency().") end
 
     --- Returns the airfoil lift direction in construct local coordinates
-    ---@return table
+    ---@return Vector3
     function self.getLiftAxis() end
     
     --- Returns the airfoil torque axis in construct local coordinates
-    ---@return table
+    ---@return Vector3
     function self.getTorqueAxis() end
 
     --- Returns the airfoil lift direction in world coordinates
-    ---@return table
+    ---@return Vector3
     function self.getWorldLiftAxis() end
     ---@deprecated Airfoil.thrustAxis() is deprecated, use Airfoil.getWorldLiftAxis().
     function self.thrustAxis() error("Airfoil.thrustAxis() is deprecated, use Airfoil.getWorldLiftAxis().") end
 
     --- Returns the adjustor torque axis in world coordinates
-    ---@return table 
+    ---@return Vector3 
     function self.getWorldTorqueAxis() end
     ---@deprecated Airfoil.torqueAxis() is deprecated, use Airfoil.getWorldTorqueAxis().
     function self.torqueAxis() error("Airfoil.torqueAxis() is deprecated, use Airfoil.getWorldTorqueAxis().") end

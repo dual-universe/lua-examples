@@ -32,7 +32,7 @@ function MiningUnit()
     function self.getActiveOre() end
 
     --- Returns the list of available ore pools
-    ---@return table pool A list of tables composed with {[int] oreId, [float] available, [float] maximum);
+    ---@return OrePool[] pool A list of tables composed with {[int] oreId, [float] available, [float] maximum);
     function self.getOrePools() end
 
     --- Returns the base production rate of the mining unit.
@@ -60,7 +60,7 @@ function MiningUnit()
     function self.getAdjacencyBonus() end
 
     --- Returns the position of the last calibration excavation, in world coordinates.
-    ---@return table
+    ---@return Vector3
     function self.getLastExtractionPosition() end
 
     --- Returns the ID of the last player who calibrated the mining unit.

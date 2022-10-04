@@ -68,11 +68,11 @@ function BrakeEngine()
     function self.getMaxThrustEfficiency() end
     
     --- Returns the brake thrust direction in construct local coordinates
-    ---@return table
+    ---@return Vector3
     function self.getThrustAxis() end
 
     --- Returns the brake thrust direction in world coordinates
-    ---@return table
+    ---@return Vector3
     function self.getWorldThrustAxis() end
     ---@deprecated BrakeEngine.thrustAxis() is deprecated, use BrakeEngine.getWorldThrustAxis().
     function self.thrustAxis() error("BrakeEngine.thrustAxis() is deprecated, use BrakeEngine.getWorldThrustAxis().") end
