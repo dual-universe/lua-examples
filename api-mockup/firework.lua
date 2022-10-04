@@ -31,7 +31,7 @@ function Firework()
 
     --- Returns the delay before the launched Fireworks explodes
     ---@return number
-    function self.getExplosionDelay(delay) end
+    function self.getExplosionDelay() end
 
     --- Set the speed at which the firework will be launched (impacts its altitude, depending on the local gravity).
     ---@param speed number The launch speed in m/s (maximum 200m/s)
