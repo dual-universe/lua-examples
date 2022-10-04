@@ -49,8 +49,8 @@ LUA_ACTION = {
 
 --- This class represents the System who is executing the control unit
 ---@class System
-System = {}
-System.__index = System
+system = {}
+system.__index = system
 function System()
     local self = {}
 
@@ -371,8 +371,8 @@ function System()
     ---@param msg string
     function self.print(msg) end
 
-    return setmetatable(self, System)
+    return setmetatable(self, system)
 end
 
 --- Global alias available out of the game
-DUSystem = System
+DUSystem = System()
