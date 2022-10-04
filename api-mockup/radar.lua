@@ -79,6 +79,7 @@ function Radar()
     function self.getThreatFrom() error("Radar.getThreatFrom(id) is deprecated, use Radar.getThreatRateFrom(id) instead.") end
 
     --- Returns whether the target has an active Transponder with matching tags
+    ---@param id integer The ID of the construct
     ---@return integer
     function self.hasMatchingTransponder(id) end
 
