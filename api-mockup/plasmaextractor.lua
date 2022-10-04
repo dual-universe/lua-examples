@@ -26,7 +26,7 @@ function PlasmaExtractor()
     function self.getRemainingTime() end
 
     --- Returns the list of available plasma pools
-    ---@return table pool A list of tables composed with {[int] oreId, [float] available, [float] maximum);
+    ---@return table pool A list of tables composed with {[int] oreId, [int] quantity};
     function self.getPlasmaPools() end
 
     --- Emitted when the plasma extractor started a new extraction process
