@@ -31,7 +31,7 @@ end
 
 ---@class action
 ---@field id string This is an ID which we can use later to refer to this action.
----@field call any Triggered when the event is trigger.
+---@field call table|function|thread Triggered when the event is triggered. Tables must be callable.
 ---@field enabled boolean This boolean indicates whether or not the action is enabled.
 ---@field limit integer This property represents the number of times events can invoke this action.
 ---@field nbCall integer This property keeps track of how many times events have invoked this action.
@@ -41,7 +41,7 @@ local action = {}
 action.__index = action
 
 --- Create a new action event
----@param call any
+---@param call table|function|thread Any callable
 ---@param enabled boolean
 ---@param limit integer
 ---@param interval number
@@ -78,7 +78,7 @@ end
 ---@field actions table
 local event = {}
 event.__index = event
-function Event:new()
+function event:new()
     local self = {}
     self.actions = {}
 
@@ -184,9 +184,9 @@ function Event:new()
 
     ---Add an action to the event
     ---@param call any
-    ---@param enabled? boolean
-    ---@param limit? integer
-    ---@param interval? number
+    ---@param enabled boolean
+    ---@param limit integer
+    ---@param interval number
     ---@return string actionId
     function self:addAction(call, enabled, limit, interval)
         assert(isCallable(call))
