@@ -18,6 +18,7 @@ The Lua API of the Radar units have been updated to increase performances and pr
 ### Changed on API mockup
  * Fixed bad global assignments on Player, System and Construct
  * Fixed compilation error on metatable assignment
+ * Added renderScript Lua API
 
 
 ## [0.31.1] - 2022-07-26
