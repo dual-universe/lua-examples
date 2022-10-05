@@ -12,8 +12,8 @@ require("element")
 
 --- Broadcasts data to radars, that can access more information if their transponder tags are matching
 ---@class Transponder
-Transponder = {}
-Transponder.__index = Transponder
+transponder = {}
+transponder.__index = transponder
 function Transponder()
     local self = Element()
 
@@ -27,7 +27,7 @@ function Transponder()
     function self.toggle() end
 
     --- Checks if the transponder is active
-    ---@return integer
+    ---@return integer value 1 when the transponder is active, 0 otherwise
     function self.isActive() end
     ---@deprecated Transponder.getState() is deprecated, use Transponder.isActive().
     function self.getState() error("Transponder.getState() is deprecated, use Transponder.isActive().") end
@@ -35,7 +35,7 @@ function Transponder()
     --- Set the tags list with up to 8 entries. Returns 1 if the application was successful, 0 if the tag
     --- format is invalid.
     ---@param tags table List of up to 8 transponder tag strings
-    ---@return integer
+    ---@return integer success 1 if transponder tags were set, 0 if an error occurred
     function self.setTags(tags) end
 
     --- Returns the tag list
@@ -49,5 +49,5 @@ function Transponder()
     self.toggled:addAction(function(self,active) error("Transponder.toggled(active) event is deprecated, use Transponder.onToggled(active) instead.") end, true, 1)
 
 
-    return setmetatable(self, Transponder)
+    return setmetatable(self, transponder)
 end

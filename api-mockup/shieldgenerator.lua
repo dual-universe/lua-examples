@@ -11,8 +11,8 @@
 require("element")
 
 ---@class ShieldGenerator
-ShieldGenerator = {}
-ShieldGenerator.__index = ShieldGenerator
+shieldGenerator = {}
+shieldGenerator.__index = shieldGenerator
 function ShieldGenerator()
     local self = Element()
 
@@ -57,18 +57,18 @@ function ShieldGenerator()
     function self.toggle() end
 
     --- Returns the activation state of the shield
-    ---@return integer
+    ---@return integer value 1 when the shield is active, 0 otherwise
     function self.isActive() end
     ---@deprecated ShieldGenerator.getState() is deprecated, use ShieldGenerator.isActive() instead.
     function self.getState() error("ShieldGenerator.getState() is deprecated, use ShieldGenerator.isActive() instead.") end
 
 
-    --- Returns the current hit points of the shield
-    ---@return number
+    --- Returns the current hitpoints of the shield
+    ---@return number value The current hitpoints of the shield
     function self.getShieldHitpoints() end
 
-    --- Returns the maximal hit points of the shield
-    ---@return number
+    --- Returns the maximal hitpoints of the shield
+    ---@return number value The maximal hitpoints of the shield
     function self.getMaxShieldHitpoints() end
 
 
@@ -102,23 +102,23 @@ function ShieldGenerator()
     ---@param electromagnetic number Electromagnetic damage resistance
     ---@param kinetic number Kinetic damage resistance
     ---@param thermic number Thermic damage resistance
-    ---@return integer
+    ---@return integer success 1 if resistance was distributed, 0 if an error occurred
     function self.setResistances(antimatter,electromagnetic,kinetic,thermic) end
 
     --- Returns time after which adjusting resistances is possible again
-    ---@return number
+    ---@return number value Remaining time of the resistance cooldown in seconds
     function self.getResistancesCooldown() end
 
     --- Returns maximal cooldown between adjusting resistances
-    ---@return number
+    ---@return number value The maximum time of the resistance cooldown in seconds
     function self.getResistancesMaxCooldown() end
 
     --- Returns total resistance pool that may be distributed
-    ---@return number
+    ---@return number value Total pool of resistances
     function self.getResistancesPool() end
 
     --- Returns the remaining amount of the resistance pool that can be distributed
-    ---@return number
+    ---@return number value Remaining resistance pool
     function self.getResistancesRemaining() end
 
     --- Returns ratio per damage type of recent weapon impacts after applying resistance
@@ -129,13 +129,13 @@ function ShieldGenerator()
     ---@return table stress Stress ratio due to damage type {antimatter, electromagnetic, kinetic, thermic}
     function self.getStressRatioRaw() end
 
-    --- Returns stress, that is the total hit points of recent weapon impacts after applying resistance
-    ---@return number
+    --- Returns stress, that is the total hitpoints of recent weapon impacts after applying resistance
+    ---@return number value Total stress hitpoints due to recent weapon impacts
     function self.getStressHitpoints() end
 
-    --- Returns stress, that is the total hit points of recent weapon impacts without resistance
-    ---@return number
+    --- Returns stress, that is the total hitpoints of recent weapon impacts without resistance
+    ---@return number value Total stress hitpoints due to recent weapon impacts
     function self.getStressHitpointsRaw() end
 
-    return setmetatable(self, ShieldGenerator)
+    return setmetatable(self, shieldGenerator)
 end

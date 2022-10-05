@@ -11,8 +11,8 @@
 require("element")
 
 ---@class Door
-Door = {}
-Door.__index = Door
+door = {}
+door.__index = door
 function Door()
     local self = Element()
 
@@ -27,7 +27,7 @@ function Door()
     function self.deactivate() error("Door.deactivate() is deprecated, use Door.close() instead.") end
 
     --- Return the opening status of the door
-    ---@return integer
+    ---@return integer value 1 if the door is open
     function self.isOpen() end
     ---@deprecated Door.getState() is deprecated, use Door.isOpen() instead.
     function self.getState() error("Door.getState() is deprecated, use Door.isOpen() instead.") end
@@ -35,5 +35,5 @@ function Door()
     --- Toggle the door
     function self.toggle() end
 
-    return setmetatable(self, Door)
+    return setmetatable(self, door)
 end

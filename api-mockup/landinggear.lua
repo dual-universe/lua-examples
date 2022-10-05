@@ -11,8 +11,8 @@
 require("element")
 
 ---@class LandingGear
-LandingGear = {}
-LandingGear.__index = LandingGear
+landingGear = {}
+landingGear.__index = landingGear
 function LandingGear()
     local self = Element()
 
@@ -23,17 +23,17 @@ function LandingGear()
 
     --- Retracts the landing gear
     function self.retract() end
-    ---@deprecated ForceField.deactivate() is deprecated, use ForceField.retract() instead.
-    function self.deactivate() error("ForceField.deactivate() is deprecated, use ForceField.retract() instead.") end
+    ---@deprecated LandingGear.deactivate() is deprecated, use LandingGear.retract() instead.
+    function self.deactivate() error("LandingGear.deactivate() is deprecated, use LandingGear.retract() instead.") end
 
     --- Checks if the landing gear is deployed
-    ---@return integer
+    ---@return integer value 1 if the landing gear is deployed
     function self.isDeployed() end
-    ---@deprecated ForceField.getState() is deprecated, use ForceField.isDeployed() instead.
-    function self.getState() error("ForceField.getState() is deprecated, use ForceField.isDeployed() instead.") end
+    ---@deprecated LandingGear.getState() is deprecated, use LandingGear.isDeployed() instead.
+    function self.getState() error("LandingGear.getState() is deprecated, use LandingGear.isDeployed() instead.") end
 
     --- Toggle the landing gear
     function self.toggle() end
 
-    return setmetatable(self, LandingGear)
+    return setmetatable(self, landingGear)
 end

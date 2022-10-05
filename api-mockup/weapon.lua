@@ -12,8 +12,8 @@ require("element")
 
 --- Displays information about the weapon's state
 ---@class Weapon
-Weapon = {}
-Weapon.__index = Weapon
+weapon = {}
+weapon.__index = weapon
 function Weapon()
     local self = Element()
 
@@ -45,19 +45,19 @@ function Weapon()
 
 
     --- Returns the item id of the currently equipped ammo
-    ---@return integer
+    ---@return integer value The item id of the ammunition in the weapon
     function self.getAmmo() end
 
     --- Returns the current amount of remaining ammunition
-    ---@return integer
+    ---@return integer value The remaining ammunition count (0 when reloading)
     function self.getAmmoCount() end
 
     --- Returns the maximum amount of ammunition the weapon can carry
-    ---@return integer
+    ---@return integer value The maximum amount of ammunition
     function self.getMaxAmmo() end
 
     --- Checks if the weapon is out of ammo
-    ---@return integer
+    ---@return integer value 1 the weapon is out of ammo
     function self.isOutOfAmmo() end
 
     --- Returns 1 if the weapon is not broken and compatible with the construct size
@@ -72,53 +72,53 @@ function Weapon()
     function self.getStatus() end
 
     --- Returns the local id of the container linked to the weapon
-    ---@return integer
+    ---@return integer value The local id of the container
     function self.getContainerId() end
 
     --- Returns the current hit probability of the weapon for the current target
-    ---@return number
+    ---@return number value The hit probability of the weapon
     function self.getHitProbability() end
 
     --- Returns the base weapon damage
-    ---@return number
+    ---@return number value The base weapon damage in hitpoints
     function self.getBaseDamage() end
 
     --- Returns the optimal aim cone
-    ---@return number
+    ---@return number value The optimal aim cone in degrees
     function self.getOptimalAimingCone() end
 
     --- Returns the optimal distance to target
-    ---@return number
+    ---@return number value The optimal distance in meters
     function self.getOptimalDistance() end
 
     --- Returns the maximum distance to target
-    ---@return number
+    ---@return number value The optimal distance in meters
     function self.getMaxDistance() end
 
     --- Returns the optimal tracking rate
-    ---@return number
+    ---@return number value The optimal tracking rate in degrees per second
     function self.getOptimalTracking() end
 
     --- Returns the magazine volume
-    ---@return number
+    ---@return number value The magazine volume in liters
     function self.getMagazineVolume() end
 
     --- Returns the weapon cycle time
-    ---@return number
+    ---@return number value The weapon cycle time in seconds
     function self.getCycleTime() end
 
     --- Returns the weapon reload time
-    ---@return number
+    ---@return number value The weapon reload time in seconds
     function self.getReloadTime() end
 
     --- Returns the weapon unload time
-    ---@return number
+    ---@return number value The weapon unload time in seconds
     function self.getUnloadTime() end
 
     --- Returns the id of the current target construct of the weapon
-    ---@return integer
+    ---@return integer value The target construct id
     function self.getTargetId() end
-    
 
-    return setmetatable(self, Weapon)
+
+    return setmetatable(self, weapon)
 end

@@ -14,10 +14,10 @@ require("surfaceengine")
 --- Vertical boosters are engines designed to produce powerful vertical thrust over a limited distance.
 --- They consume space fuel but operate in the atmosphere and in the space void.
 ---@class VerticalBooster
-VerticalBooster = {}
-VerticalBooster.__index = VerticalBooster
+verticalBooster = {}
+verticalBooster.__index = verticalBooster
 function VerticalBooster()
     local self = SurfaceEngine()
 
-    return setmetatable(self, VerticalBooster)
+    return setmetatable(self, verticalBooster)
 end

@@ -27,99 +27,99 @@ function Element()
     function self.hide() error("Element.hide() is deprecated, use Element.hideWidget() instead.") end
 
     --- Returns the widget type compatible with the element data
-    ---@return string
+    ---@return string value Widget type. "" if invalid.
     function self.getWidgetType() end
 
     --- Returns the element data as JSON
-    ---@return string
+    ---@return string value Data as JSON
     function self.getWidgetData() end
     ---@deprecated Element.getData() is deprecated, use Element.getWidgetData() instead.
     function self.getData() error("Element.getData() is deprecated, use Element.getWidgetData() instead.") end
 
     --- Returns the element data ID
-    ---@return string
+    ---@return string value Data ID. "" if invalid
     function self.getWidgetDataId() end
     ---@deprecated Element.getDataId() is deprecated, use Element.getWidgetDataId() instead.
     function self.getDataId() error("Element.getDataId() is deprecated, use Element.getWidgetDataId() instead.") end
 
     --- Returns the element name
-    ---@return string
+    ---@return string value The element's name
     function self.getName() end
 
-    --- Returns the class of the Element
-    ---@return string
+    --- Returns the class of the element
+    ---@return string value The class name of the Element
     function self.getClass() end
     ---@deprecated Element.getElementClass() is deprecated, use Element.getClass() instead.
     function self.getElementClass() error("Element.getElementClass() is deprecated, use Element.getClass() instead.") end
 
     --- Returns the mass of the element (includes the included items' mass when the Element is a Container)
-    ---@return number
+    ---@return number value The mass of the element
     function self.getMass() end
 
     --- Returns the element item ID (to be used with system.getItem() function to get information about the element).
-    ---@return integer
+    ---@return integer value The element item ID
     function self.getItemId() end
 
     --- Returns the unique local ID of the element
-    ---@return integer
+    ---@return integer value The element local ID
     function self.getLocalId() end
     ---@deprecated Element.getId() is deprecated, use Element.getLocalId() instead.
     function self.getId() error("Element.getId() is deprecated, use Element.getLocalId() instead.") end
 
     --- Returns the element integrity between 0 and 100
-    ---@return number
+    ---@return number value The integrity value; 0 = Element fully destroyed, 100 = Element fully functional
     function self.getIntegrity() end
 
-    --- Returns the element's current hit points (0 = destroyed)
-    ---@return number
+    --- Returns the element's current hitpoints (0 = destroyed)
+    ---@return number value The current element hitpoints
     function self.getHitPoints() end
 
-    --- Returns the element's maximal hit points
-    ---@return number
+    --- Returns the element's maximal hitpoints
+    ---@return number value The maximum element hitpoints
     function self.getMaxHitPoints() end
 
     --- Returns the element's remaining number of restorations
-    ---@return integer
+    ---@return integer value The number of restorations before the element is ultimately destroyed
     function self.getRemainingRestorations() end
 
     --- Returns the element's maximal number of restorations
-    ---@return integer
+    ---@return integer value The max number of restorations of the element
     function self.getMaxRestorations() end
 
-    --- Returns the position of the Element in construct local coordinates.
-    ---@return table
+    --- Returns the position of the element in construct local coordinates.
+    ---@return table value The position of the element in construct local coordinates
     function self.getPosition() end
 
     --- Returns the bounding box dimensions of the element.
-    ---@return table
+    ---@return table value The dimensions of the element bounding box
     function self.getBoundingBoxSize() end
 
     --- Returns the position of the center of bounding box of the element in local construct coordinates.
-    ---@return table
+    ---@return table value The dimensions the position of the center of bounding box
     function self.getBoundingBoxCenter() end
 
-    --- Returns the up direction vector of the Element in construct local coordinates
-    ---@return table
+    --- Returns the up direction vector of the element in construct local coordinates
+    ---@return table value Up direction vector of the element in construct local coordinates
     function self.getUp() end
 
-    --- Returns the right direction vector of the Element in construct local coordinates
-    ---@return table
+    --- Returns the right direction vector of the element in construct local coordinates
+    ---@return table value Right direction vector of the element in construct local coordinates
     function self.getRight() end
 
-    --- Returns the forward direction vector of the Element in construct local coordinates
-    ---@return table
+    --- Returns the forward direction vector of the element in construct local coordinates
+    ---@return table value Forward direction vector of the element in construct local coordinates
     function self.getForward() end
 
-    --- Returns the up direction vector of the Element in world coordinates
-    ---@return table
+    --- Returns the up direction vector of the element in world coordinates
+    ---@return table value Up direction vector of the element in world coordinates
     function self.getWorldUp() end
 
-    --- Returns the right direction vector of the Element in world coordinates
-    ---@return table
+    --- Returns the right direction vector of the element in world coordinates
+    ---@return table value Right direction vector of the element in world coordinates
     function self.getWorldRight() end
 
-    --- Returns the forward direction vector of the Element in world coordinates
-    ---@return table
+    --- Returns the forward direction vector of the element in world coordinates
+    ---@return table value Forward direction vector of the Element in world coordinates
     function self.getWorldForward() end
 
     --- Set the value of a signal in the specified IN plug of the Element.

@@ -71,18 +71,18 @@ function ControlUnit()
     self.tick:addAction(function(self,tag) error("Radar.tick(timerId) event is deprecated, use Radar.onTimer(tag) instead.") end, true, 1)
 
     --- Returns the ambient atmospheric density
-    ---@return number density The atmospheric density(between 0 and 1)
+    ---@return number value The atmospheric density(between 0 and 1)
     function self.getAtmosphereDensity() end
 
     --- Returns the influence rate of the nearest planet
-    ---@return number rate The planet influence rate(between 0 and 1)
+    ---@return number value The planet influence rate(between 0 and 1)
     function self.getClosestPlanetInfluence() end
 
     --- Checks if the control unit is protected by DRM
-    ---@return integer
+    ---@return integer value 1 if the control unit is protected by DRM
     function self.hasDRM() end
     --- Check if the construct is remote controlled
-    ---@return integer
+    ---@return integer value 1 if the construct is remote controlled
     function self.isRemoteControlled() end
 
 
@@ -137,7 +137,7 @@ function ControlUnit()
 
     --- Returns the current control mode. The mode is set by clicking the UI button or using the associated keybinding
     --- This function must be used on a piloting controller
-    ---@return integer The current control mode (for now, only 2 are available, 0 and 1)
+    ---@return integer value The current control mode (for now, only 2 are available, 0 and 1)
     function self.getControlMode() end
     ---@deprecated ControlUnit.getControlMasterModeId() is deprecated, use ControlUnit.getControlMode() instead.
     function self.getControlMasterModeId() error("ControlUnit.getControlMasterModeId() is deprecated, use ControlUnit.getControlMode() instead.") end
@@ -148,17 +148,17 @@ function ControlUnit()
 
     --- Check if a mouse control scheme is selected
     --- This function must be used on a piloting controller
-    ---@return integer
+    ---@return integer value 1 if a mouse control scheme is selected
     function self.isMouseControlActivated() end
 
     --- Check if the mouse control direct scheme is selected
     --- This function must be used on a piloting controller
-    ---@return integer
+    ---@return integer value 1 if a mouse control direct scheme is selected
     function self.isMouseDirectControlActivated() end
 
     --- Check if the mouse control virtual joystick scheme is selected
     --- This function must be used on a piloting controller
-    ---@return integer
+    ---@return integer value 1 if a mouse control virtual joystick scheme is selected
     function self.isMouseVirtualJoystickActivated() end
 
     --- The ground engines will stabilize to this altitude within their limits
@@ -170,7 +170,7 @@ function ControlUnit()
 
     --- Return the ground engines' stabilization altitude
     --- This function must be used on a piloting controller
-    ---@return number Stab altitude in m or 0 if none is set
+    ---@return number value Stab altitude in m or 0 if none is set
     function self.getSurfaceEngineAltitudeStabilization() end
 
     --- The ground engines will behave like regular engine
@@ -180,7 +180,7 @@ function ControlUnit()
 
     --- Returns ground engine stabilization altitude capabilities (lower and upper ranges)
     --- This function must be used on a piloting controller
-    ---@return table range Stabilization altitude capabilities for the least powerful engine and the most powerful engine
+    ---@return table value Stabilization altitude capabilities for the least powerful engine and the most powerful engine
     function self.computeGroundEngineAltitudeStabilizationCapabilities() end
 
     --- Return the current throttle value
@@ -197,12 +197,12 @@ function ControlUnit()
     function self.setupControlMasterModeProperties() error("ControlUnit.setupControlMasterModeProperties() is deprecated, use ControlUnit.setWidgetControlModeLabel() instead.") end
 
     --- Checks if any landing gear is deployed
-    ---@return 0 or 1 1 if any landing gear is deployed
+    ---@return integer value 0 or 1 1 if any landing gear is deployed
     function self.isAnyLandingGearDeployed() end
     ---@deprecated ControlUnit.isAnyLandingGearDeployed() is deprecated, use ControlUnit.isAnyLandingGearExtended() instead.
     function self.isAnyLandingGearExtended() error("ControlUnit.isAnyLandingGearDeployed() is deprecated, use ControlUnit.isAnyLandingGearExtended() instead.") end
 
-    --- Deploy a end
+    --- Deploy aall landing gears of the construct
     function self.deployLandingGears() end
     ---@deprecated ControlUnit.extendLandingGears() is deprecated, use ControlUnit.deployLandingGears() instead.
     function self.extendLandingGears() error("ControlUnit.extendLandingGears() is deprecated, use ControlUnit.deployLandingGears() instead.") end
@@ -211,7 +211,7 @@ function ControlUnit()
 
 
     --- Check construct lights status
-    ---@return integer
+    ---@return integer value 1 if any Headlight is switched on
     function self.isAnyHeadlightSwitchedOn() end
 
     --- Turn on the construct headlights

@@ -5,6 +5,21 @@ It is intended to help players developing in Lua in the game.
 # Change Log
 All notable changes to this mockup will be documented in this file.
  
+## [1.0.0] - 2022-09-27
+ 
+The Lua API of the Radar units have been updated to increase performances and provide a filter method.
+ 
+### Added
+ * We have improved performance when displaying many targets and radar widget performances, We have also added new Lua functions allowing for the retrieval of set portions of the radar results and to change radar data sort which are also applied to the widget.
+   * [table] **getConstructs(**[int] **offset,** [int] **size)**: Returns the list of constructs in a given range according to the current sort method.
+   * [int] **getSortMethod()**: Gets the sort method for construct data.
+   * [0 or 1] **setSortMethod(**[int] **method)**: Sets the sort method for construct data.
+
+### Changed on API mockup
+ * Fixed bad global assignments on Player, System and Construct
+ * Fixed compilation error on metatable assignment
+
+
 ## [0.31.1] - 2022-07-26
  
 The Lua API for industries has been reworked to integrate schematics v2.

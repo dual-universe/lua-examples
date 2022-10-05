@@ -9,8 +9,8 @@
 require("engine")
 
 ---@class BrakeEngine
-BrakeEngine = {}
-BrakeEngine.__index = BrakeEngine
+brakeEngine = {}
+brakeEngine.__index = brakeEngine
 function BrakeEngine()
     local self = Engine()
 
@@ -96,5 +96,5 @@ function BrakeEngine()
     function self.torqueAxis() error("BrakeEngine.torqueAxis() is deprecated.") end
 
 
-    return setmetatable(self, BrakeEngine)
+    return setmetatable(self, brakeEngine)
 end

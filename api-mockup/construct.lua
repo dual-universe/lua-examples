@@ -11,8 +11,8 @@
 
 --- Construct represents your construct. It gives access to the properties of your constructions and to the events linked to them, which can be used in your scripts.
 ---@class Construct
-Construct = {}
-Construct.__index = Construct
+construct = {}
+construct.__index = construct
 function Construct()
     local self = {}
 
@@ -316,8 +316,8 @@ function Construct()
     self.onPvPTimer = Event:new()
 
 
-    return setmetatable(self, Construct)
+    return setmetatable(self, construct)
 end
 
 --- Global alias available out of the game
-DUConstruct = Construct
+DUConstruct = Construct()

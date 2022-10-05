@@ -12,8 +12,8 @@ require("element")
 
 --- Emits a source of light.
 ---@class Light
-Light = {}
-Light.__index = Light
+light = {}
+light.__index = light
 function Light()
     local self = Element()
 
@@ -24,7 +24,7 @@ function Light()
     function self.deactivate() end
 
     --- Checks if the light is on
-    ---@return integer
+    ---@return integer value 1 if the light is on
     function self.isActive() end
     ---@deprecated Light.getState() is deprecated, use Light.isActive() instead.
     function self.getState() error("Light.getState() is deprecated, use Light.isActive() instead.") end
@@ -42,7 +42,7 @@ function Light()
     function self.setRGBColor(r,g,b) error("Light.setRGBColor(r,g,b) is deprecated, use Light.setColor(r,g,b) instead.") end
 
     --- Returns the light color in RGB
-    ---@return table color  A vec3 for the red, blue and green components of the light, with values between 0.0 and 1.0, up to 5.0.
+    ---@return table color  An array of number for the red, blue and green components of the light, with values between 0.0 and 1.0, up to 5.0.
     function self.getColor() end
     ---@deprecated Light.getRGBColor() is deprecated, use Light.getColor() instead.
     function self.getRGBColor() error("Light.getRGBColor() is deprecated, use Light.getColor() instead.") end
@@ -52,11 +52,11 @@ function Light()
     function self.setBlinkingState(state) end
 
     --- Checks if the light blinking is enabled
-    ---@return integer
+    ---@return integer value 1 if the light blinking is enabled
     function self.isBlinking() end
 
     --- Returns the light 'on' blinking duration
-    ---@return number
+    ---@return number value The duration of the 'on' blinking in seconds
     function self.getOnBlinkingDuration() end
 
     --- Set the light 'on' blinking duration
@@ -64,7 +64,7 @@ function Light()
     function self.setOnBlinkingDuration(time) end
 
     --- Returns the light 'off' blinking duration
-    ---@return number
+    ---@return number value The duration of the 'off' blinking in seconds
     function self.getOffBlinkingDuration() end
 
     --- Set the light 'off' blinking duration
@@ -72,13 +72,13 @@ function Light()
     function self.setOffBlinkingDuration(time) end
 
     --- Returns the light blinking time shift
-    ---@return number
+    ---@return number value The time shift of the blinking in seconds
     function self.getBlinkingTimeShift() end
 
     --- Set the light blinking time shift
-    ---@param shift number The time shift of the blinking
+    ---@param shift number The time shift of the blinking in seconds
     function self.setBlinkingTimeShift(shift) end
 
 
-    return setmetatable(self, Light)
+    return setmetatable(self, light)
 end

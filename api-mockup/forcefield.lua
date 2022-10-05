@@ -11,8 +11,8 @@
 require("element")
 
 ---@class ForceField
-ForceField = {}
-ForceField.__index = ForceField
+forceField = {}
+forceField.__index = forceField
 function ForceField()
     local self = Element()
 
@@ -27,7 +27,7 @@ function ForceField()
     function self.deactivate() error("ForceField.deactivate() is deprecated, use ForceField.retract() instead.") end
 
     --- Checks if the forcefield is deployed
-    ---@return integer
+    ---@return integer value 1 if the forcefield is deployed
     function self.isDeployed() end
     ---@deprecated ForceField.getState() is deprecated, use ForceField.isDeployed() instead.
     function self.getState() error("ForceField.getState() is deprecated, use ForceField.isDeployed() instead.") end
@@ -35,5 +35,5 @@ function ForceField()
     --- Toggle the forcefield
     function self.toggle() end
 
-    return setmetatable(self, ForceField)
+    return setmetatable(self, forceField)
 end

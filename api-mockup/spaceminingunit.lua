@@ -12,8 +12,8 @@ require("element")
 
 --- Extracts a regular amount of resources from the space surrouding an alien core
 ---@class SpaceMiningUnit
-SpaceMiningUnit = {}
-SpaceMiningUnit.__index = SpaceMiningUnit
+spaceMiningUnit = {}
+spaceMiningUnit.__index = spaceMiningUnit
 function SpaceMiningUnit()
     local self = Element()
 
@@ -24,35 +24,35 @@ function SpaceMiningUnit()
     function self.getStatus() error("SpaceMiningUnit.getStatus() is deprecated, use SpaceMiningUnit.getState() instead.") end
 
     --- Returns the remaining time of the current batch extraction process.
-    ---@return number
+    ---@return number value The remaining time in seconds
     function self.getRemainingTime() end
 
     --- Returns the item ID of the currently selected ore.
-    ---@return integer
+    ---@return integer value The item ID of the selected ore
     function self.getActiveOre() end
 
     --- Returns the list of available ore pools
-    ---@return table pool A list of tables composed with {[int] oreId, [float] available, [float] maximum);
+    ---@return table pool A list of tables composed with {[int] oreId, [float] available, [float] maximum}
     function self.getOrePools() end
 
     --- Returns the base production rate of the space mining unit.
-    ---@return number
+    ---@return number value The production rate in L/h
     function self.getBaseRate() end
 
     --- Returns the efficiency rate of the space mining unit.
-    ---@return number
+    ---@return number value The efficiency rate between 0 and 1
     function self.getEfficiency() end
 
     --- Returns the calibration rate of the space mining unit.
-    ---@return number
+    ---@return number value The calibration rate of the space mining unit between 0 and 1
     function self.getCalibrationRate() end
 
     --- Returns the optimal calibration rate of the space mining unit.
-    ---@return number
+    ---@return number value The optimal calibration rate of the space mining unit between 0 and 1
     function self.getOptimalRate() end
 
     --- Returns the current production rate of the space mining unit.
-    ---@return number
+    ---@return number value The production rate in L/h
     function self.getProductionRate() end
 
     --- Emitted when the space mining unit started a new extraction process.
@@ -76,5 +76,5 @@ function SpaceMiningUnit()
     self.onStopped = Event:new()
 
 
-    return setmetatable(self, SpaceMiningUnit)
+    return setmetatable(self, spaceMiningUnit)
 end

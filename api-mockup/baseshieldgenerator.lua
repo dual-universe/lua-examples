@@ -11,8 +11,8 @@
 require("element")
 
 ---@class BaseShieldGenerator
-BaseShieldGenerator = {}
-BaseShieldGenerator.__index = BaseShieldGenerator
+baseShieldGenerator = {}
+baseShieldGenerator.__index = baseShieldGenerator
 function BaseShieldGenerator()
     local self = Element()
 
@@ -60,17 +60,17 @@ function BaseShieldGenerator()
     function self.toggle() end
 
     --- Returns the activation state of the shield
-    ---@return integer
+    ---@return integer value The state of the shield; 1 when the shield is active, 0 otherwise
     function self.isActive() end
     ---@deprecated BaseShieldGenerator.getState() is deprecated, use BaseShieldGenerator.isActive() instead.
     function self.getState() error("BaseShieldGenerator.getState() is deprecated, use BaseShieldGenerator.isActive() instead.") end
 
-    --- Returns the current hit points of the shield
-    ---@return number
+    --- Returns the current hitpoints of the shield
+    ---@return number value The current hitpoints of the shield
     function self.getShieldHitpoints() end
 
-    --- Returns the maximal hit points of the shield
-    ---@return number
+    --- Returns the maximal hitpoints of the shield
+    ---@return number value The maximal hitpoints of the shield
     function self.getMaxShieldHitpoints() end
 
     --- Returns distribution of resistance pool over resistance types
@@ -82,23 +82,23 @@ function BaseShieldGenerator()
     ---@param electromagnetic number Electromagnetic damage resistance
     ---@param kinetic number Kinetic damage resistance
     ---@param thermic number Thermic damage resistance
-    ---@return integer
+    ---@return integer success 1 if resistance was distributed, 0 if an error occurred
     function self.setResistances(antimatter,electromagnetic,kinetic,thermic) end
 
     --- Returns time after which adjusting resistances is possible again
-    ---@return number
+    ---@return number value Remaining seconds of the resistance cooldown
     function self.getResistancesCooldown() end
 
     --- Returns maximal cooldown between adjusting resistances
-    ---@return number
+    ---@return number value Maximal seconds of the resistance cooldown
     function self.getResistancesMaxCooldown() end
 
     --- Returns total resistance pool that may be distributed
-    ---@return number
+    ---@return number value Total pool of resistances
     function self.getResistancesPool() end
 
     --- Returns the remaining amount of the resistance pool that can be distributed
-    ---@return number
+    ---@return number value Remaining resistance pool
     function self.getResistancesRemaining() end
 
     --- Returns ratio per damage type of recent weapon impacts after applying resistance
@@ -109,30 +109,30 @@ function BaseShieldGenerator()
     ---@return table stress Stress ratio due to damage type {antimatter, electromagnetic, kinetic, thermic}
     function self.getStressRatioRaw() end
 
-    --- Returns stress, that is the total hit points of recent weapon impacts after applying resistance
-    ---@return number
+    --- Returns stress, that is the total hitpoints of recent weapon impacts after applying resistance
+    ---@return number value Total stress hitpoints due to recent weapon impacts
     function self.getStressHitpoints() end
 
-    --- Returns stress, that is the total hit points of recent weapon impacts without resistance
-    ---@return number
+    --- Returns stress, that is the total hitpoints of recent weapon impacts without resistance
+    ---@return number value Total stress hitpoints due to recent weapon impacts
     function self.getStressHitpointsRaw() end
 
     --- Returns whether the base shield is currently in lockdown
-    ---@return integer
+    ---@return integer value The base shield lockdown state; 1 when the shield is in lockdown, 0 otherwise
     function self.inLockdown() end
 
     --- Returns the remaining time of the base shield lockdown
-    ---@return number
+    ---@return number value Remaining lockdown time in seconds
     function self.getLockdownRemaining() end
 
     --- Returns the hour since midnight of the preferred lockdown exit
-    ---@return integer
+    ---@return integer value Preferred lockdown exit hour UTC
     function self.getLockdownExitTime() end
 
     --- Set hour since midnight for the preferred lockdown exit
-    ---@param hour integer Preferred lockdown exit hour UTC
-    ---@return integer
+    ---@param hour integer Preferred lockdown exit hour UTC (0-23)
+    ---@return integer success 1 if lockdown exit was set, 0 if an error occurred
     function self.setLockdownExitTime(hour) end
     
-    return setmetatable(self, BaseShieldGenerator)
+    return setmetatable(self, baseShieldGenerator)
 end

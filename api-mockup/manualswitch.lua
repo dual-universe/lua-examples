@@ -12,8 +12,8 @@ require("element")
 
 --- A Manual Switch that can be in an on/off state.
 ---@class ManualSwitch
-ManualSwitch = {}
-ManualSwitch.__index = ManualSwitch
+manualSwitch = {}
+manualSwitch.__index = manualSwitch
 function ManualSwitch()
     local self = Element()
 
@@ -37,10 +37,10 @@ function ManualSwitch()
     function self.toggle() end
 
     --- Checks if the switch is active
-    ---@return integer
+    ---@return integer value 1 if the switch is active
     function self.isActive() end
     ---@deprecated ManualSwitch.getState() is deprecated, use ManualSwitch.isActive() instead.
     function self.getState() error("ManualSwitch.getState() is deprecated, use ManualSwitch.isActive() instead.") end
 
-    return setmetatable(self, ManualSwitch)
+    return setmetatable(self, manualSwitch)
 end

@@ -12,8 +12,8 @@ require("element")
 
 --- Detect the hit of a Laser.
 ---@class LaserDetector
-LaserDetector = {}
-LaserDetector.__index = LaserDetector
+laserDetector = {}
+laserDetector.__index = laserDetector
 function LaserDetector()
     local self = Element()
 
@@ -28,10 +28,10 @@ function LaserDetector()
     self.laserRelease:addAction(function(self) error("LaserDetector.laserRelease() event is deprecated, use LaserDetector.onLoss() instead.") end, true, 1)
 
     --- Checks if any laser is hitting the detector
-    ---@return integer
+    ---@return integer value 1 if a laser is hitting the detector
     function self.isHit() end
     ---@deprecated LaserDetector.getState() is deprecated, use LaserDetector.isHit() instead.
     function self.getState() error("LaserDetector.getState() is deprecated, use LaserDetector.isHit() instead.") end
 
-    return setmetatable(self, LaserDetector)
+    return setmetatable(self, laserDetector)
 end

@@ -11,8 +11,8 @@
 
 --- Player represents the player who is using the control unit
 ---@class Player
-Player = {}
-Player.__index = Player
+player = {}
+player.__index = player
 function Player()
     local self = {}
 
@@ -133,8 +133,8 @@ function Player()
     self.onParentChanged = Event:new()
 
 
-    return setmetatable(self, Player)
+    return setmetatable(self, player)
 end
 
 --- Global alias available out of the game
-DUPlayer = Player
+DUPlayer = Player()

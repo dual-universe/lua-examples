@@ -9,18 +9,18 @@
 require("fueledengine")
 
 ---@class SurfaceEngine
-SurfaceEngine = {}
-SurfaceEngine.__index = SurfaceEngine
+surfaceEngine = {}
+surfaceEngine.__index = surfaceEngine
 function SurfaceEngine()
     local self = FueledEngine()
 
     --- Returns the distance to the first object detected in the direction of the thrust
-    ---@return number
+    ---@return number value The distance to the first obstacle in meters
     function self.getDistance() end
 
     --- Returns the maximum functional distance from the ground
-    ---@return number
+    ---@return number value The maximum functional distance in meters
     function self.getMaxDistance() end
 
-    return setmetatable(self, SurfaceEngine)
+    return setmetatable(self, surfaceEngine)
 end

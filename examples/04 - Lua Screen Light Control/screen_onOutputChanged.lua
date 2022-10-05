@@ -7,9 +7,6 @@ local actions = {
     ['lightBlue'] = function() lightBlue.toggle() end
 }
 
--- Get screen output
-local output = screen.getScriptOutput()
-
 -- Check if an action is defined
 if actions[output] then
     -- Clear screen output

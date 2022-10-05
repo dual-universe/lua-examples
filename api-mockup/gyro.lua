@@ -12,8 +12,8 @@ require("element")
 
 --- A general kinematic unit to obtain information about the ship orientation, velocity, and acceleration.
 ---@class Gyro
-Gyro = {}
-Gyro.__index = Gyro
+gyro = {}
+gyro.__index = gyro
 function Gyro()
     local self = Element()
 
@@ -27,7 +27,7 @@ function Gyro()
     function self.toggle() end
 
     --- Returns the activation state of the gyro
-    ---@return integer
+    ---@return integer value 1 when the gyro is the active ship orientation unit, 0 otherwise
     function self.isActive() end
     ---@deprecated Gyro.getState() is deprecated, use Gyro.isActive() instead.
     function self.getState() error("Gyro.getDistance() is deprecated, use Gyro.isActive() instead.") end
@@ -53,5 +53,5 @@ function Gyro()
     ---@deprecated Gyro.worldRight() is deprecated, use Gyro.getWorldRight() instead.
     function self.worldRight() error("Gyro.worldRight() is deprecated, use Gyro.getWorldRight() instead.") end
 
-    return setmetatable(self, Gyro)
+    return setmetatable(self, gyro)
 end

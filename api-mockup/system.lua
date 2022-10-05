@@ -368,7 +368,8 @@ function System()
 
 
     --- Print the given string in the Lua chat channel
-    ---@param msg string
+    --- Note that this function is disabled if the player is not running the script explicitly (pressing F on the Control Unit, vs. via a plug signal).
+    ---@param msg string The message to print
     function self.print(msg) end
 
     return setmetatable(self, system)

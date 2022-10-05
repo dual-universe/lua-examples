@@ -1,4 +1,4 @@
--- Add to programming board's unit.start() and connect it to this screen.
+-- Add to programming board's unit.onStart() and connect it to this screen.
 
 -- Define messages global table
 _messages = {

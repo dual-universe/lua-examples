@@ -12,8 +12,8 @@ require("element")
 
 --- Get information about the Radar and its current targets
 ---@class Radar
-Radar = {}
-Radar.__index = Radar
+radar = {}
+radar.__index = radar
 function Radar()
     local self = Element()
 
@@ -33,30 +33,45 @@ function Radar()
     function self.getIdentifyRanges() end
 
     --- Returns the list of construct IDs in the scan range
-    ---@return table
+    ---@return table value The list of scanned construct IDs
     function self.getConstructIds() end
 
+    --- Returns the sort method for construct data
+    ---@return integer value The sort method (Distance Ascending = 1, Distance Descending = 2, Size Ascending = 3, Size Descending = 4, Threat Ascending = 5, Threat Descending = 6)
+    function self.getSortMethod() end
+
+    --- Sets the sort method for construct data
+    ---@param method integer The sort method (Distance Ascending = 1, Distance Descending = 2, Size Ascending = 3, Size Descending = 4, Threat Ascending = 5, Threat Descending = 6)
+    ---@return integer success 1 if the sort method was set successfully, 0 otherwise 
+    function self.setSortMethod(method) end
+
     --- Returns the list of identified construct IDs
-    ---@return table
+    ---@return table value The list of identified construct IDs
     function self.getIdentifiedConstructIds() end
 
+    --- Returns the list of constructs in a given range according to the current sort method
+    ---@param offset integer Offset from the first entry
+    ---@param size integer Total entries to return following the offset, 0 to return all entries
+    ---@return table value The list of constructs tables {[integer] constructId, [string] name, [string] size, [string] constructType, [number] mass, [int] isIdentified, [int] inIdentifyRange, [number] identificationDuration, [number] remainingIdentificationTime, [int] myThreatStateToTarget, [int] targetThreatState, [number] distance, [table] worldPosition, [number] speed, [number] radialSpeed, [number] angularSpeed, [table] info}
+    function self.getConstructs(offset, size) end
+
     --- Returns the ID of the target construct
-    ---@return integer
+    ---@return integer value The ID of the target construct
     function self.getTargetId() end
 
     --- Returns the distance to the given construct
     ---@param id integer The ID of the construct
-    ---@return number
+    ---@return number value The distance between the current and target construct center
     function self.getConstructDistance(id) end
 
     --- Returns 1 if the given construct is identified
     ---@param id integer The ID of the construct
-    ---@return integer
+    ---@return integer value 1 if the construct is identified, 0 otherwise
     function self.isConstructIdentified(id) end
 
     --- Returns 1 if the given construct was abandoned
     ---@param id integer The ID of the construct
-    ---@return integer
+    ---@return integer value 1 if the construct has no owner, 0 otherwise
     function self.isConstructAbandoned(id) end
 
     --- Returns the core size of the given construct
@@ -92,7 +107,7 @@ function Radar()
 
     --- Return the size of the bounding box of the given construct, if in range
     ---@param id integer The ID of the construct
-    ---@return table
+    ---@return table value The size of the construct in xyz-coordinates
     function self.getConstructSize(id) end
 
     --- Return the kind of the given construct
@@ -104,32 +119,32 @@ function Radar()
 
     --- Returns the position of the given construct in construct local coordinates, if active transponder tags match for owned dynamic constructs
     ---@param id integer The ID of the construct
-    ---@return table
+    ---@return table value The position of the construct center in local construct coordinates
     function self.getConstructPos(id) end
 
     ---  Returns the position of the given construct in world coordinates, if in range and if active transponder tags match for owned dynamic constructs
     ---@param id integer The ID of the construct
-    ---@return table
+    ---@return table value The position of the construct center in world coordinates
     function self.getConstructWorldPos(id) end
 
     --- Returns the velocity vector of the given construct in construct local coordinates, if identified and if active transponder tags match for owned dynamic constructs
     ---@param id integer The ID of the construct
-    ---@return table
+    ---@return table value The velocity of the construct in local construct coordinates
     function self.getConstructVelocity(id) end
 
     --- Returns the velocity vector of the given construct in world coordinates, if identified and if active transponder tags match for owned dynamic constructs
     ---@param id integer The ID of the construct
-    ---@return table
+    ---@return table value The velocity of the construct in world coordinates
     function self.getConstructWorldVelocity(id) end
 
     --- Returns the mass of the given construct, if identified for owned dynamic constructs
     ---@param id integer The ID of the construct
-    ---@return number mass The mass of the construct in kilograms
+    ---@return number value The mass of the construct in kilograms
     function self.getConstructMass(id) end
 
     --- Return the name of the given construct, if defined
     ---@param id integer The ID of the construct
-    ---@return string
+    ---@return string value The name of the construct
     function self.getConstructName(id) end
 
     --- Returns a table of working elements on the given construction, if identified for owned dynamic constructs
@@ -169,5 +184,5 @@ function Radar()
     self.onIdentified = Event:new()
 
 
-    return setmetatable(self, Radar)
+    return setmetatable(self, radar)
 end

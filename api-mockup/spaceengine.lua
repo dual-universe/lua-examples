@@ -12,13 +12,13 @@ require("fueledengine")
 
 --- Space engines are engines designed to operate optimally in the space void.
 ---@class SpaceEngine
-SpaceEngine = {}
-SpaceEngine.__index = SpaceEngine
+spaceEngine = {}
+spaceEngine.__index = spaceEngine
 function SpaceEngine()
     local self = FueledEngine()
 
     ---@deprecated SpaceEngine.getDistance() is deprecated.
     function self.getDistance() error("SpaceEngine.getDistance() is deprecated.") end
 
-    return setmetatable(self, SpaceEngine)
+    return setmetatable(self, spaceEngine)
 end

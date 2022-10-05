@@ -12,19 +12,19 @@ require("element")
 
 --- Cycle its output signal over a set of n-plugs, incrementing the activate plug by one step at each impulse received on its IN plug
 ---@class Counter
-Counter = {}
-Counter.__index = Counter
+counter = {}
+counter.__index = counter
 function Counter()
     local self = Element()
 
     --- Returns the index of the current active output plug
-    ---@return integer
+    ---@return integer value The index of the active plug
     function self.getIndex() end
     ---@deprecated Counter.getCounterState() is deprecated, use Counter.getIndex() instead.
     function self.getCounterState() error("Counter.getCounterState() is deprecated, use Counter.getIndex() instead.") end
 
     --- Returns the maximum index of the counter
-    ---@return integer
+    ---@return integer value The maximum index
     function self.getMaxIndex() end
 
     --- Moves the next counter index
@@ -36,5 +36,5 @@ function Counter()
     ---@param index integer The index of the plug to activate
     function self.setIndex(index) end
 
-    return setmetatable(self, Counter)
+    return setmetatable(self, counter)
 end

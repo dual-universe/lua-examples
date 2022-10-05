@@ -12,20 +12,20 @@ require("engine")
 
 --- Adjustors are specific motors that expel gas to generate torque on your construct
 ---@class Adjustor
-Adjustor = {}
-Adjustor.__index = Adjustor
+adjustor = {}
+adjustor.__index = adjustor
 function Adjustor()
     local self = Engine()
 
 
-    --- Start the adjustor at full power (works only when run inside a cockpit or under remote control)
+    --- Start the adjustor at full power (works only when run inside a piloting controller)
     function self.activate() end
 
-    --- Stops the adjustor (works only when run inside a cockpit or under remote control)
+    --- Stops the adjustor (works only when run inside a piloting controller)
     function self.deactivate() end
 
     --- Checks if the adjustor is active
-    ---@return integer
+    ---@return integer value The adjustor state, 1 if active
     function self.isActive() end
     ---@deprecated Adjustor.getState() is deprecated, use Adjustor.isActive().
     function self.getState() error("Adjustor.getState() is deprecated, use Adjustor.isActive().") end
@@ -38,31 +38,31 @@ function Adjustor()
     function self.setThrust(thrust) end
 
     --- Returns the current exhaust thrust of the adjustor
-    ---@return number
+    ---@return number value The current exhaust thrust of the adjustor in newtons
     function self.getThrust() end
 
     --- Returns the maximal exhaust thrust the adjustor can deliver
-    ---@return number
+    ---@return number value The maximum exhaust thrust of the adjustor in newtons
     function self.getMaxThrust() end
     ---@deprecated Adjustor.getMaxThrustBase() is deprecated, use Adjustor.getMaxThrust().
     function self.getMaxThrustBase() error("Adjustor.getMaxThrustBase() is deprecated, use Adjustor.getMaxThrust().") end
 
     --- Returns the adjustor exhaust thrust direction in construct local coordinates
-    ---@return table
+    ---@return table value The adjustor exhaust thrust direction vector in construct local coordinates
     function self.getThrustAxis() end
 
     --- Returns the adjustor torque axis in construct local coordinates
-    ---@return table
+    ---@return table value The torque axis vector in construct local coordinates
     function self.getTorqueAxis() end
 
     --- Returns the adjustor exhaust thrust direction in world coordinates
-    ---@return table
+    ---@return table value The adjustor thrust direction vector in world coordinates
     function self.getWorldThrustAxis() end
     ---@deprecated Adjustor.thrustAxis() is deprecated, use Adjustor.getWorldThrustAxis().
     function self.thrustAxis() error("Adjustor.thrustAxis() is deprecated, use Adjustor.getWorldThrustAxis().") end
 
     --- Returns the adjustor torque axis in world coordinates
-    ---@return table
+    ---@return table value The torque axis vector in world coordinates
     function self.getWorldTorqueAxis() end
     ---@deprecated Adjustor.torqueAxis() is deprecated, use Adjustor.getWorldTorqueAxis().
     function self.torqueAxis() error("Adjustor.torqueAxis() is deprecated, use Adjustor.getWorldTorqueAxis().") end
@@ -82,5 +82,5 @@ function Adjustor()
     ---@deprecated Adjustor.getT50() is deprecated.
     function self.getT50() error("Adjustor.getT50() is deprecated.") end
 
-    return setmetatable(self, Adjustor)
+    return setmetatable(self, adjustor)
 end

@@ -12,8 +12,8 @@ require("element")
 
 --- Emits a signal when a player walks on the tile.
 ---@class PressureTile
-PressureTile = {}
-PressureTile.__index = PressureTile
+pressureTile = {}
+pressureTile.__index = pressureTile
 function PressureTile()
     local self = Element()
 
@@ -28,10 +28,10 @@ function PressureTile()
     self.released:addAction(function(self) error("PressureTile.released() event is deprecated, use PressureTile.onReleased() instead.") end, true, 1)
 
     --- Checks if the pressure tile is down
-    ---@return integer
+    ---@return integer value 1 when the tile is down, 0 otherwise
     function self.isDown() end
     ---@deprecated PressureTile.getState() is deprecated, use PressureTile.isDown() instead.
     function self.getState() error("PressureTile.getState() is deprecated, use PressureTile.isDown() instead.") end
 
-    return setmetatable(self, ManualSwitch)
+    return setmetatable(self, pressureTile)
 end

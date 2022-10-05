@@ -12,8 +12,8 @@ require("element")
 
 --- Extracts a regular amount of resources from the ground.
 ---@class MiningUnit
-MiningUnit = {}
-MiningUnit.__index = MiningUnit
+miningUnit = {}
+miningUnit.__index = miningUnit
 function MiningUnit()
     local self = Element()
 
@@ -24,59 +24,59 @@ function MiningUnit()
     function self.getStatus() error("MiningUnit.getStatus() is deprecated, use MiningUnit.getState() instead.") end
 
     --- Returns the remaining time of the current batch extraction process.
-    ---@return number
+    ---@return number value The remaining time in seconds
     function self.getRemainingTime() end
 
     --- Returns the item ID of the currently selected ore.
-    ---@return integer
+    ---@return integer value The item ID of the selected ore
     function self.getActiveOre() end
 
     --- Returns the list of available ore pools
-    ---@return table pool A list of tables composed with {[int] oreId, [float] available, [float] maximum);
+    ---@return table pool A list of tables composed with {[int] oreId, [float] available, [float] maximum}
     function self.getOrePools() end
 
     --- Returns the base production rate of the mining unit.
-    ---@return number
+    ---@return number value The production rate in L/h
     function self.getBaseRate() end
 
     --- Returns the efficiency rate of the mining unit.
-    ---@return number
+    ---@return number value The efficiency rate between 0 and 1
     function self.getEfficiency() end
 
     --- Returns the calibration rate of the mining unit.
-    ---@return number
+    ---@return number value The calibration rate of the mining unit between 0 and 1
     function self.getCalibrationRate() end
 
     --- Returns the optimal calibration rate of the mining unit.
-    ---@return number
+    ---@return number value The optimal calibration rate of the mining unit between 0 and 1
     function self.getOptimalRate() end
 
     --- Returns the current production rate of the mining unit.
-    ---@return number
+    ---@return number value The production rate in L/h
     function self.getProductionRate() end
 
     --- Returns the territory's adjacency bonus to the territory of the mining unit. Note: This value is updated only when a new batch is started.
-    ---@return number
+    ---@return number value The territory's adjacency bonus
     function self.getAdjacencyBonus() end
 
     --- Returns the position of the last calibration excavation, in world coordinates.
-    ---@return table
+    ---@return table value The coordinates in world coordinates
     function self.getLastExtractionPosition() end
 
     --- Returns the ID of the last player who calibrated the mining unit.
-    ---@return integer
+    ---@return integer value The ID of the player
     function self.getLastExtractingPlayerId() end
 
     --- Returns the time in seconds since the last calibration of the mining unit.
-    ---@return number
+    ---@return number value The time in seconds with milliseconds precision
     function self.getLastExtractionTime() end
 
     --- Returns the item ID of the ore extracted during the last calibration excavation.
-    ---@return integer
+    ---@return integer value The item ID of the extracted ore
     function self.getLastExtractedOre() end
 
     --- Returns the volume of ore extracted during the last calibration excavation.
-    ---@return number
+    ---@return number value The volume of ore extracted in L
     function self.getLastExtractedVolume() end
 
     --- Emitted when the mining unit is calibrated.
@@ -108,5 +108,5 @@ function MiningUnit()
     self.onStopped = Event:new()
 
 
-    return setmetatable(self, MiningUnit)
+    return setmetatable(self, miningUnit)
 end

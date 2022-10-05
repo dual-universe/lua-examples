@@ -12,8 +12,8 @@ require("element")
 
 --- Emits a signal for the duration it is pressed.
 ---@class ManualButton
-ManualButton = {}
-ManualButton.__index = ManualButton
+manualButton = {}
+manualButton.__index = manualButton
 function ManualButton()
     local self = Element()
 
@@ -28,10 +28,10 @@ function ManualButton()
     self.released:addAction(function(self) error("ManualButton.released() event is deprecated, use ManualButton.onReleased() instead.") end, true, 1)
 
     --- Checks if the manual button is down
-    ---@return integer
+    ---@return integer value 1 if the manual button is down
     function self.isDown() end
     ---@deprecated ManualButton.getState() is deprecated, use ManualButton.isDown() instead.
     function self.getState() error("ManualButton.getState() is deprecated, use ManualButton.isDown() instead.") end
 
-    return setmetatable(self, ManualButton)
+    return setmetatable(self, manualButton)
 end

@@ -1,3 +1,5 @@
+# OUTDATED
+
 # Complete examples
 These examples are examples of concrete application of libraries implemented by Novaquark. They are intended to show you how to use them.
 

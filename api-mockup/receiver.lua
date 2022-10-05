@@ -12,8 +12,8 @@ require("element")
 
 --- Receives messages on the element's channels
 ---@class Receiver
-Receiver = {}
-Receiver.__index = Receiver
+receiver = {}
+receiver.__index = receiver
 function Receiver()
     local self = Element()
 
@@ -25,17 +25,17 @@ function Receiver()
     self.receive:addAction(function(self,channel,message) error("Receiver.receive(channel,message) event is deprecated, use Receiver.onReceived(channel,message) instead.") end, true, 1)
 
     --- Returns the receiver range
-    ---@return number
+    ---@return number value The range in metres
     function self.getRange() end
     
     --- Checks if the given channel exists in the receiver channels list
     ---@param channel string The channels list as Lua table
-    ---@return integer
+    ---@return integer value 1 if the channels list contains the given channel
     function self.hasChannel(channel) end
 
     --- Set the channels list
     ---@param channels table The channels list as Lua table
-    ---@return integer 1 if the channels list has been successfully set
+    ---@return integer success 1 if the channels list has been successfully set
     function self.setChannelList(channels) end
     ---@deprecated Receiver.setChannels(channels) is deprecated, use Receiver.setChannelList(channels) instead.
     function self.setChannels(channels) error("Receiver.setChannels(channels) is deprecated, use Receiver.setChannelList(channels) instead.") end
@@ -46,5 +46,5 @@ function Receiver()
     ---@deprecated Receiver.getChannels() is deprecated, use Receiver.getChannelList() instead.
     function self.getChannels(channels) error("Receiver.getChannels() is deprecated, use Receiver.getChannelList() instead.") end
 
-    return setmetatable(self, Receiver)
+    return setmetatable(self, receiver)
 end

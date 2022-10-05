@@ -12,8 +12,8 @@ require("element")
 
 --- Emits a Laser ray that can be use to detect the passage of a player or on a Laser Detector unit.
 ---@class LaserEmitter
-LaserEmitter = {}
-LaserEmitter.__index = LaserEmitter
+laserEmitter = {}
+laserEmitter.__index = laserEmitter
 function LaserEmitter()
     local self = Element()
 
@@ -27,10 +27,10 @@ function LaserEmitter()
     function self.toggle() end
 
     --- Checks if the laser emitter is active
-    ---@return integer
+    ---@return integer value 1 if the laser emitter is active
     function self.isActive() end
     ---@deprecated LaserEmitter.getState() is deprecated, use LaserEmitter.isActive() instead.
     function self.getState() error("LaserEmitter.getState() is deprecated, use LaserEmitter.isActive() instead.") end
 
-    return setmetatable(self, LaserEmitter)
+    return setmetatable(self, laserEmitter)
 end

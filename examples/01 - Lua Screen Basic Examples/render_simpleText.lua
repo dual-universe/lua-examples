@@ -10,7 +10,8 @@ local lines = {
 }
 
 -- Load the font with its name and its size
-local font = loadFont('Play', 32)
+local fontSize = 32
+local font = loadFont('Play', fontSize)
 
 local layer = createLayer()
 

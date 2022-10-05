@@ -12,8 +12,8 @@ require("element")
 
 --- It is the heart of your construct. It gives access to the elements of the construction and information on the environment.
 ---@class CoreUnit
-CoreUnit = {}
-CoreUnit.__index = CoreUnit
+coreUnit = {}
+coreUnit.__index = coreUnit
 function CoreUnit()
     local self = Element()
 
@@ -162,64 +162,64 @@ function CoreUnit()
 
 
     --- Returns the list of all the local IDs of the Elements of this construct
-    ---@return table
+    ---@return table value The list of local IDs of the elements of the construct.
     function self.getElementIdList() end
 
     --- Returns the name of the Element, identified by its local ID
     ---@param localId integer The local ID of the Element
-    ---@return string
+    ---@return string value The name of the Element
     function self.getElementNameById(localId) end
 
     --- Returns the class of the Element, identified by its local ID
     ---@param localId integer The local ID of the Element
-    ---@return string
+    ---@return string value The class of the Element
     function self.getElementClassById(localId) end
 
     --- Returns the display name of the Element, identified by its local ID
     ---@param localId integer The local ID of the Element
-    ---@return string
+    ---@return string value The display name of the Element
     function self.getElementDisplayNameById(localId) end
     ---@deprecated CoreUnit.getElementTypeById(localId) is deprecated, use CoreUnit.getElementDisplayNameById(localId) instead.
     function self.getElementTypeById(localId) error("CoreUnit.getElementTypeById(localId) is deprecated, use CoreUnit.getElementDisplayNameById(localId) instead.") end
 
     --- Returns the item ID of the Element, identified by its local ID
     ---@param localId integer The local ID of the Element
-    ---@return integer
+    ---@return integer value The item ID of the Element
     function self.getElementItemIdById(localId) end
 
-    --- Returns the current level of hit points of the Element, identified by its local ID
+    --- Returns the current hitpoints of the Element, identified by its local ID
     ---@param localId integer The local ID of the Element
-    ---@return number
+    ---@return number value The current hitpoints of the Element
     function self.getElementHitPointsById(localId) end
 
-    --- Returns the maximum level of hit points of the Element, identified by its local ID
+    --- Returns the maximum hitpoints of the Element, identified by its local ID
     ---@param localId integer The local ID of the Element
-    ---@return number
+    ---@return number value 
     function self.getElementMaxHitPointsById(localId) end
 
     --- Returns the mass of the Element, identified by its local ID
     ---@param localId integer The local ID of the Element
-    ---@return number
+    ---@return number value The maximum hitpoints of the Element
     function self.getElementMassById(localId) end
 
     --- Returns the position of the Element, identified by its local ID, in construct local coordinates.
     ---@param localId integer The local ID of the Element
-    ---@return table
+    ---@return table value  The position of the Element in construct local coordinates
     function self.getElementPositionById(localId) end
 
     --- Returns the up direction vector of the Element, identified by its local ID, in construct local coordinates
     ---@param localId integer The local ID of the Element
-    ---@return table
+    ---@return table value The up direction vector of the Element identified by its local ID, in construct local coordinates
     function self.getElementUpById(localId) end
 
     --- Returns the right direction vector of the Element, identified by its local ID, in construct local coordinates
     ---@param localId integer The local ID of the Element
-    ---@return table
+    ---@return table value The right direction vector of the Element identified by its local ID, in construct local coordinates
     function self.getElementRightById(localId) end
 
     --- Returns the forward direction vector of the Element, identified by its local ID, in construct local coordinates
     ---@param localId integer The local ID of the Element
-    ---@return table
+    ---@return table value The forward direction vector of the Element identified by its local ID, in construct local coordinates
     function self.getElementForwardById(localId) end
 
     --- Returns the status of the Industry Unit Element, identified by its local ID
@@ -231,43 +231,43 @@ function CoreUnit()
 
     --- Returns the list of tags associated to the Element, identified by its local ID
     ---@param localId integer The local ID of the Element
-    ---@return string
+    ---@return string value The tags as a JSON list
     function self.getElementTagsById(localId) end
 
 
     --- Returns the altitude above sea level, with respect to the closest planet (0 in space)
-    ---@return number
+    ---@return number value The altitude above sea level in meters
     function self.getAltitude() end
 
     --- Returns the local gravity intensity
-    ---@return number
+    ---@return number value The gravitation acceleration where the construct is located in m/s²
     function self.getGravityIntensity() end
     ---@deprecated CoreUnit.g() is deprecated, use CoreUnit.getGravityIntensity() instead.
     function self.g() error("CoreUnit.g() is deprecated, use CoreUnit.getGravityIntensity() instead.") end
 
     --- Returns the local gravity vector in world coordinates
-    ---@return table
+    ---@return table value The local gravity field vector in world coordinates in m/s2
     function self.getWorldGravity() end
 
     --- Returns the vertical unit vector along gravity, in world coordinates (0 in space)
-    ---@return table
+    ---@return table value The local vertical vector in world coordinates in meters
     function self.getWorldVertical() end
 
     --- Returns the id of the current close stellar body
-    ---@return integer
+    ---@return integer value The id of the current close stellar body
     function self.getCurrentPlanetId() end
 
 
     --- Returns the core's current stress, destroyed when reaching max stress
-    ---@return number
+    ---@return number value The stress the core absorbed
     function self.getCoreStress() end
 
     --- Returns the maximal stress the core can bear before it gets destroyed
-    ---@return number
+    ---@return number value The maximal stress before destruction
     function self.getMaxCoreStress() end
 
     --- Returns the core's current stress to max stress ratio
-    ---@return number
+    ---@return number value The stress ratio, between 0 for no stress and 1 for destruction
     function self.getCoreStressRatio() end
 
     --- Emitted when core unit stress changed
@@ -283,7 +283,7 @@ function CoreUnit()
     ---@param y number The y-coordinate in the construct in meters. 0 = center
     ---@param z number The z-coordinate in the construct in meters. 0 = center
     ---@param orientation string Orientation of the number. Possible values are "front", "side"
-    ---@return integer
+    ---@return integer index An index that can be used later to delete or move the item, -1 if error or maxnumber reached
     function self.spawnNumberSticker(nb,x,y,z,orientation) end
 
     --- Spawns an arrow sticker in the 3D world, with coordinates relative to the construct
@@ -291,12 +291,12 @@ function CoreUnit()
     ---@param y number the y-coordinate in the construct in meters. 0 = center
     ---@param z number The z-coordinate in the construct in meters. 0 = center
     ---@param orientation string Orientation of the arrow. Possible values are "up", "down", "north", "south", "east", "west"
-    ---@return integer
+    ---@return integer index An index that can be used later to delete or move the item, -1 if error or max number reached
     function self.spawnArrowSticker(x,y,z,orientation) end
 
     --- Delete the referenced sticker
     ---@param index integer Index of the sticker to delete
-    ---@return integer
+    ---@return integer success 1 in case of success, 0 otherwise
     function self.deleteSticker(index) end
 
     --- Move the referenced sticker
@@ -304,7 +304,7 @@ function CoreUnit()
     ---@param x number The x-coordinate in the construct in meters. 0 = center
     ---@param y number The y-coordinate in the construct in meters. 0 = center
     ---@param z number The z-coordinate in the construct in meters. 0 = center
-    ---@return integer
+    ---@return integer success 1 in case of success, 0 otherwise
     function self.moveSticker(index,x,y,z) end
     
     --- Rotate the referenced sticker.
@@ -312,9 +312,9 @@ function CoreUnit()
     ---@param angle_x number Rotation along the x-axis in degrees
     ---@param angle_y number Rotation along the y-axis in degrees
     ---@param angle_z number Rotation along the z-axis in degrees
-    ---@return integer
+    ---@return integer success 1 in case of success, 0 otherwise
     function self.rotateSticker(index,angle_x,angle_y,angle_z) end
 
 
-    return setmetatable(self, CoreUnit)
+    return setmetatable(self, coreUnit)
 end

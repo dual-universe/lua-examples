@@ -11,8 +11,8 @@
 require("element")
 
 ---@class Firework
-Firework = {}
-Firework.__index = Firework
+firework = {}
+firework.__index = firework
 function Firework()
     local self = Element()
 
@@ -30,7 +30,7 @@ function Firework()
     function self.setExplosionDelay(delay) end
 
     --- Returns the delay before the launched Fireworks explodes
-    ---@return number
+    ---@return number value The delay before explosion in seconds
     function self.getExplosionDelay() end
 
     --- Set the speed at which the firework will be launched (impacts its altitude, depending on the local gravity).
@@ -38,7 +38,7 @@ function Firework()
     function self.setLaunchSpeed(speed) end
 
     --- Returns the speed at which the firework will be launched
-    ---@return number
+    ---@return number value The launch speed in m/s
     function self.getLaunchSpeed() end
 
     --- Set the type of launched firework (will affect which firework is picked in the attached Container)
@@ -46,7 +46,7 @@ function Firework()
     function self.setType(type) end
 
     --- Returns the type of launched firework
-    ---@return integer
+    ---@return integer value The type index of the firework (Ball = 1, Ring = 2, Palmtree = 3, Shower = 4)
     function self.getType() end
 
     --- Set the color of the launched firework (will affect which firework is picked in the attached Container)
@@ -54,9 +54,9 @@ function Firework()
     function self.setColor(color) end
 
     --- Returns the color of the launched firework
-    ---@return integer
+    ---@return integer value The color index of the firework (Blue = 1, Gold = 2, Green = 3, Purple = 4, Red = 5, Silver = 6)
     function self.getColor() end
 
 
-    return setmetatable(self, Firework)
+    return setmetatable(self, firework)
 end

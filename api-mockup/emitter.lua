@@ -12,8 +12,8 @@ require("element")
 
 --- This unit is capable of emitting messages on a channel
 ---@class Emitter
-Emitter = {}
-Emitter.__index = Emitter
+emitter = {}
+emitter.__index = emitter
 function Emitter()
     local self = Element()
 
@@ -23,7 +23,7 @@ function Emitter()
     function self.send(channel,message) end
 
     --- Returns the emitter range
-    ---@return number
+    ---@return number value The range in meters
     function self.getRange() end
 
     --- Emitted when the emitter successfully sent a message
@@ -31,5 +31,5 @@ function Emitter()
     ---@param message string The transmitted message
     self.onSent = Event:new()
 
-    return setmetatable(self, Emitter)
+    return setmetatable(self, emitter)
 end

@@ -14,8 +14,8 @@ require("element")
 --- Screens can display any HTML code or text message, and you can use them to create visually interactive
 --- feedback for your running Lua script by connecting one or more of them to your Control Unit
 ---@class Screen
-Screen = {}
-Screen.__index = Screen
+screen = {}
+screen.__index = screen
 function Screen()
     local self = Element()
 
@@ -59,7 +59,7 @@ function Screen()
     ---@param y number Vertical position, as a percentage (between 0 and 100) of the screen height
     ---@param fontSize number Text font size, as a percentage of the screen width
     ---@param text string The text to display
-    ---@return integer
+    ---@return integer index  An integer ID that can be used later to update/remove the added Element
     function self.addText(x,y,fontSize,text) end
 
     --- Displays the given text centered in the screen with a font to maximize its visibility
@@ -89,7 +89,7 @@ function Screen()
     ---@param x number Horizontal position, as a percentage (between 0 and 100) of the screen width
     ---@param y number Vertical position, as a percentage (between 0 and 100) of the screen height
     ---@param html string The HTML content to display, which can contain SVG html elements to make drawings
-    ---@return integer
+    ---@return integer index An integer ID that can be used later to update/remove the added Element
     function self.addContent(x,y,html) end
 
     --- Displays SVG code (anything that fits within a <svg> section), which overrides any preexisting content
@@ -131,5 +131,5 @@ function Screen()
     --- Clear the screen
     function self.clear() end
 
-    return setmetatable(self, Door)
+    return setmetatable(self, screen)
 end

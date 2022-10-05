@@ -11,25 +11,25 @@
 require("element")
 
 ---@class Container
-Container = {}
-Container.__index = Container
+container = {}
+container.__index = container
 function Container()
     local self = Element()
 
     --- Returns the mass of the container element(as if it were empty).
-    ---@return number
+    ---@return number valeu The mass of the container in kilograms
     function self.getSelfMass() end
 
     --- Returns the container content mass(the sum of the mass of all items it contains).
-    ---@return number
+    ---@return number value The total mass of the contents of the container, excluding the container's own mass, in kilograms
     function self.getItemsMass() end
     
     --- Returns the container content volume(the sum of the volume of all items it contains).
-    ---@return number
+    ---@return number value The total volume of the contents of the container in liters
     function self.getItemsVolume() end
     
     --- Returns the maximum volume of the container.
-    ---@return number
+    ---@return number value The maximum volume of the container in liters
     function self.getMaxVolume() end
 
     --- Returns a table describing the contents of the container, as a pair itemId and quantity per slot.
@@ -50,5 +50,5 @@ function Container()
     self.storageAcquired = Event:new()
     self.storageAcquired:addAction(function(self) error("Container.storageAcquired() event is deprecated, use Container.onContentUpdate() instead.") end, true, 1)
 
-    return setmetatable(self, Container)
+    return setmetatable(self, container)
 end

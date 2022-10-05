@@ -34,9 +34,9 @@ For example:
 
 -   `render.lua`  : code for the Lua screen's renderscript.
 -   `controlunit.json`  : string for use with control units using the  `Paste Lua configuration from clipboard`  functionality in game.
--   `system_onstart.lua`  : code for the  `onStart`  filter of the  `system`  slot
--   `system_onupdate.lua`: code for the  `onUpdate`  filter in the  `system`  slot
--   `unit_ontimer1.lua`  : code for the first  `onTimer`  filter in the  `unit`  slot
+-   `system_onStart.lua`  : code for the  `onStart`  filter of the  `system`  slot
+-   `system_onuUpdate.lua`: code for the  `onUpdate`  filter in the  `system`  slot
+-   `unit_onTimer1.lua`  : code for the first  `onTimer`  filter in the  `unit`  slot
 -   ...etc
 
 Then, by following the instructions given, you can install these as required.

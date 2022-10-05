@@ -14,10 +14,13 @@ These examples are intended to show you how to do interactions between screens a
 - Firstly, for the screen unit part:
   - Place the screen unit.
   - Copy and paste the [render.lua](render.lua) into the screen content in Lua mode.
-- Then, paste the [controlunit.json](controlunit.json) file on your programming board with contextual menu, or proceed manualy as below:
-  - Place the programming board.
-  - Create a start filter in the unit slot.
-  - Paste the content of [unit_start.lua](unit_start.lua) code in.
-  - Create a tick filter in the unit slot. Set the timerId argument as `output`.
-  - Paste the content of [unit_tick1.lua](unit_tick1.lua) code in.
-- Finaly link the three lights and screen to the programming board and name the slots in the Lua editor of the programming board as `lightRed`, `lightGreen`,`lightBlue` and finaly, the screen as `screen`.
+- Place the programming board.
+- Then, link the three lights and screen to the programming board with the link tool.
+- Finaly, paste the [controlunit.json](controlunit.json) file on your programming board with contextual menu, OR proceed manualy as below:
+  - Edit the Lua content of the programming board
+  - Name the slots in the Lua editor of the programming board as `lightRed`, `lightGreen`,`lightBlue` and finaly, the screen as `screen`.
+  - Create an onStart filter in the unit slot.
+  - Paste the content of [unit_onStart.lua](unit_onStart.lua) code in.
+  - Create an onOutputChanged filter in the screen slot. Set the output argument as `*` (whitecard on filters).
+  - Paste the content of [screen_onOutputChanged.lua](screen_onOutputChanged.lua) code in.
+

@@ -1,4 +1,4 @@
--- Add to programming board's screen.mouseDown(*,*).
+-- Add to programming board's screen.onMouseDown(*,*).
 
 -- Select message randomly
 local message = _messages[math.random(1, #_messages)]

@@ -12,8 +12,8 @@ require("element")
 
 --- An industry is a machine designed to produce different types of elements
 ---@class Industry
-Industry = {}
-Industry.__index = Industry
+industry = {}
+industry.__index = industry
 function Industry()
     local self = Element()
 
@@ -53,17 +53,17 @@ function Industry()
     function self.getInfo() end
 
     --- Get the count of completed cycles since the player started the unit
-    ---@return integer
+    ---@return integer value The count of completed cycles since startup
     function self.getCyclesCompleted() end
     ---@deprecated Industry.getCycleCountSinceStartup() is deprecated, use Industry.getCyclesCompleted() instead.
     function self.getCycleCountSinceStartup() error("Industry.getCycleCountSinceStartup() is deprecated, use Industry.getCyclesCompleted() instead.") end
 
     --- Returns the efficiency of the industry
-    ---@return number
+    ---@return number value The efficiency rate between 0 and 1
     function self.getEfficiency() end
 
     --- Returns the time elapsed in seconds since the player started the unit for the latest time
-    ---@return number
+    ---@return number value The time elapsed in seconds
     function self.getUptime() end
 
 
@@ -115,5 +115,5 @@ function Industry()
     --- Emitted when the schematic bank content is updated(bank update or after a manual request made with updateBank())
     self.onBankUpdate = Event:new()
 
-    return setmetatable(self, Industry)
+    return setmetatable(self, industry)
 end

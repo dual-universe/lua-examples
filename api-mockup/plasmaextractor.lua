@@ -12,8 +12,8 @@ require("element")
 
 --- Extracts a regular amount of plasma from the space surrouding an alien core
 ---@class PlasmaExtractor
-PlasmaExtractor = {}
-PlasmaExtractor.__index = PlasmaExtractor
+plasmaExtractor = {}
+plasmaExtractor.__index = plasmaExtractor
 function PlasmaExtractor()
     local self = Element()
 
@@ -22,7 +22,7 @@ function PlasmaExtractor()
     function self.getStatus() end
 
     --- Returns the remaining time of the current batch extraction process.
-    ---@return number
+    ---@return number value The remaining time in seconds
     function self.getRemainingTime() end
 
     --- Returns the list of available plasma pools
@@ -43,5 +43,5 @@ function PlasmaExtractor()
     self.onStopped = Event:new()
 
 
-    return setmetatable(self, PlasmaExtractor)
+    return setmetatable(self, plasmaExtractor)
 end

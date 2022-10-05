@@ -21,7 +21,7 @@ function Databank()
     function self.clear() end
 
     --- Returns the number of keys that are stored inside the Databank
-    ---@return integer
+    ---@return integer value The number of keys
     function self.getNbKeys() end
 
     --- Returns all the keys in the Databank
@@ -37,7 +37,7 @@ function Databank()
 
     --- Remove the given key if the key is present in the Databank
     ---@param key string The key used to store a value
-    ---@return integer value 1 if the key has been successfully removed, 0 otherwise
+    ---@return integer success 1 if the key has been successfully removed, 0 otherwise
     function self.clearValue(key) end
 
     --- Stores a string value at the given key

@@ -14,35 +14,35 @@ require("engine")
 --- Airfoils are aerodynamic elements that produce a lift force according to their aerodynamic profile ;
 --- as wings, stabilizers and ailerons
 ---@class Airfoil
-Airfoil = {}
-Airfoil.__index = Airfoil
+airfoil = {}
+airfoil.__index = airfoil
 function Airfoil()
     local self = Engine()
 
     --- Returns the current lift of the airfoil
-    ---@return number
+    ---@return number value The current lift of the airfoil in newtons
     function self.getLift() end
     ---@deprecated Airfoil.getThrust() is deprecated, use Airfoil.getLift().
     function self.getThrust() error("Airfoil.getThrust() is deprecated, use Airfoil.getLift().") end
 
     --- Gives the maximum lift that the airfoil can generate, under optimal conditions.
     --- Note that the actual maximum lift will most of the time be less than this value
-    ---@return number
+    ---@return number value The maximum lift of the airfoil in newtons
     function self.getMaxLift() end
     ---@deprecated Airfoil.getMaxThrustBase() is deprecated, use Airfoil.getMaxLift().
     function self.getMaxThrustBase() error("Airfoil.getMaxThrustBase() is deprecated, use Airfoil.getMaxLift().") end
 
     --- Returns the current drag of the airfoil
-    ---@return number
+    ---@return number value The current drag of the airfoil in newtons
     function self.getDrag() end
 
     --- The ratio between lift and drag, depending of the aerodynamic profile of the airfoil
-    ---@return number
+    ---@return number value The ratio between lift and drag
     function self.getDragRatio() end
 
     --- Returns the minimal lift the airfoil can deliver at the moment (can be higher than zero),
     --- which will depend on various conditions like atmospheric density, obstruction, orientation, etc
-    ---@return number
+    ---@return number value The current minimal airfoil lift in newtons
     function self.getCurrentMinLift() end
     ---@deprecated Airfoil.getMinThrust() is deprecated, use Airfoil.getCurrentMinLift().
     function self.getMinThrust() error("Airfoil.getMinThrust() is deprecated, use Airfoil.getCurrentMinLift().") end
@@ -50,53 +50,53 @@ function Airfoil()
     --- Returns the maximal lift the aifoil can deliver at the moment, which might depend on
     --- various conditions like atmospheric density, obstruction, orientation, etc. The actual lift will be
     --- anything below this maximum lift, which defines the current max capability of the airfoil
-    ---@return number
+    ---@return number value The current maximal airfoil lift in newtons
     function self.getCurrentMaxLift() end
     ---@deprecated Airfoil.getMaxThrust() is deprecated, use Airfoil.getCurrentMaxLift().
     function self.getMaxThrust() error("Airfoil.getMaxThrust() is deprecated, use Airfoil.getCurrentMaxLift().") end
 
     --- Returns the ratio between the current maximum lift and the optimal maximum lift
-    ---@return number
+    ---@return number value Usually 1 but can be lower for certain airfoils
     function self.getMaxLiftEfficiency() end
     ---@deprecated Airfoil.getMaxThrustEfficiency() is deprecated, use Airfoil.getMaxLiftEfficiency().
     function self.getMaxThrustEfficiency() error("Airfoil.getMaxThrustEfficiency() is deprecated, use Airfoil.getMaxLiftEfficiency().") end
 
     --- Returns the airfoil lift direction in construct local coordinates
-    ---@return table
+    ---@return table value The airfoil lift direction vector in construct local coordinates
     function self.getLiftAxis() end
     
     --- Returns the airfoil torque axis in construct local coordinates
-    ---@return table
+    ---@return table value The airfoil torque axis vector in construct local coordinates
     function self.getTorqueAxis() end
 
     --- Returns the airfoil lift direction in world coordinates
-    ---@return table
+    ---@return table value The airfoil lift direction vector in world coordinates
     function self.getWorldLiftAxis() end
     ---@deprecated Airfoil.thrustAxis() is deprecated, use Airfoil.getWorldLiftAxis().
     function self.thrustAxis() error("Airfoil.thrustAxis() is deprecated, use Airfoil.getWorldLiftAxis().") end
 
     --- Returns the adjustor torque axis in world coordinates
-    ---@return table 
+    ---@return table value The airfoil torque axis vector in world coordinates
     function self.getWorldTorqueAxis() end
     ---@deprecated Airfoil.torqueAxis() is deprecated, use Airfoil.getWorldTorqueAxis().
     function self.torqueAxis() error("Airfoil.torqueAxis() is deprecated, use Airfoil.getWorldTorqueAxis().") end
 
     --- Checks if the airfoil is stalled
-    ---@return integer
+    ---@return integer value 1 if the airfoil is stalled
     function self.isStalled() end
 
     --- Returns the airfoil stall angle
-    ---@return number
+    ---@return number value The stall angle of the airfoil in degrees
     function self.getStallAngle() end
 
     --- Returns the minimum angle to produce the maximum lift of the airfoil
     --- Note that the airfoil will produce lift at a lower angle but not optimally
-    ---@return number
+    ---@return number value The minimum angle of the airfoil in degrees
     function self.getMinAngle() end
 
     --- Returns the maximum angle to produce the maximum lift of the airfoil
     --- Note that the airfoil will produce lift at a higher angle but not optimally
-    ---@return number
+    ---@return number value The maximum angle of the airfoil in degrees
     function self.getMaxAngle() end
 
     ---@deprecated Airfoil.activate() is deprecated.
@@ -124,5 +124,5 @@ function Airfoil()
     ---@deprecated Airfoil.getT50() is deprecated.
     function self.getT50() error("Airfoil.getT50() is deprecated.") end
 
-    return setmetatable(self, Airfoil)
+    return setmetatable(self, airfoil)
 end

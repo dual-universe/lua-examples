@@ -14,10 +14,10 @@ require("brakeengine")
 --- Space brakes are retro-rocket elements designed to produce thrust opposite to the movement of a construct in space, acting as a space brake.
 --- It that can be used to slow down your construct.
 ---@class SpaceBrake
-SpaceBrake = {}
-SpaceBrake.__index = SpaceBrake
+spaceBrake = {}
+spaceBrake.__index = spaceBrake
 function SpaceBrake()
     local self = BrakeEngine()
 
-    return setmetatable(self, SpaceBrake)
+    return setmetatable(self, spaceBrake)
 end
