@@ -249,8 +249,8 @@ function CoreUnit()
     ---@return table value The local gravity field vector in world coordinates in m/s2
     function self.getWorldGravity() end
 
-    --- Returns the vertical unit vector along gravity, in world coordinates (0 in space)
-    ---@return table value The local vertical vector in world coordinates in meters
+    --- Returns the gravity unit vector, in world coordinates ({0,0,0} in space)
+    ---@return table value The local gravity unit vector in world coordinates in meters
     function self.getWorldVertical() end
 
     --- Returns the id of the current close stellar body
