@@ -10,7 +10,7 @@
 --  - event
 -----------------------------------------------------------------------------------
 
-local getTime = getTime or DUSystem.getUtcTime()
+local getTime = getTime or DUSystem.getUtcTime
 
 local function isCallable(call)
     if type(call) == "table" then
