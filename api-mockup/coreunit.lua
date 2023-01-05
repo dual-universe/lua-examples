@@ -46,7 +46,7 @@ function CoreUnit()
     function self.getWorldAirFrictionAcceleration() error("CoreUnit.getWorldAirFrictionAcceleration() is deprecated, use construct.getWorldAirFrictionAcceleration() instead.") end
     ---@deprecated CoreUnit.getWorldAirFrictionAngularAcceleration() is deprecated, use construct.getWorldAirFrictionAngularAcceleration() instead.
     function self.getWorldAirFrictionAngularAcceleration() error("CoreUnit.getWorldAirFrictionAngularAcceleration() is deprecated, use construct.getWorldAirFrictionAngularAcceleration() instead.") end
-    ---@deprecated CoreUnit.getSchematicInfo(schematicId) is deprecated, use construct.getSchematic(id) instead.
+    ---@deprecated CoreUnit.getSchematicInfo(schematicId) is deprecated, use System.getSchematic(id) instead.
     function self.getSchematicInfo(schematicId) error("CoreUnit.getSchematicInfo() is deprecated, use System.getSchematic(id) instead.") end
     ---@deprecated CoreUnit.getAngularVelocity() is deprecated, use construct.getAngularVelocity() instead.
     function self.getAngularVelocity() error("CoreUnit.getAngularVelocity() is deprecated, use construct.getAngularVelocity() instead.") end
