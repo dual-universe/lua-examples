@@ -72,7 +72,6 @@ local function setView( planets, id)
         end
     end
     
-    logMessage(i)
     if _mode == 1 then
         _viewX = 470-(i*350)
     else
@@ -110,6 +109,47 @@ local loc = {
     noSatellite = {"This stellar body does not have satellites.","Ce corps stellaire ne dispose pas de satellites.","Dieser Sternkörper hat keine Satelliten."}
 }
 
+--localisation names for ore
+local _ores={
+    --T1 Ores
+    ["299255727"]={"Coal","Charbon","Kohle"},
+    ["4234772167"]={"Hematite","Hématite","Hämatit"},
+    ["262147665"]={"Bauxite","Bauxite","Bauxit"},
+    ["3724036288"]={"Quartz","Quartz","Quarz"},
+    --T2 Ores
+    ["2289641763"]={"Malachite","Malachite","Malachit"},
+    ["3086347393"]={"Limestone","Calcaire","Kalkstein"},
+    ["343766315"]={"Natron","Natron","Soda"},
+    ["2029139010"]={"Chromite","Chromite","Chromit"},
+    --T3 Ores
+    ["1065079614"]={"Garnierite","Garniérite","Garnierit"},
+    ["3837858336"]={"Petalite","Pétalite","Petalit"},
+    ["4041459743"]={"Pyrite","Pyrite","Pyrit"},
+    ["1050500112"]={"Acanthite","Acanthite","Akanthit"},
+    --T4 Ores
+    ["1467310917"]={"Cryolite","Cryolite","Kryolith"},
+    ["3546085401"]={"Cobaltite","Cobaltite","Cobaltit"},
+    ["1866812055"]={"Gold nuggets","Pépites d'or","Goldnuggets"},
+    ["271971371"]={"Kolbeckite","Kolbeckite","Kolbeckit"},
+    --T5 Ores
+    ["789110817"]={"Columbite","Columbite","Columbit"},
+    ["3934774987"]={"Rhodonite","Rhodonite","Rhodonit"},
+    ["629636034"]={"Ilmenite","Ilménite","Ilmenit"},
+    ["2162350405"]={"Vanadinite","Vanadinite","Vanadinit"}
+}
+
+--replacing atlas ores ID by Names
+for ks,s in pairs(atlas) do
+    for k,planet in pairs(s) do
+        if planet.ores then
+            for i,ore_id in ipairs(planet.ores) do
+                if _ores[tostring(ore_id)] then
+                    atlas[ks][k].ores[i] = _ores[tostring(ore_id)] or tostring(ore_id)
+                end
+            end
+        end
+    end
+end
 
 --# Initialization
 -- Define default values on globals parameters
