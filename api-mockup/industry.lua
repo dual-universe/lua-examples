@@ -46,6 +46,7 @@ function Industry()
     --- Get the current running state of the industry
     ---@return integer value (Stopped = 1, Running = 2, Jammed missing ingredient = 3, Jammed output full = 4, Jammed no output container = 5, Pending = 6, Jammed missing schematics = 7)
     function self.getState() end
+    ---@deprecated Industry.getStatus() is deprecated, use Industry.getState() instead.
     function self.getStatus() error("Industry.getStatus() is deprecated, use Industry.getState() instead.") end
 
     --- Returns the complete information of the industry
