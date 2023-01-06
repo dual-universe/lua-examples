@@ -68,7 +68,7 @@ function Weapon()
 
 
     --- Returns the current weapon status
-    ---@return integer status The current status of the weapon (Idle = 1, Firing = 2, Reloading = 3, Unloading = 4)
+    ---@return integer status The current status of the weapon (Idle = 1, Firing = 2, Stopping = 3, Reloading = 4, Unloading = 5, FiringBlocked = 6)
     function self.getStatus() end
 
     --- Returns the local id of the container linked to the weapon
