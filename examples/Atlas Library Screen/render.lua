@@ -81,11 +81,11 @@ local function setView( planets, id)
     end
 end
 
-local function isNotThadesSatellite(planet)
+local function isThadesAsteroid(planet)
     if planet.systemId == 3 and planet.id >= 400 then
-        return false
+        return true
     end
-    return true
+    return false
 end
 
 
@@ -178,7 +178,7 @@ if not _init then
             if b.satellites then
                 local notSat = {}
                 for _,sat in ipairs(b.satellites) do
-                    if isNotThadesSatellite(system[sat]) then
+                    if not isThadesAsteroid(system[sat]) then
                         table.insert(notSat, sat)
                     end
                 end
