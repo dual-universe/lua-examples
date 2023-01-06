@@ -81,6 +81,13 @@ local function setView( planets, id)
     end
 end
 
+local function isNotThadesSatellite(planet)
+    if planet.systemId == 3 and planet.id >= 400 then
+        return false
+    end
+    return true
+end
+
 
 --# Settings
 -- showCursor : Set at true to display a cursor
@@ -169,6 +176,13 @@ if not _init then
     for _,b in pairs(system) do
         if b.systemId == 0 then
             if b.satellites then
+                local notSat = {}
+                for _,sat in ipairs(b.satellites) do
+                    if isNotThadesSatellite(system[sat]) then
+                        table.insert(notSat, sat)
+                    end
+                end
+                b.satellites = notSat
                 table.sort (b.satellites, function (b1, b2) return system[b1].positionInSystem < system[b1].positionInSystem end )
             end
             
