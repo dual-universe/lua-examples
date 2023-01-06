@@ -176,13 +176,13 @@ if not _init then
     for _,b in pairs(system) do
         if b.systemId == 0 then
             if b.satellites then
-                local notSat = {}
+                local moons = {}
                 for _,sat in ipairs(b.satellites) do
                     if not isThadesAsteroid(system[sat]) then
-                        table.insert(notSat, sat)
+                        table.insert(moons, sat)
                     end
                 end
-                b.satellites = notSat
+                b.satellites = moons
                 table.sort (b.satellites, function (b1, b2) return system[b1].positionInSystem < system[b1].positionInSystem end )
             end
             
