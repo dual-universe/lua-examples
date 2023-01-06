@@ -81,6 +81,13 @@ local function setView( planets, id)
     end
 end
 
+local function isThadesAsteroid(planet)
+    if planet.systemId == 3 and planet.id >= 400 then
+        return true
+    end
+    return false
+end
+
 
 --# Settings
 -- showCursor : Set at true to display a cursor
@@ -169,6 +176,13 @@ if not _init then
     for _,b in pairs(system) do
         if b.systemId == 0 then
             if b.satellites then
+                local moons = {}
+                for _,sat in ipairs(b.satellites) do
+                    if not isThadesAsteroid(system[sat]) then
+                        table.insert(moons, sat)
+                    end
+                end
+                b.satellites = moons
                 table.sort (b.satellites, function (b1, b2) return system[b1].positionInSystem < system[b1].positionInSystem end )
             end
             
