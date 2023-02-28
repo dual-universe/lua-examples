@@ -29,6 +29,9 @@ function Construct()
     --- Returns the creator entity
     ---@return integer entity The owner entity table with fields {[int] id, [bool] isOrganization} describing the owner. Use system.getPlayerName(id) and system.getOrganization(id) to retrieve info about it
     function self.getCreator() end
+    --- Returns the local id of the current active schematic container. nil if none has been declared
+    ---@return interger the local id of the current active schematic container
+    function self.getSchematicContainerId() end
 
 
     --- Checks if the construct is currently warping
