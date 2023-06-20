@@ -28,7 +28,7 @@ function ManualButton()
     self.released:addAction(function(self) error("ManualButton.released() event is deprecated, use ManualButton.onReleased() instead.") end, true, 1)
 
     --- Checks if the manual button is down
-    ---@return integer value 1 if the manual button is down
+    ---@return boolean value True if the manual button is down, false otherwise
     function self.isDown() end
     ---@deprecated ManualButton.getState() is deprecated, use ManualButton.isDown() instead.
     function self.getState() error("ManualButton.getState() is deprecated, use ManualButton.isDown() instead.") end

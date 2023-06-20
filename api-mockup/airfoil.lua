@@ -82,7 +82,7 @@ function Airfoil()
     function self.torqueAxis() error("Airfoil.torqueAxis() is deprecated, use Airfoil.getWorldTorqueAxis().") end
 
     --- Checks if the airfoil is stalled
-    ---@return integer value 1 if the airfoil is stalled
+    ---@return boolean value True if the airfoil is stalled, false otherwise
     function self.isStalled() end
 
     --- Returns the airfoil stall angle

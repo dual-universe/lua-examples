@@ -17,7 +17,7 @@ function BaseShieldGenerator()
     local self = Element()
 
     --- Emitted when we started or stopped the shield generator
-    ---@param active integer 1 if the element was activated, 0 otherwise
+    ---@param active boolean True if the element was activated, false otherwise
     self.onToggled = Event:new()
     self.toggled = Event:new()
     self.toggled:addAction(function(self, active) error("BaseShieldGenerator.toggled(active) event is deprecated") end, true, 1)
@@ -60,10 +60,8 @@ function BaseShieldGenerator()
     function self.toggle() end
 
     --- Returns the activation state of the shield
-    ---@return integer value The state of the shield; 1 when the shield is active, 0 otherwise
-    function self.isActive() end
-    ---@deprecated BaseShieldGenerator.getState() is deprecated, use BaseShieldGenerator.isActive() instead.
-    function self.getState() error("BaseShieldGenerator.getState() is deprecated, use BaseShieldGenerator.isActive() instead.") end
+    ---@return integer value True when the shield is active, false otherwise
+    function self.getState() end
 
     --- Returns the current hitpoints of the shield
     ---@return number value The current hitpoints of the shield
@@ -82,7 +80,7 @@ function BaseShieldGenerator()
     ---@param electromagnetic number Electromagnetic damage resistance
     ---@param kinetic number Kinetic damage resistance
     ---@param thermic number Thermic damage resistance
-    ---@return integer success 1 if resistance was distributed, 0 if an error occurred
+    ---@return boolean success True if resistance was distributed, false if an error occurred
     function self.setResistances(antimatter,electromagnetic,kinetic,thermic) end
 
     --- Returns time after which adjusting resistances is possible again
@@ -118,7 +116,7 @@ function BaseShieldGenerator()
     function self.getStressHitpointsRaw() end
 
     --- Returns whether the base shield is currently in lockdown
-    ---@return integer value The base shield lockdown state; 1 when the shield is in lockdown, 0 otherwise
+    ---@return boolean value True if the base shield is in lockdown, false otherwise
     function self.inLockdown() end
 
     --- Returns the remaining time of the base shield lockdown
@@ -131,7 +129,7 @@ function BaseShieldGenerator()
 
     --- Set hour since midnight for the preferred lockdown exit
     ---@param hour integer Preferred lockdown exit hour UTC (0-23)
-    ---@return integer success 1 if lockdown exit was set, 0 if an error occurred
+    ---@return boolean success True if lockdown exit was set, false if an error occurred
     function self.setLockdownExitTime(hour) end
     
     return setmetatable(self, baseShieldGenerator)

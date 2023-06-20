@@ -30,14 +30,14 @@ function Databank()
     ---@deprecated Databank.getKeys() is deprecated, use Databank.getKeyList().
     function self.getKeys() error("Databank.getKeys() is deprecated, use Databank.getKeyList().") end
 
-    --- Returns 1 if the key is present in the Databank, 0 otherwise
+    --- Checks if the key is present in the Databank
     ---@param key string The key used to store a value
-    ---@return integer value 1 if the key exists and 0 otherwise
+    ---@return boolean value True if the key exists, false otherwise
     function self.hasKey(key) end
 
     --- Remove the given key if the key is present in the Databank
     ---@param key string The key used to store a value
-    ---@return integer success 1 if the key has been successfully removed, 0 otherwise
+    ---@return boolean success True if the key has been successfully removed, false otherwise
     function self.clearValue(key) end
 
     --- Stores a string value at the given key

@@ -28,7 +28,7 @@ function LaserDetector()
     self.laserRelease:addAction(function(self) error("LaserDetector.laserRelease() event is deprecated, use LaserDetector.onLoss() instead.") end, true, 1)
 
     --- Checks if any laser is hitting the detector
-    ---@return integer value 1 if a laser is hitting the detector
+    ---@return boolean value True if a laser is hitting the detector, false otherwise
     function self.isHit() end
     ---@deprecated LaserDetector.getState() is deprecated, use LaserDetector.isHit() instead.
     function self.getState() error("LaserDetector.getState() is deprecated, use LaserDetector.isHit() instead.") end

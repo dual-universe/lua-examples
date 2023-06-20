@@ -24,7 +24,7 @@ function Light()
     function self.deactivate() end
 
     --- Checks if the light is on
-    ---@return integer value 1 if the light is on
+    ---@return boolean value True if the light is on, false otherwise
     function self.isActive() end
     ---@deprecated Light.getState() is deprecated, use Light.isActive() instead.
     function self.getState() error("Light.getState() is deprecated, use Light.isActive() instead.") end
@@ -52,7 +52,7 @@ function Light()
     function self.setBlinkingState(state) end
 
     --- Checks if the light blinking is enabled
-    ---@return integer value 1 if the light blinking is enabled
+    ---@return boolean value True if the light blinking is enabled, false otherwise
     function self.isBlinking() end
 
     --- Returns the light 'on' blinking duration

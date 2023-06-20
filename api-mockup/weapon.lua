@@ -57,10 +57,10 @@ function Weapon()
     function self.getMaxAmmo() end
 
     --- Checks if the weapon is out of ammo
-    ---@return integer value 1 the weapon is out of ammo
+    ---@return boolean value True if the weapon is out of ammo, false otherwise
     function self.isOutOfAmmo() end
 
-    --- Returns 1 if the weapon is not broken and compatible with the construct size
+    --- Checks if the weapon is operational
     ---@return integer state 1 if the weapon is operational, otherwise 0 = broken, -1 = incompatible size
     function self.getOperationalState() end
     ---@deprecated Weapon.isOperational() is deprecated, use Weapon.getOperationalState() instead.

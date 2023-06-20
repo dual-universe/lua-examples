@@ -27,15 +27,14 @@ function Transponder()
     function self.toggle() end
 
     --- Checks if the transponder is active
-    ---@return integer value 1 when the transponder is active, 0 otherwise
+    ---@return boolean value True if the transponder is active, false otherwise
     function self.isActive() end
     ---@deprecated Transponder.getState() is deprecated, use Transponder.isActive().
     function self.getState() error("Transponder.getState() is deprecated, use Transponder.isActive().") end
 
-    --- Set the tags list with up to 8 entries. Returns 1 if the application was successful, 0 if the tag
-    --- format is invalid.
+    --- Set the tags list with up to 8 entries
     ---@param tags table List of up to 8 transponder tag strings
-    ---@return integer success 1 if transponder tags were set, 0 if an error occurred
+    ---@return boolean success True if transponder tags were set, false if an error occurred
     function self.setTags(tags) end
 
     --- Returns the tag list
@@ -43,7 +42,7 @@ function Transponder()
     function self.getTags() end
 
     --- Emitted when the transponder is started or stopped
-    ---@param active integer 1 if the element was activated, 0 otherwise
+    ---@param active boolean True if the element was activated, false otherwise
     self.onToggled = Event:new()
     self.toggled = Event:new()
     self.toggled:addAction(function(self,active) error("Transponder.toggled(active) event is deprecated, use Transponder.onToggled(active) instead.") end, true, 1)

@@ -79,10 +79,10 @@ function ControlUnit()
     function self.getClosestPlanetInfluence() end
 
     --- Checks if the control unit is protected by DRM
-    ---@return integer value 1 if the control unit is protected by DRM
+    ---@return boolean value True if the control unit is protected by DRM, false otherwise
     function self.hasDRM() end
     --- Check if the construct is remote controlled
-    ---@return integer value 1 if the construct is remote controlled
+    ---@return boolean value True if the construct is remote controlled, false otherwise
     function self.isRemoteControlled() end
 
 
@@ -94,8 +94,8 @@ function ControlUnit()
     ---@param taglist string Comma (for union) or space (for intersection) separated list of tags. You can set tags directly on the engines in the right-click menu
     ---@param acceleration table The desired acceleration expressed in world coordinates in m/s2
     ---@param angularAcceleration table The desired angular acceleration expressed in world coordinates in rad/s2
-    ---@param keepForceCollinearity boolean Forces the resulting acceleration vector to be collinear to the acceleration parameter
-    ---@param keepTorqueCollinearity boolean Forces the resulting angular acceleration vector to be collinear to the angular acceleration parameter
+    ---@param keepForceCollinearity boolean True to force the resulting acceleration vector to be collinear to the acceleration parameter
+    ---@param keepTorqueCollinearity boolean True to force the resulting angular acceleration vector to be collinear to the angular acceleration parameter
     ---@param priority1SubTags string Comma (for union) or space (for intersection) separated list of tags of included engines to use as priority 1
     ---@param priority2SubTags string Comma (for union) or space (for intersection) separated list of tags of included engines to use as priority 2
     ---@param priority3SubTags string Comma (for union) or space (for intersection) separated list of tags of included engines to use as priority 3
@@ -148,17 +148,17 @@ function ControlUnit()
 
     --- Check if a mouse control scheme is selected
     --- This function must be used on a piloting controller
-    ---@return integer value 1 if a mouse control scheme is selected
+    ---@return boolean value True if a mouse control scheme is selected, false otherwise
     function self.isMouseControlActivated() end
 
     --- Check if the mouse control direct scheme is selected
     --- This function must be used on a piloting controller
-    ---@return integer value 1 if a mouse control direct scheme is selected
+    ---@return boolean value True if a direct mouse control scheme is selected, false otherwise
     function self.isMouseDirectControlActivated() end
 
     --- Check if the mouse control virtual joystick scheme is selected
     --- This function must be used on a piloting controller
-    ---@return integer value 1 if a mouse control virtual joystick scheme is selected
+    ---@return boolean value True if a mouse control virtual joystick scheme is selected, false otherwise
     function self.isMouseVirtualJoystickActivated() end
 
     --- The ground engines will stabilize to this altitude within their limits
@@ -197,7 +197,7 @@ function ControlUnit()
     function self.setupControlMasterModeProperties() error("ControlUnit.setupControlMasterModeProperties() is deprecated, use ControlUnit.setWidgetControlModeLabel() instead.") end
 
     --- Checks if any landing gear is deployed
-    ---@return integer value 0 or 1 1 if any landing gear is deployed
+    ---@return boolean value True if any landing gear is deployed, false otherwise
     function self.isAnyLandingGearDeployed() end
     ---@deprecated ControlUnit.isAnyLandingGearDeployed() is deprecated, use ControlUnit.isAnyLandingGearExtended() instead.
     function self.isAnyLandingGearExtended() error("ControlUnit.isAnyLandingGearDeployed() is deprecated, use ControlUnit.isAnyLandingGearExtended() instead.") end
@@ -211,7 +211,7 @@ function ControlUnit()
 
 
     --- Check construct lights status
-    ---@return integer value 1 if any Headlight is switched on
+    ---@return boolean value True if any Headlight is on, false otherwise
     function self.isAnyHeadlightSwitchedOn() end
 
     --- Turn on the construct headlights

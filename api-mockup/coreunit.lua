@@ -175,6 +175,11 @@ function CoreUnit()
     ---@return string value The class of the Element
     function self.getElementClassById(localId) end
 
+    --- Returns the item id of the class of the Element, identified by its local ID
+    ---@param localId integer The local ID of the Element
+    ---@return integer value The item ID of the item class
+    function self.getElementClassIdById(localId) end
+
     --- Returns the display name of the Element, identified by its local ID
     ---@param localId integer The local ID of the Element
     ---@return string value The display name of the Element
@@ -196,6 +201,16 @@ function CoreUnit()
     ---@param localId integer The local ID of the Element
     ---@return number value 
     function self.getElementMaxHitPointsById(localId) end
+
+    --- Returns the remaining restorations of the Element, identified by its local ID
+    ---@param localId integer The local ID of the Element
+    ---@return integer value The restorations remaining for the Element
+    function self.getElementRestorationsById(localId) end
+    
+    --- Returns the maximum restorations of the Element, identified by its local ID
+    ---@param localId integer The local ID of the Element
+    ---@return integer value The max restorations for the Element
+    function self.getElementMaxRestorationsById(localId) end
 
     --- Returns the mass of the Element, identified by its local ID
     ---@param localId integer The local ID of the Element
@@ -229,10 +244,46 @@ function CoreUnit()
     ---@deprecated CoreUnit.getElementIndustryStatusById(localId) is deprecated, use CoreUnit.getElementIndustryInfoById(localId) instead.
     function self.getElementIndustryStatusById(localId) error("CoreUnit.getElementIndustryStatusById(localId) is deprecated, use CoreUnit.getElementIndustryInfoById(localId) instead.") end
 
-    --- Returns the list of tags associated to the Element, identified by its local ID
+
+    --- Returns the Element IN plug map, identified by its local ID
     ---@param localId integer The local ID of the Element
-    ---@return string value The tags as a JSON list
-    function self.getElementTagsById(localId) end
+    ---@return table plugMap The IN plug map of the Element as a table with fields per plug: {[int] type, [string] name, [int nullable] elementId, [bool] isRestricted, [list nullable] restrictedIds}
+    function self.getElementInPlugsById(localId) end
+
+    --- Returns the Element OUT plug map, identified by its local ID
+    ---@param localId integer The local ID of the Element
+    ---@return table plugMap The OUT plug map of the Element as a table with fields per plug: {[int] type, [string] name, [int nullable] elementId, [bool] isRestricted, [list nullable] restrictedIds}
+    function self.getElementOutPlugsById(localId) end
+
+
+    --- Returns the list of engine tags for an Engine Element identified by its local ID
+    ---@param localId integer The local ID of the engine
+    ---@return string value The CSV string of the tags
+    function self.getEngineTagsById(localId) end
+    ---@deprecated CoreUnit.getElementTagsById(localId) is deprecated, use CoreUnit.getEngineTagsById(localId) instead.
+    function self.getElementTagsById(localId) error("CoreUnit.getElementTagsById(localId) is deprecated, use CoreUnit.getEngineTagsById(localId) instead.") end
+
+    --- Sets the list of engine tags for an Engine Element, identified by its local ID
+    ---@param localId integer The local ID of the engine
+    ---@param tags string The CSV string of the tags
+    ---@param ignore boolean (optional) True to ignore the default engine tags
+    ---@return boolean value True if the tags have been applied, false if they have not
+    function self.setEngineTagsById(localId,tags,ignore) end
+
+    --- Sets the torque generation state for the Engine Element, identified by its local ID
+    ---@param localId integer The local ID of the engine
+    ---@param state boolean True to enable engine torque
+    function self.setEngineTorqueById(localId,state) end
+
+    --- Returns the torque generation state for the Engine Element, identified by its local ID
+    ---@param localId integer The local ID of the engine
+    ---@return boolean value True if the torque generation is enabled, false if it is not
+    function self.getEngineTorqueById(localId) end
+
+    --- Checks if the engine element is ignoring default tags, identified by its local ID
+    ---@param localId integer The local ID of the engine
+    ---@return boolean value True if the engine ignores default engine tags, false if not
+    function self.isEngineIgnoringTagsById(localId) end
 
 
     --- Returns the altitude above sea level, with respect to the closest planet (0 in space)
@@ -277,6 +328,27 @@ function CoreUnit()
     self.stressChanged:addAction(function(self) error("CoreUnit.stressChanged event is deprecated, use CoreUnit.onStressChanged instead.") end, true, 1)
 
 
+    --- Emitted when an Element is broken
+    ---@param localId integer The local ID of the Element
+    ---@param restorations integer The restorations remaining for the Element
+    self.onElementBroken = Event:new()
+
+    --- Emitted when an Element is restored
+    ---@param localId integer The local ID of the Element
+    ---@param restorations integer The restorations remaining for the Element
+    self.onElementRestored = Event:new()
+
+    --- Emitted when an Element is damaged
+    ---@param localId integer The local ID of the Element
+    ---@param hitpoints integer The amount of hitpoints taken in damage
+    self.onElementDamaged = Event:new()
+
+    --- Emitted when an Element is repaired
+    ---@param localId integer The local ID of the Element
+    ---@param hitpoints integer The amount of hitpoints repaired
+    self.onElementRepaired = Event:new()
+
+
     --- Spawns a number sticker in the 3D world, with coordinates relative to the construct
     ---@param nb integer The number to display 0 to 9
     ---@param x number The x-coordinate in the construct in meters. 0 = center
@@ -296,7 +368,7 @@ function CoreUnit()
 
     --- Delete the referenced sticker
     ---@param index integer Index of the sticker to delete
-    ---@return integer success 1 in case of success, 0 otherwise
+    ---@return boolean success True if the sticker has been successfuly deleted, false otherwise
     function self.deleteSticker(index) end
 
     --- Move the referenced sticker
@@ -304,7 +376,7 @@ function CoreUnit()
     ---@param x number The x-coordinate in the construct in meters. 0 = center
     ---@param y number The y-coordinate in the construct in meters. 0 = center
     ---@param z number The z-coordinate in the construct in meters. 0 = center
-    ---@return integer success 1 in case of success, 0 otherwise
+    ---@return boolean success True if the sticker has been successfuly moved, false otherwise
     function self.moveSticker(index,x,y,z) end
     
     --- Rotate the referenced sticker.
@@ -312,7 +384,7 @@ function CoreUnit()
     ---@param angle_x number Rotation along the x-axis in degrees
     ---@param angle_y number Rotation along the y-axis in degrees
     ---@param angle_z number Rotation along the z-axis in degrees
-    ---@return integer success 1 in case of success, 0 otherwise
+    ---@return boolean success True if the sticker has been successfuly rotated, false otherwise
     function self.rotateSticker(index,angle_x,angle_y,angle_z) end
 
 

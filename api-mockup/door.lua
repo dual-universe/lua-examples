@@ -27,7 +27,7 @@ function Door()
     function self.deactivate() error("Door.deactivate() is deprecated, use Door.close() instead.") end
 
     --- Return the opening status of the door
-    ---@return integer value 1 if the door is open
+    ---@return boolean value True if the door is open, false otherwise
     function self.isOpen() end
     ---@deprecated Door.getState() is deprecated, use Door.isOpen() instead.
     function self.getState() error("Door.getState() is deprecated, use Door.isOpen() instead.") end

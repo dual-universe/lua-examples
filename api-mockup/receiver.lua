@@ -30,12 +30,12 @@ function Receiver()
     
     --- Checks if the given channel exists in the receiver channels list
     ---@param channel string The channels list as Lua table
-    ---@return integer value 1 if the channels list contains the given channel
+    ---@return boolean value True if the channels list contains the given channel, false otherwise
     function self.hasChannel(channel) end
 
     --- Set the channels list
     ---@param channels table The channels list as Lua table
-    ---@return integer success 1 if the channels list has been successfully set
+    ---@return boolean success True if the channels list has been successfully set, false otherwise
     function self.setChannelList(channels) end
     ---@deprecated Receiver.setChannels(channels) is deprecated, use Receiver.setChannelList(channels) instead.
     function self.setChannels(channels) error("Receiver.setChannels(channels) is deprecated, use Receiver.setChannelList(channels) instead.") end

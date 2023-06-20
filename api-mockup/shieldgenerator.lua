@@ -17,7 +17,7 @@ function ShieldGenerator()
     local self = Element()
 
     --- Emitted when we started or stopped the shield generator
-    ---@param active integer 1 if the element was activated, 0 otherwise
+    ---@param active boolean True if the element was activated, false otherwise
     self.onToggled = Event:new()
     self.toggled = Event:new()
     self.toggled:addAction(function(self, active) error("ShieldGenerator.toggled(active) event is deprecated") end, true, 1)
@@ -30,7 +30,7 @@ function ShieldGenerator()
     self.absorbed:addAction(function(self, hitpoints, rawHitpoints) error("ShieldGenerator.absorbed(hitpoints, rawHitpoints) event is deprecated") end, true, 1)
 
     --- Emitted when venting started, stopped or restored some hitpoints
-    ---@param active integer 1 when venting is active, 0 otherwise
+    ---@param active boolean True when venting is active, false otherwise
     ---@param restoredHitpoints number Hitpoints restored since the last venting step
     self.onVenting = Event:new()
     self.venting = Event:new()
@@ -57,7 +57,7 @@ function ShieldGenerator()
     function self.toggle() end
 
     --- Returns the activation state of the shield
-    ---@return integer value 1 when the shield is active, 0 otherwise
+    ---@return boolean value True when the shield is active, false otherwise
     function self.isActive() end
     ---@deprecated ShieldGenerator.getState() is deprecated, use ShieldGenerator.isActive() instead.
     function self.getState() error("ShieldGenerator.getState() is deprecated, use ShieldGenerator.isActive() instead.") end
@@ -73,15 +73,15 @@ function ShieldGenerator()
 
 
     --- Activate shield venting to restore hit points
-    ---@return integer state 1 if venting started, 0 if an error occurred
+    ---@return boolean state True if venting started, false if an error occurred
     function self.startVenting() end
 
     --- Stop shield venting
-    ---@return integer state 1 if venting stopped, 0 if an error occurred
+    ---@return boolean state True if venting stopped, false if an error occurred
     function self.stopVenting() end
 
     --- Check whether venting is in progress
-    ---@return integer state 1 if venting is ongoing, 0 otherwise
+    ---@return boolean state True if venting is ongoing, false otherwise
     function self.isVenting() end
 
     --- Returns time after which venting is possible again
@@ -102,7 +102,7 @@ function ShieldGenerator()
     ---@param electromagnetic number Electromagnetic damage resistance
     ---@param kinetic number Kinetic damage resistance
     ---@param thermic number Thermic damage resistance
-    ---@return integer success 1 if resistance was distributed, 0 if an error occurred
+    ---@return boolean success True if resistance was distributed, false if an error occurred
     function self.setResistances(antimatter,electromagnetic,kinetic,thermic) end
 
     --- Returns time after which adjusting resistances is possible again

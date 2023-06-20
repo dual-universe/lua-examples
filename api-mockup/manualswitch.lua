@@ -37,7 +37,7 @@ function ManualSwitch()
     function self.toggle() end
 
     --- Checks if the switch is active
-    ---@return integer value 1 if the switch is active
+    ---@return boolean value True if the switch is active, false otherwise
     function self.isActive() end
     ---@deprecated ManualSwitch.getState() is deprecated, use ManualSwitch.isActive() instead.
     function self.getState() error("ManualSwitch.getState() is deprecated, use ManualSwitch.isActive() instead.") end

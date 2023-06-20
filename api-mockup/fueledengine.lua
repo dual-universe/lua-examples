@@ -21,7 +21,7 @@ function FueledEngine()
     function self.deactivate() end
 
     --- Checks if the engine is active
-    ---@return integer value 1 when the engine is on
+    ---@return boolean value True if the engine is on, false otherwise
     function self.isActive() end
     ---@deprecated FueledEngine.getState() is deprecated, use FueledEngine.isActive().
     function self.getState() error("FueledEngine.getState() is deprecated, use FueledEngine.isActive().") end
@@ -68,7 +68,7 @@ function FueledEngine()
     function self.getMaxThrustEfficiency() end
     
     --- Checks if the torque generation is enabled on the engine
-    ---@return integer value 1 if the torque is enabled on the engine
+    ---@return boolean value True if the torque is enabled on the engine, false otherwise
     function self.isTorqueEnabled() end
     
     --- Sets the torque generation state on the engine
@@ -97,7 +97,7 @@ function FueledEngine()
     function self.torqueAxis() error("FueledEngine.torqueAxis() is deprecated, use FueledEngine.getWorldTorqueAxis().") end
 
     --- Checks if the engine out of fuel
-    ---@return integer value 1 when there is no fuel left, 0 otherwise
+    ---@return boolean value True if the engine is out of fuel, false otherwise
     function self.isOutOfFuel() end
 
     --- Returns the item ID of the fuel currently used by the engine
@@ -109,7 +109,7 @@ function FueledEngine()
     function self.getFuelTankId() end
 
     --- Checks if the engine linked to a functional Fuel Tank (not broken or colliding)?
-    ---@return integer value 1 when the linked tank is functional, 0 otherwise
+    ---@return boolean value True if the linked tank is functional, false otherwise
     function self.hasFunctionalFuelTank() end
     ---@deprecated FueledEngine.hasBrokenFuelTank() is deprecated, use FueledEngine.hasFunctionalFuelTank().
     function self.hasBrokenFuelTank() error("FueledEngine.hasBrokenFuelTank() is deprecated, use FueledEngine.hasFunctionalFuelTank().") end

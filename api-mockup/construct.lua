@@ -35,7 +35,7 @@ function Construct()
 
 
     --- Checks if the construct is currently warping
-    ---@return integer
+    ---@return boolean value True if the construct is currently warping, false otherwise
     function self.isWarping() end
     --- Returns the current warp state
     ---@return integer state The current warp state index (Idle = 1, Engage = 2, Align = 3, Spool = 4, Accelerate = 5, Cruise = 6, Decelerate = 7, Stopping = 8, Disengage = 9)
@@ -43,7 +43,7 @@ function Construct()
 
 
     --- Checks if the construct is in PvP zone
-    ---@return integer
+    ---@return boolean value True if the construct is in PVP zone, false otherwise
     function self.isInPvPZone() end
     --- Returns the distance between the construct and the nearest safe zone
     ---@return number distance The distance to the nearest safe zone border in meters. Positive value if the construct is outside of any safe zone
@@ -56,6 +56,10 @@ function Construct()
     --- Returns the mass of the construct
     ---@return number
     function self.getMass() end
+    --- Returns the total mass of the construct (voxels, elements, avatars and docked constructs)
+    ---@return number The total mass of the construct in kilograms
+    function self.getTotalMass() end
+
     --- Returns the inertial mass of the construct, calculated as 1/3 of the trace of the inertial tensor
     ---@return number
     function self.getInertialMass() end
@@ -238,11 +242,11 @@ function Construct()
     function self.getPlayersOnBoardInVRStation() end
     --- Checks if the given player is on board in the construct
     ---@param id integer The player id
-    ---@return integer
+    ---@return boolean value True if the given player is on board, false otherwise
     function self.isPlayerBoarded(id) end
     --- Returns 1 if the given player is boarded to the construct inside a VR Station
     ---@param id integer The player id
-    ---@return integer
+    ---@return boolean value True if the given player is boarded to the construct, false otherwise
     function self.isPlayerBoardedInVRStation(id) end
     --- Returns the mass of the given player or surrogate if it is on board the construct
     ---@param id integer The player id
@@ -258,7 +262,7 @@ function Construct()
     function self.getDockedConstructs() end
     --- Checks if the given construct is docked to the construct
     ---@param id integer The construct id
-    ---@return integer
+    ---@return boolean value True if the given construct is docked, false otherwise
     function self.isConstructDocked(id) end
     --- Returns the mass of the given construct if it is docked to the construct
     ---@param id integer The construct id
@@ -267,30 +271,30 @@ function Construct()
 
     --- Sets the docking mode
     ---@param mode integer The docking mode (Manual = 1, Automatic = 2, Semi-automatic = 3)
-    ---@return integer
+    ---@return boolean success True if the operation is a success, false otherwise
     function self.setDockingMode(mode) end
     --- Returns the current docking mode
     ---@return integer mode The docking mode (Manual = 1, Automatic = 2, Semi-automatic = 3)
     function self.getDockingMode() end
     --- Sends a request to dock to the given construct. Limited to piloting controllers
     ---@param id integer The parent construct id
-    ---@return integer
+    ---@return boolean success True if the operation is a success, false otherwise
     function self.dock(id) end
     --- Sends a request to undock the construct. Limited to piloting controllers
-    ---@return integer
+    ---@return boolean success True if the operation is a success, false otherwise
     function self.undock() end
 
     --- Sends a request to deboard a player or surrogate with the given id
     ---@param id integer The player id
-    ---@return integer
+    ---@return boolean True if the operation is a success, false otherwise
     function self.forceDeboard(id) end
     --- Sends a request to undock a construct with the given id
     ---@param id integer The construct id
-    ---@return integer
+    ---@return boolean True if the operation is a success, false otherwise
     function self.forceUndock(id) end
     --- Sends a request to interrupt the surrogate session of a player with the given id
     ---@param id integer The player id
-    ---@return integer
+    ---@return boolean True if the operation is a success, false otherwise
     function self.forceInterruptVRSession(id) end
 
 
@@ -315,7 +319,7 @@ function Construct()
     self.onConstructDocked = Event:new()
 
     --- Emitted when the PvP timer started or elapsed
-    ---@param active boolean 1 if the timer started, false when the timer elapsed
+    ---@param active boolean True if the timer started, false when the timer elapsed
     self.onPvPTimer = Event:new()
 
 
