@@ -52,6 +52,11 @@ function Element()
     ---@deprecated Element.getElementClass() is deprecated, use Element.getClass() instead.
     function self.getElementClass() error("Element.getElementClass() is deprecated, use Element.getClass() instead.") end
 
+    --- Returns the item id of the class of the Element
+    ---@param return integer The item ID of the item class
+    function self.getClassId() end
+
+
     --- Returns the mass of the element (includes the included items' mass when the Element is a Container)
     ---@return number value The mass of the element
     function self.getMass() end
@@ -59,6 +64,18 @@ function Element()
     --- Returns the element item ID (to be used with system.getItem() function to get information about the element).
     ---@return integer value The element item ID
     function self.getItemId() end
+
+    
+    --- Checks if the element is an element of the class given by its item id
+    ---@param classId integer The item ID of the item class
+    ---@return boolean True if the element is a valid element of the given class, false otherwise
+    function self.isInClassId(classId) end
+
+    --- Checks if the element is an element of the class given by its class name
+    ---@param className string The name of the item class
+    ---@return boolean value True if the element is a valid element of the given class, false otherwise
+    function self.isInClass(className) end
+
 
     --- Returns the unique local ID of the element
     ---@return integer value The element local ID
@@ -121,6 +138,16 @@ function Element()
     --- Returns the forward direction vector of the element in world coordinates
     ---@return table value Forward direction vector of the Element in world coordinates
     function self.getWorldForward() end
+
+
+    --- Returns the Element IN plug map
+    ---@return table plugMap The IN plug map of the Element as a table with fields per plug: {[int] type, [string] name, [int nullable] elementId, [bool] isRestricted, [list nullable] restrictedIds}
+    function self.getInPlugs() end
+
+    --- Returns the Element OUT plug map
+    ---@return table plugMap The OUT plug map of the Element as a table with fields per plug: {[int] type, [string] name, [int nullable] elementId, [bool] isRestricted, [list nullable] restrictedIds}
+    function self.getOutPlugs() end
+
 
     --- Set the value of a signal in the specified IN plug of the Element.
     --- Standard plug names are built with the following syntax: direction-type-index. 'Direction' can be IN or OUT.

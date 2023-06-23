@@ -90,41 +90,41 @@ function Player()
     function self.getParent() end
 
     --- Checks if the player is seated
-    ---@return integer value 1 if the player is seated
+    ---@return boolean value True if the player is seated, false otherwise
     function self.isSeated() end
     --- Returns the local id of the seat on which the player is sitting
     ---@return integer value The local id of the seat, or 0 is not seated
     function self.getSeatId() end
     --- Checks if the player is parented to the given construct
     ---@param id integer The construct id
-    ---@return integer value 1 if the player is parented to the given construct
+    ---@return boolean value True if the player is parented to the given construct, false otherwise
     function self.isParentedTo(id) end
 
     --- Checks if the player is currently sprinting
-    ---@return integer value 1 if the player is sprinting
+    ---@return boolean value True if the player is sprinting, false otherwise
     function self.isSprinting() end
     --- Checks if the player's jetpack is on
-    ---@return integer value 1 if the player's jetpack is on
+    ---@return boolean value True if the player's jetpack is on, false otherwise
     function self.isJetpackOn() end
 
     --- Returns the state of the headlight of the player
-    ---@return integer 1 if the player has his headlight on
+    ---@return boolean value True if the player has his headlight on, false otherwise
     function self.isHeadlightOn() end
     --- Set the state of the headlight of the player
-    ---@param state boolean : True to turn on headlight
+    ---@param state boolean True to turn on headlight
     function self.setHeadlightOn(state) end
 
 
     --- Freezes the player movements, liberating the associated movement keys to be used by the script. 
     --- Note that this function is disabled if the player is not running the script explicitly (pressing F on the Control Unit, vs. via a plug signal)
-    ---@param state boolean 1 freeze the character, 0 unfreeze the character
+    ---@param state boolean True to freeze the player, false to unfreeze
     function self.freeze(state) end
     --- Checks if the player movements are frozen
-    ---@return integer value 1 if the player is frozen, 0 otherwise
+    ---@return boolean value True if the player is frozen, false otherwise
     function self.isFrozen() end
 
     --- Checks if the player has DRM autorization to the control unit
-    ---@return integer value 1 if the player has DRM autorization on the control unit
+    ---@return boolean value True if the player has DRM autorization on the control unit, false otherwise
     function self.hasDRMAutorization() end
 
     --- Emitted when the player parent change

@@ -140,7 +140,7 @@ function System()
     --- Destroy the panel. 
     --- Note that this function is disabled if the player is not running the script explicitly (pressing F on the Control Unit, vs. via a plug signal).
     ---@param panelId string The panel ID
-    ---@return integer value 1 on success, 0 on failure.
+    ---@return boolean value True if the panel has been successfully destroyed, false otherwise
     function self.destroyWidgetPanel(panelId) end
 
     --- Create an empty widget and add it to a panel. 
@@ -153,7 +153,7 @@ function System()
     --- Destroy the widget. 
     --- Note that this function is disabled if the player is not running the script explicitly (pressing F on the Control Unit, vs. via a plug signal).
     ---@param widgetId string The widget ID
-    ---@return integer value 1 on success, 0 on failure.
+    ---@return boolean value True if the widget has been successfully destroyed, false otherwise
     function self.destroyWidget(widgetId) end
 
     --- Create data. 
@@ -165,28 +165,28 @@ function System()
     --- Destroy the data. 
     --- Note that this function is disabled if the player is not running the script explicitly (pressing F on the Control Unit, vs. via a plug signal).
     ---@param dataId string The data ID
-    ---@return integer value 1 on success, 0 on failure.
+    ---@return boolean value True if the data has been successfully destroyed, false otherwise
     function self.destroyData(dataId) end
 
     --- Update JSON associated to data. 
     --- Note that this function is disabled if the player is not running the script explicitly (pressing F on the Control Unit, vs. via a plug signal).
     ---@param dataId string The data ID
     ---@param dataJson string The data fields as JSON
-    ---@return integer value 1 on success, 0 on failure.
+    ---@return boolean value True if the data has been successfully updated, false otherwise
     function self.updateData(dataId, dataJson) end
 
     --- Add data to widget. 
     --- Note that this function is disabled if the player is not running the script explicitly (pressing F on the Control Unit, vs. via a plug signal).
     ---@param dataId string The data ID
     ---@param widgetId string The widget ID
-    ---@return integer value 1 on success, 0 on failure.
+    ---@return boolean value True if the data has been successfully added to the widget, false otherwise
     function self.addDataToWidget(dataId, widgetId) end
 
     --- Remove data from widget. 
     --- Note that this function is disabled if the player is not running the script explicitly (pressing F on the Control Unit, vs. via a plug signal).
     ---@param dataId string The data ID
     ---@param widgetId string The widget ID
-    ---@return integer value 1 on success, 0 on failure.
+    ---@return boolean value True if the data has been successfully removed from the widget, false otherwise
     function self.removeDataFromWidget(dataId, widgetId) end
     
     --- Return the current value of the mouse wheel
@@ -236,7 +236,7 @@ function System()
     function self.getCameraMode() end
 
     --- Checks if the active camera is in first person view.
-    ---@return integer value 1 if the camera is in first person view.
+    ---@return boolean value True if the camera is in first person view, false otherwise
     function self.isFirstPerson() end
 
     --- Returns the position of the camera, in construct local coordinates.
@@ -293,11 +293,11 @@ function System()
 
     --- Lock or unlock the mouse free look.
     --- Note that this function is disabled if the player is not running the script explicitly (pressing F on the Control Unit, vs. via a plug signal).
-    ---@param state boolean true to lock and false to unlock
+    ---@param state boolean True to lock the view, false to unlock
     function self.lockView(state) end
 
     --- Return the lock state of the mouse free look
-    ---@return integer value 1 when locked and 0 when unlocked
+    ---@return boolean value True if the view is locked, false otherwise
     function self.isViewLocked() end
 
     ---@deprecated System.freeze() is deprecated, use Player.freeze().
@@ -336,15 +336,79 @@ function System()
     ---@param id integer The ID of the player
     ---@return table value The coordinates of the player in world coordinates
     function self.getPlayerWorldPos(id) end
+
     
     --- Return the item table corresponding to the given item ID.
     ---@param id integer The ID of the item
-    ---@return table value An item table with fields: {[int] id, [string] name, [string] displayName, [string] locDisplayName, [string] displayNameWithSize, [string] locDisplayNameWithSize, [string] description, [string] locDescription, [string] type, [number] unitMass, [number] unitVolume, [integer] tier, [string] scale, [string] iconPath, [table] schematics, [table] products}
+    ---@return table value An item table with fields: {[int] id, [string] name, [string] displayName, [string] locDisplayName, [string] displayNameWithSize, [string] locDisplayNameWithSize, [string] description, [string] locDescription, [string] type, [number] unitMass, [number] unitVolume, [integer] tier, [string] size, [string] iconPath, [table] schematics, [table] products}
     function self.getItem(id) end
+
+    --- Checks if the item is an item of the class identified by its item id
+    ---@param itemId integer The ID of the item
+    ---@param classId integer The item ID of the item class
+    ---@return boolean value True if the item is an item of the given class, false otherwise
+    function self.isItemInClassId(itemId, classId) end
+
+    --- Checks if the given item is an item of the class given by its class name
+    ---@param itemId integer The ID of the item
+    ---@param className[string]: The name of the item class
+    ---@return boolean value True if the item is an item of the given class, false otherwise
+    function self.isItemInClass(itemId, className) end
+
+    --- Checks if the given item is a class item
+    ---@param itemId integer The ID of the item
+    ---@return boolean value True if the item is a class item, false otherwise
+    function self.isClassItem(itemId) end
+
+    --- Checks if the given item is an element
+    ---@param itemId integer The ID of the item
+    ---@return boolean value True if the item is an element, false otherwise
+    function self.isElementItem(itemId) end
+
+    --- Checks if the given item is a material
+    ---@param itemId integer The ID of the item
+    ---@return boolean value True if the item is a material, false otherwise
+    function self.isMaterialItem(itemId) end
+
+    --- Checks if the given item is a raw material
+    ---@param itemId integer The ID of the item
+    ---@return boolean value True if the item is a raw material, false otherwise
+    function self.isRawMaterialItem(itemId) end
+
+    --- Checks if the given item is a blueprint
+    ---@param itemId integer The ID of the item
+    ---@return boolean value True if the item is a blueprint, false otherwise
+    function self.isBlueprintItem(itemId) end
+
+    --- Checks if the given item is a scrap item
+    ---@param itemId integer The ID of the item
+    ---@return boolean value True if the item is a scrap item, false otherwise
+    function self.isScrapItem(itemId) end
+
+    --- Checks if the given item is a part
+    ---@param itemId integer The ID of the item
+    ---@return boolean value True if the item is a part, false otherwise
+    function self.isPartItem(itemId) end
+
+    --- Checks if the given item is an ammo item
+    ---@param itemId integer The ID of the item
+    ---@return boolean value True if the item is an ammo item, false otherwise
+    function self.isAmmoItem(itemId) end
+
+    --- Checks if the given item is a package
+    ---@param itemId integer The ID of the item
+    ---@return boolean value True if the item is a package, false otherwise
+    function self.isPackageItem(itemId) end
+
+    --- Checks if the given item is a schematic
+    ---@param itemId integer The ID of the item
+    ---@return boolean value True if the item is a schematic, false otherwise
+    function self.isSchematicItem(itemId) end
+
 
     --- Returns a list of recipes producing the given item from its id.
     ---@param itemId integer The ID of the item
-    ---@return table value A list of recipe table with field: {[int] id, [int] tier,[double] time, [bool] nanocraftable, [table] products:{{[int] id, [double] quantity},...}, [table] ingredients:{{[int] id, [double] quantity},...}}
+    ---@return table value A list of recipe table with field: {[integer] id, [integer] tier,[number] time, [bool] nanocraftable, [table] producers, [table] products:{{[integer] id, [number] quantity},...}, [table] ingredients:{{[integer] id, [number] quantity},...}}
     function self.getRecipes(itemId) end
     ---@deprecated System.getSchematic(id) is deprecated, use System.getRecipes(itemId).tag.
     function self.getSchematic(id) error("System.getSchematic(id) is deprecated, use System.getRecipes(itemId) instead.") end
@@ -372,6 +436,16 @@ function System()
     ---@param notify boolean (Optional) True to display a notification about the waypoint's clearing
     function self.clearWaypoint(notify) end
 
+
+    --- Returns the current instruction count during this tick
+    ---@return integer value The current instruction count during this tick
+    function self.getInstructionCount() end
+
+    --- Returns the instruction limit before the CPU overload
+    ---@return integer value The instruction limit per tick
+    function self.getInstructionLimit() end
+
+
     --- Set the visibility of the helper top menu.
     --- Note that this function is disabled if the player is not running the script explicitly (pressing F on the Control Unit, vs. via a plug signal).
     ---@param show boolean True to show the top helper menu, false to hide the top helper menu
@@ -381,7 +455,7 @@ function System()
     ---@param filePath string Relative path to audio folder (.mp3, .wav)
     function self.playSound(filePath) end
     --- Checks if a sound is playing
-    ---@return integer value 1 if a sound is playing
+    ---@return boolean value True if a sound is playing, false otherwise
     function self.isPlayingSound() end
     --- Stop the current playing sound
     function self.stopSound() end

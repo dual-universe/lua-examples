@@ -46,7 +46,7 @@ function Screen()
     function self.deactivate() end
 
     --- Checks if the screen is on
-    ---@return integer 1 if the screen is on
+    ---@return boolean value True if the screen is on, false otherwise
     function self.isActive() end
     ---@deprecated Screen.getState() is deprecated, use Screen.isActive() instead.
     function self.getState() error("Screen.getState() is deprecated, use Screen.isActive() instead.") end
@@ -125,7 +125,7 @@ function Screen()
     function self.getMouseY() end
 
     --- Returns the state of the mouse click
-    ---@return integer 1 if the mouse is pressed, otherwise 0
+    ---@return boolean value True if the mouse is pressed, false otherwise
     function self.getMouseState() end
 
     --- Clear the screen

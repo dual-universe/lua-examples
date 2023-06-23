@@ -21,7 +21,7 @@ function BrakeEngine()
     function self.deactivate() end
 
     --- Checks if the brake is active
-    ---@return integer
+    ---@return boolean value True if the brake is on, false otherwise
     function self.isActive() end
     ---@deprecated BrakeEngine.getState() is deprecated, use BrakeEngine.isActive().
     function self.getState() error("BrakeEngine.getState() is deprecated, use BrakeEngine.isActive().") end

@@ -18,7 +18,7 @@ function Radar()
     local self = Element()
 
 
-    --- Returns 1 if the radar is not broken, works in the current environment and is not used by another control unit
+    --- Checks if the radar is operational
     ---@return integer state 1 if the radar is operational, otherwise: 0 = broken, -1 = bad environment, -2 = obstructed, -3 = already in use
     function self.getOperationalState() end
     ---@deprecated Radar.isOperational() is deprecated, use Radar.getOperationalState() instead.
@@ -42,7 +42,7 @@ function Radar()
 
     --- Sets the sort method for construct data
     ---@param method integer The sort method (Distance Ascending = 1, Distance Descending = 2, Size Ascending = 3, Size Descending = 4, Threat Ascending = 5, Threat Descending = 6)
-    ---@return integer success 1 if the sort method was set successfully, 0 otherwise 
+    ---@return boolean success True if the sort method was set successfully, false otherwise 
     function self.setSortMethod(method) end
 
     --- Returns the list of identified construct IDs
@@ -52,8 +52,13 @@ function Radar()
     --- Returns the list of constructs in a given range according to the current sort method
     ---@param offset integer Offset from the first entry
     ---@param size integer Total entries to return following the offset, 0 to return all entries
+    ---@param filter table (optional) The filters to be applied as a table {[bool] isMatching, [int] constructKind, [string] coreSize, [bool] isAbandoned}
+    ---@param isMatching boolean (optional) True to filter out constructs with a matching transponder, false otherwise
+    ---@param constructKind integer (optional) The construct kind id to filter out constructs (Universe = 1, Planet = 2, Asteroid = 3, Static = 4, Dynamic = 5, Space = 6, Alien = 7)
+    ---@param coreSize string (optional) The construct core unit size to filter out constructs ('XS', 'S', 'M', 'L', 'XL')
+    ---@param isAbandoned boolean (optional) True to filter out abandoned constructs, false otherwise
     ---@return table value The list of constructs tables {[integer] constructId, [string] name, [string] size, [string] constructType, [number] mass, [int] isIdentified, [int] inIdentifyRange, [number] identificationDuration, [number] remainingIdentificationTime, [int] myThreatStateToTarget, [int] targetThreatState, [number] distance, [table] worldPosition, [number] speed, [number] radialSpeed, [number] angularSpeed, [table] info}
-    function self.getConstructs(offset, size) end
+    function self.getConstructs(offset, size, filter) end
 
     --- Returns the ID of the target construct
     ---@return integer value The ID of the target construct
@@ -66,12 +71,12 @@ function Radar()
 
     --- Returns 1 if the given construct is identified
     ---@param id integer The ID of the construct
-    ---@return integer value 1 if the construct is identified, 0 otherwise
+    ---@return boolean value True if the construct is identified, false otherwise
     function self.isConstructIdentified(id) end
 
     --- Returns 1 if the given construct was abandoned
     ---@param id integer The ID of the construct
-    ---@return integer value 1 if the construct has no owner, 0 otherwise
+    ---@return boolean value True if the construct has no owner, false otherwise
     function self.isConstructAbandoned(id) end
 
     --- Returns the core size of the given construct
@@ -95,7 +100,7 @@ function Radar()
 
     --- Returns whether the target has an active Transponder with matching tags
     ---@param id integer The ID of the construct
-    ---@return integer
+    ---@return boolean value True if your Construct and the target have active Transponders with at least one matching tag, false otherwise
     function self.hasMatchingTransponder(id) end
 
     --- Returns a table with id of the owner entity (player or organization) of the given construct, if in range and if active transponder tags match for owned dynamic constructs.
@@ -112,7 +117,7 @@ function Radar()
 
     --- Return the kind of the given construct
     ---@param id integer The ID of the construct
-    ---@return integer kind The kind index of the construct (Universe = 1, Planet = 2,Asteroid = 3,Static = 4,Dynamic = 5,Space = 6,Alien = 7)
+    ---@return integer kind The kind index of the construct (Universe = 1, Planet = 2, Asteroid = 3, Static = 4, Dynamic = 5, Space = 6, Alien = 7)
     function self.getConstructKind(id) end
     ---@deprecated Radar.getConstructType(id) is deprecated, use Radar.getConstructKind(id) instead.
     function self.getConstructType() error("Radar.getConstructType(id) is deprecated, use Radar.getConstructKind(id) instead.") end

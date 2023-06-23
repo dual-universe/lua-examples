@@ -27,7 +27,7 @@ function LaserEmitter()
     function self.toggle() end
 
     --- Checks if the laser emitter is active
-    ---@return integer value 1 if the laser emitter is active
+    ---@return boolean value True if the laser emitter is active, false otherwise
     function self.isActive() end
     ---@deprecated LaserEmitter.getState() is deprecated, use LaserEmitter.isActive() instead.
     function self.getState() error("LaserEmitter.getState() is deprecated, use LaserEmitter.isActive() instead.") end

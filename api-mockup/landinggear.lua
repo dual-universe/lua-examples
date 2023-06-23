@@ -27,7 +27,7 @@ function LandingGear()
     function self.deactivate() error("LandingGear.deactivate() is deprecated, use LandingGear.retract() instead.") end
 
     --- Checks if the landing gear is deployed
-    ---@return integer value 1 if the landing gear is deployed
+    ---@return boolean value True if the landing gear is deployed, false otherwise
     function self.isDeployed() end
     ---@deprecated LandingGear.getState() is deprecated, use LandingGear.isDeployed() instead.
     function self.getState() error("LandingGear.getState() is deprecated, use LandingGear.isDeployed() instead.") end

@@ -28,7 +28,7 @@ function PressureTile()
     self.released:addAction(function(self) error("PressureTile.released() event is deprecated, use PressureTile.onReleased() instead.") end, true, 1)
 
     --- Checks if the pressure tile is down
-    ---@return integer value 1 when the tile is down, 0 otherwise
+    ---@return boolean value True when the tile is down, false otherwise
     function self.isDown() end
     ---@deprecated PressureTile.getState() is deprecated, use PressureTile.isDown() instead.
     function self.getState() error("PressureTile.getState() is deprecated, use PressureTile.isDown() instead.") end

@@ -25,11 +25,12 @@ function Engine()
     
     --- Set the tags of the engine
     ---@param tags string The CSV string of the tags
-    ---@param ignore boolean: True to ignore the default engine tags
+    ---@param ignore boolean True to ignore the default engine tags
+    ---@return boolean success True if the tags have been applied, false if they have not
     function self.setTags(tags,ignore) end
     
     --- Checks if the engine is ignoring default tags
-    ---@return integer 1 if the engine ignores default engine tags
+    ---@return boolean value True if the engine ignores default engine tags, false if not
     function self.isIgnoringTags() end
 
     return setmetatable(self, engine)

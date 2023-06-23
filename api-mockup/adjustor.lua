@@ -25,7 +25,7 @@ function Adjustor()
     function self.deactivate() end
 
     --- Checks if the adjustor is active
-    ---@return integer value The adjustor state, 1 if active
+    ---@return boolean value True when the adjustor is on, false otherwise
     function self.isActive() end
     ---@deprecated Adjustor.getState() is deprecated, use Adjustor.isActive().
     function self.getState() error("Adjustor.getState() is deprecated, use Adjustor.isActive().") end

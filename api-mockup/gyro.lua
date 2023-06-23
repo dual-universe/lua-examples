@@ -27,7 +27,7 @@ function Gyro()
     function self.toggle() end
 
     --- Returns the activation state of the gyro
-    ---@return integer value 1 when the gyro is the active ship orientation unit, 0 otherwise
+    ---@return boolean value True if the gyro is the active ship orientation unit, false otherwise
     function self.isActive() end
     ---@deprecated Gyro.getState() is deprecated, use Gyro.isActive() instead.
     function self.getState() error("Gyro.getDistance() is deprecated, use Gyro.isActive() instead.") end

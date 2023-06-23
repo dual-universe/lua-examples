@@ -22,7 +22,7 @@ function AntiGravityGenerator()
     ---  Deactivate the anti-gravity generator
     function self.deactivate() end
     --- Returns the state of activation of the anti-gravity generator
-    ---@return integer value 1 when the anti-gravity generator is started, 0 otherwise
+    ---@return boolean value True if the anti-gravity generator is started, false otherwise
     function self.isActive() end
     ---@deprecated AntiGravityGenerator.getState() is deprecated, use AntiGravityGenerator.isActive() instead.
     function self.getState() error("AntiGravityGenerator.getState() is deprecated, use AntiGravityGenerator.isActive() instead.") end
